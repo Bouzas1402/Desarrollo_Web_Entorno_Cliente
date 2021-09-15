@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <title></title>
+            <script type="text/javascript">
+
+                var resultados = [];
+
+                for (let i = 0; i < 50; i++){
+                    resultados[i] = getRandomInt(1, 100);
+                }
+
+                function getRandomInt(min, max) {
+                    return Math.floor(Math.random() * (max - min)) + min;
+                } 
+
+                var cantidadNumeros = 32;
+
+                for (let i = 0; i < resultados.length; i++){
+                document.getElementById("prueba").innerHTML = resultados[i] + "<br>";
+                }
+                /* for (i in resultados){
+                    console.log(resultados[i]);
+                } */
+                
+            </script>
+    </head>
+<body>
+    <p id="prueba"></p>
+</body>
+</html>
