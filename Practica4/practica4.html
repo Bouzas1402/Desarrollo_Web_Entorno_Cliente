@@ -4,28 +4,61 @@
             <title></title>
             <script type="text/javascript">
 
-                var resultados = [];
-
-                for (let i = 0; i < 50; i++){
-                    resultados[i] = getRandomInt(1, 100);
-                }
-
+                // Rellenar un array con numeros aleatorios:
                 function getRandomInt(min, max) {
                     return Math.floor(Math.random() * (max - min)) + min;
                 } 
 
-                var cantidadNumeros = 32;
-
-                for (let i = 0; i < resultados.length; i++){
-                document.getElementById("prueba").innerHTML = resultados[i] + "<br>";
+                function rellenarArray(max, intentos){
+                    var resultados = [];
+                    for (var i = 0; i < intentos; i++){
+                        resultados.push(getRandomInt(0, max));
+                    }
+                    return resultados;
                 }
-                /* for (i in resultados){
-                    console.log(resultados[i]);
-                } */
+
+                var numeroIntentos = 50;
+                var numeroMaximo = 32;
                 
+                var numeros = rellenarArray(numeroMaximo, numeroIntentos);
+
+                console.log(numeros);
+
+                // Ver cuantas veces se muestra un elemento en el array:
+                var numeros2 = [4,6,2,4,1,6,7,3,4,2,5];
+                 var numeroOcurrencias = [];
+
+                for(var i = 0; i < numeros2.length; i++){
+                    var indice = numeros2[i];   
+                    
+                    if (numeroOcurrencias[indice] == undefined){
+                        numeroOcurrencias[indice] = 1;
+                    } else {
+                        numeroOcurrencias[indice] = numeroOcurrencias[indice] + 1;
+                    }
+                } 
+                console.log(numeros2);
+                console.log(numeroOcurrencias);
+
+                // Crea un campo dew rocgida de texto donde se puedan introducir 
+                // numeros separados por ";" (punto y coma) junto con un boton calcular donde se genere y pinte el resultado de 
+                // la suma de todos los numeros introducidos, el mayor, el menor y la media
+                    
+
             </script>
     </head>
 <body>
-    <p id="prueba"></p>
+    <h1>Crea un campo de recogida de texto donde se puedan introducir numeros separados por ";"(pùnto y coma) junto con un boton calcular donde se genere y pinte el resultado de la suma de todos los numeros introducidos, el mayor,el menor y la media</h1>
+    <h2>Añade un boton reiniciar donde se vacie el contenido del campo de texto</h2>
+
+    <input type="text" id="texto"/>
+    <button onclick="">Calcular</button>
+    <button>Reiniciar</button>
+    <p>Suma:<i id="resultadoSuma"></i></p>
+    <p>Mayor:<i id="resultadoMayor"></i></p>
+    <p>Menor:<i id="resultadoMenor"></i></p>
+    <p>Media:<i id="resultadoMedia"></i></p>
+
+
 </body>
 </html>
