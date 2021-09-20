@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script type="text/javascript">
+            // Adjunta a continuación un fichero llamado ejercicio3.html donde se definan dos variables:
+            // numeroIntentos
+            // numeroMaximo
+            // se deberá de generar un array de longitud igual al numeroIntentos con valores generados entre 0 y numeroMaximo
+            // A continuación se deberá de generar un array con el numero de ocurrencias de cada número contenido en los valores del array de números aleatorios.
+
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+
+            function rellenarArray(max, intentos){
+                var resultados = [];
+                for (var i = 0; i < intentos; i++){
+                    resultados.push(getRandomInt(0, max));
+                }
+                return resultados;
+            }
+
+            var numeroIntentos = 50;
+            var numeroMaximo = 32;
+
+            var numeros = rellenarArray(numeroMaximo, numeroIntentos);
+
+            console.log(numeros);
+
+            var numeroOcurrencias = [];
+
+            for(var i = 0; i < numeros.length; i++){
+                var indice = numeros[i];
+
+                if (numeroOcurrencias[indice] == undefined){
+                    numeroOcurrencias[indice] = 1;
+                } else {
+                    numeroOcurrencias[indice] = numeroOcurrencias[indice] + 1;
+                }
+            }
+            console.log(numeros);
+            console.log(numeroOcurrencias);
+
+
+        </script>
+    </head>
+    <body>
+
+
+    </body>
+</html>
