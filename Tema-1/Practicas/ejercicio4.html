@@ -17,7 +17,7 @@
             insertarElementos("resultadoSuma", sumarNumeros(numeros));
             insertarElementos("resultadoMayor", numeroMayor(numeros));
             insertarElementos("resultadoMenor", numeroMenor(numeros));
-            insertarElementos("resultadoMedia", media(numeros));
+            insertarElementos("resultadoMedia", (sumarNumeros(numeros)/numeros.length));
             }
             // Función que convierte el texto del input en un array separando los valores que estan entre ; :
             function convertirArray(numeros){
@@ -54,14 +54,6 @@
                     }
                 }
             return menor;
-        }
-        // Funcion que coge un array y devuelve la media:
-        function media(numeros){
-            let suma = 0;
-            for (let i = 0; i < numeros.length; i++){
-                suma = suma + Number(numeros[i]);
-            }
-            return suma/numeros.length;
         }
         // Funcion que reinicia el campo texto:
         function resetearCampo(){

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Ejercicio 2</title>
+        <!-- Adjunta el fichero ejercicio2.html donde se recoja mediante un campo de texto un número y se calcule el
+        factorial del mismo.
+
+        El ejercicio deberá de:
+
+        Poner el foco del cursos automaticamente en el campo de texto al cargar la página
+        llamar a la función calcularFactorial de forma automática al introducir un nuevo valor en el campo de texto
+        mostrar el resultado del factorial y vaciar y volver a colocar el cursor en el campo de texto tras mostrar el resultado anterior. -->
+        <script>
+            document.addEventListener("DOMContentLoaded", ponerFoco);
+            <!-- Mirar beforeinput event -->
+            function calcularFactorial(numero) {
+                let factorial;
+                numero = parseInt(numero);
+                if (numero >= 1 && numero !== "") {
+                    factorial = 1;
+                    for (let i = 1; i <= numero; i++) {
+                        factorial = factorial * i;
+                    }
+                    window.alert("El factorial de " + numero + " es " + factorial)
+                } else if (numero <= 0) {
+                    factorial = 0;
+                    window.alert("El factorial de " + numero + " es " + factorial)
+                } else {
+                    window.alert("No es un signo valido.")
+                }
+                vaciarElemento();
+            }
+            function ponerFoco(){
+                document.getElementById("texto").focus();
+            }
+            function vaciarElemento(){
+                document.getElementById("texto").value = null;
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Introduce un número:</h2>
+        <input type="text" id="texto" oninput="calcularFactorial(this.value)">
+
+    </body>
+</html>
