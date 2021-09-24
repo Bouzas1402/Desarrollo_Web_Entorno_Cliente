@@ -5,14 +5,14 @@
 
     <script type="text/javascript">
         function loadXMLDoc() {
-            var xmlhttp = new XMLHttpRequest();
+            let xmlhttp = new XMLHttpRequest();
 
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
                     if (xmlhttp.status == 200) {
-                        document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
-                        console.log(xmlhttp.responseText.json());
-
+                       // document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+                        let x = JSON.parse(this.responseText);
+                        json(x);
                     }
                     else if (xmlhttp.status == 400) {
                         alert('There was an error 400');
@@ -23,7 +23,20 @@
                 }
             };
 
+            function json (jsonObj){
+               // let x = jsonObj['api_owner'];
+               // document.getElementById("myDiv").innerHTML = jsonObj;
+                var out = "";
+                var i;
+                for(i = 0; i < jsonObj.length; i++) {
+                    out += jsonObj['api_owner'] + ' ' ;
+                }
+                document.getElementById("myDiv").innerHTML = out;
+
+            }
+
             xmlhttp.open("GET", "https://palabras-aleatorias-public-api.herokuapp.com/random", true);
+
             xmlhttp.send();
         }
 
