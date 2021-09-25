@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<script type="text/javascript">
+		function loadXMLDoc() {
+			var xmlhttp = new XMLHttpRequest();
+
+			xmlhttp.onreadystatechange = function() {
+        		if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+        			if (xmlhttp.status == 200) {
+        				let x = JSON.parse(xmlhttp.responseText);
+        				let y = x["body"];
+        				let z = y["DefinitionMD"];
+        				console.log(z);
+
+
+        			}
+        			else if (xmlhttp.status == 400) {
+        				alert('There was an error 400');
+        			}
+        			else {
+        		alert('something else other than 200 was returned');
+        	}
+        }
+    };
+
+    xmlhttp.open("GET", "https://palabras-aleatorias-public-api.herokuapp.com/random", true);
+    xmlhttp.send();
+}
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+			loadXMLDoc();
+		});
+
+</script>
+</head>
+<body>
+
+	https://dle.rae.es/data/random
+	<div id="myDiv"></div>
+
+</body>
+</html>

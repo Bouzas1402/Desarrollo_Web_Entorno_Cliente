@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <title></title>
 
     <script type="text/javascript">
-        function loadXMLDoc() {
+        function loadXMLDoc(url) {
             let xmlhttp = new XMLHttpRequest();
 
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
                     if (xmlhttp.status == 200) {
-                       // document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
-                        let x = JSON.parse(this.responseText);
-                        json(x);
+                        let objJson = xmlhttp.responseText;
+                        json(objJson);
                     }
                     else if (xmlhttp.status == 400) {
                         alert('There was an error 400');
@@ -23,26 +22,45 @@
                 }
             };
 
-            function json (jsonObj){
-               // let x = jsonObj['api_owner'];
-               // document.getElementById("myDiv").innerHTML = jsonObj;
-                var out = "";
-                var i;
-                for(i = 0; i < jsonObj.length; i++) {
-                    out += jsonObj['api_owner'] + ' ' ;
-                }
-                document.getElementById("myDiv").innerHTML = out;
 
-            }
 
-            xmlhttp.open("GET", "https://palabras-aleatorias-public-api.herokuapp.com/random", true);
+
+
+
+            xmlhttp.open("GET", url, true);
 
             xmlhttp.send();
         }
 
+
+
         document.addEventListener("DOMContentLoaded", function(event) {
-            loadXMLDoc();
+            loadXMLDoc("https://palabras-aleatorias-public-api.herokuapp.com/random");
         });
+
+        function json (jsonObj){
+            //console.log(JSON.parse(jsonObj));
+             let obj = JSON.parse(jsonObj);
+             let cuerpo = obj["body"];
+             document.getElementById("myDiv").innerHTML = "<strong style='font-size: x-large '>" + cuerpo["Word"] + " - </strong>" + cuerpo["DefinitionMD"];
+            let definicion = cuerpo["Related"];
+            let x = definicion[0];
+            let y = x["Word"];
+            let z = x["urls"];
+            let h = z["url"];
+            console.log(x);
+            console.log(y);
+            console.log(z);
+            console.log(h);
+            let hola = document.createElement("a");
+            hola.href = h;
+            hola.text = y;
+            hola.target = "_blank";
+            document.body.appendChild(hola);
+
+
+
+        }
 
     </script>
 </head>
