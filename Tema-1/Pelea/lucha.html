@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+      <script type="text/javascript">
+
+        function getRandomInt (min, max){
+          return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+      function crearPersonaje (nombre) {
+
+        let personaje = [];
+        personaje['nombre'] = nombre;
+        personaje['fuerza'] = getRandomInt(5, 20);
+        personaje['destreza'] = getRandomInt(5, 20);
+        personaje['vida'] = getRandomInt(5, 20);
+        console.log(personaje['nombre']);
+        console.log(personaje['vida']);
+        console.log(personaje['fuerza'])
+        console.log(personaje['destreza']);
+
+
+        return personaje;
+      }
+
+      function calcularGolpe(personaje){
+
+          let golpe = 0;
+          golpe = getRandomInt(0, personaje['fuerza']);
+          return golpe;
+
+      }
+
+        function calcularDefensa(personaje){
+
+          let defensa = 0;
+          defensa = getRandomInt(0, personaje['destreza']);
+          return defensa;
+
+        }
+
+        function lucha (pj1, pj2) {
+            let personaje1 = crearPersonaje(pj1);
+            let personaje2 = crearPersonaje(pj2);
+          while (personaje1['vida'] > 0 && personaje2['vida'] > 0){
+            let turno = getRandomInt(0,2);
+            if (turno == 1){
+              let golpe = calcularGolpe(personaje1);
+              console.log(golpe);
+
+              let defensa = calcularDefensa(personaje2);
+                console.log(defensa);
+              let golpeDado = golpe - defensa;
+              if (golpeDado > 0) {
+                personaje2['vida'] = personaje2['vida'] - golpeDado;
+                console.log(personaje1['nombre'] + " inflinje " + golpeDado + " sobre " + personaje2['nombre'] + " , a " + personaje2['nombre'] + " le queda " + personaje2['vida'] + " puntos de vida")
+              } else {
+                  console.log(personaje1['nombre'] + " no impacta sobre " + personaje2['nombre'] + ".");
+              }
+
+              if (personaje1['vida'] <= 0){
+                console.log("jugador 1 muerto");
+              } else if (personaje2['vida'] <= 0){
+                console.log(("jugador 2 muerto"));
+              }
+
+            } else {
+                let golpe = calcularGolpe(personaje2);
+                console.log(golpe);
+                let defensa = calcularDefensa(personaje1);
+                console.log(defensa);
+                let golpeDado = golpe - defensa;
+                    if (golpeDado > 0) {
+                        personaje1['vida'] = personaje1['vida'] - golpeDado;
+                        console.log(personaje2['nombre'] + " inflinje " + golpeDado + " sobre " + personaje1['nombre'] + " ,a " + personaje2['nombre'] + " le queda " + personaje1['vida'] +  " puntos de vida")
+                    } else {
+                        console.log(personaje2['nombre'] + " no impacta sobre " + personaje1['nombre'] + ".");
+                    }
+
+                if (personaje1['vida'] <= 0){
+                     console.log(personaje1['nombre'] + " ha muerto");
+                } else if (personaje2['vida'] <= 0){
+                     console.log(personaje2['nombre'] + " ha muerto");
+                 }
+              }
+          }
+        }
+
+       let nombre1 = prompt("Introduce un nombre");
+       let nombre2 = prompt("Introduce otro nombre");
+        //let nombre1 = 'x';
+        //let nombre2 = 'y';
+       document.addEventListener("DOMContentLoaded", function () {
+            lucha (nombre1, nombre2);
+         });
+
+      </script>
+
+</head>
+<body>
+
+</body>
+</html>
