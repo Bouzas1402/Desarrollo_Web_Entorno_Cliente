@@ -38,9 +38,25 @@
             //console.log(JSON.parse(jsonObj));
              let obj = JSON.parse(jsonObj);
              let cuerpo = obj["body"];
-             document.getElementById("myDiv").innerHTML = "<strong style='font-size: x-large '>" + cuerpo["Word"] + " - </strong>" + cuerpo["DefinitionMD"];
-            let definicion = cuerpo["Related"];
-            let x = definicion[0];
+             let x = cuerpo["DefinitionMD"];
+
+             document.getElementById("myDiv").innerHTML = "<strong style='font-size: x-large '>" + cuerpo["Word"] + " - </strong>" + unescape(x) + "<br>\t" + cuerpo["Definition"];
+            let relacionadas = cuerpo["Related"];
+
+            if (relacionadas.length > 0) {
+                let listaRelacionadas =  document.createElement("ul");
+                listaRelacionadas.textContent = "Palabras relacionadas:";
+                document.body.appendChild(listaRelacionadas);
+                for (let i = 0; i < relacionadas.length; i++){
+                    let palabraRelacionada = document.createElement("li");
+                   let x = relacionadas[i];
+                   palabraRelacionada.textContent = x["Word"];
+                   listaRelacionadas.appendChild(palabraRelacionada);
+                   console.log(x["Word"]);
+                }
+
+
+            }
             let y = x["Word"];
             let z = x["urls"];
             let h = z["url"];
