@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript">
+
+        function getRandomInt (min, max){
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function creaProceso1 (nombre, t_creacion, t_uso, matriz){
+            let proceso =  [nombre, t_creacion, t_uso];
+            matriz.push(proceso);
+            return matriz;
+        }
+
+        function compareProces (a, b){
+            if (a[1] < b[1]){
+                return -1;
+            } else if (a[1] > b[1]){
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+
+        let matriz = []
+
+
+
+        matriz = creaProceso1("A", 0, 2, matriz);
+        matriz = creaProceso1("B", 2, 4, matriz);
+        matriz = creaProceso1("F", 0, 3, matriz);
+        matriz = creaProceso1("C", 1, 1, matriz);
+        console.log(matriz);
+
+
+        console.log(matriz.sort(compareProces));
+
+       /*
+        let matriz = [];
+        let procesoA = ["A", 0, 2];
+        let procesoB = ["B", 2, 4];
+        matriz.push(procesoA);
+        matriz.push(procesoB);
+        console.log(matriz);
+
+       let matriz2 = [];
+       let procesos = ["A", "B"];
+       let t_creacion = [0, 2];
+       let t_uso = [2, 4];
+       matriz2.push(procesos);
+       matriz2.push(t_creacion);
+       matriz2.push(t_uso);
+       console.log(matriz2);
+
+*/
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

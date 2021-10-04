@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+        let doyFecha = new Date(2021, 0, 9);
+
+        let contadorDias = 1;
+        let contadorMes = 0;
+        for (let i = 1; i <= 365; i++) {
+
+            doyFecha = new Date(2021, 0, i);
+            if (doyFecha.getMonth() != contadorMes) {
+                contadorDias = 1;
+                ++contadorMes;
+            }
+            let dia = convertirDia(doyFecha.getDay());
+            let mes = convertirMes(doyFecha.getMonth());
+            console.log(contadorDias + " de " + mes + "-" + dia + " del año " + doyFecha.getFullYear());
+             if (doyFecha.getMonth() == contadorMes) {
+                ++contadorDias;
+            }
+
+             let hilera = document.createElement("tr");
+             let celdaMes = document.createElement("td");
+             let celdaDia = document.createElement("td");
+             let celdaDiaSemana = document.createElement("td");
+            celdaMes.appendChild(mes);
+            celdaDia.appendChild(dia);
+            celdaDiaSemana.appendChild(contadorDias);
+            hilera.appendChild(celdaMes);
+            hilera.appendChild(celdaDia);
+            hilera.appendChild(celdaDiaSemana);
+            document.getElementById("calendario").innerHTML;
+        }
+
+
+        for (let i = 0; i < doyFecha.length; i++){
+            console.log(doyFecha[i]);
+        }
+
+        function convertirDia(dia) {
+            switch (dia) {
+                case 0:
+                    return "Sabado";
+                    break;
+                case 1:
+                    return "Domingo";
+                    break;
+                case 2:
+                    return "Lunes";
+                    break;
+                case 3:
+                    return "Martes";
+                    break;
+                case 4:
+                    return "Miercoles";
+                    break;
+                case 5:
+                    return "Jueves";
+                    break;
+                case 6:
+                    return "Viernes";
+                    break;
+            }
+        }
+            function convertirMes(mes){
+                switch (mes) {
+                    case 0:
+                        return "Enero";
+                        break;
+                    case 1:
+                        return "Febrero";
+                        break;
+                    case 2:
+                        return "Marzo";
+                        break;
+                    case 3:
+                        return "Abril";
+                        break;
+                    case 4:
+                        return "Mayo";
+                        break;
+                    case 5:
+                        return "Junio";
+                        break;
+                    case 6:
+                        return "Julio";
+                        break;
+                    case 7:
+                        return "Agosto";
+                        break;
+                    case 8:
+                        return "Septiembre";
+                        break;
+                    case 9:
+                        return "Octubre";
+                        break;
+                    case 10:
+                        return "Noviembre";
+                        break;
+                    case 11:
+                        return "Diciembre";
+                        break;
+                }
+        }
+
+    </script>
+
+</head>
+<body>
+
+
+        <table id="calendario">
+            <tr>
+                <td>Mes</td>
+                <td>Dia</td>
+                <td>Dia de la semana</td>
+            </tr>
+
+        </table>
+
+</body>
+</html>
