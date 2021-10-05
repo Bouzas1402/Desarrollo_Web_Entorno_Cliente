@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript" src="calculadora.js"></script>
+    <script type="text/javascript">
+        var Calculadora = new calculadora();
+        document.addEventListener("DOMContentLoaded", function(event){
+            document.getElementById("botonera").innerHTML = Calculadora.printButtons("suma");
+            document.getElementById("botonera").innerHTML += Calculadora.printButtons("resta");
+            document.getElementById("botonera").innerHTML += Calculadora.printButtons("factorial");
+            document.getElementById("botonera").innerHTML += Calculadora.printButtons("multiplicacion");
+            document.getElementById("botonera").innerHTML += Calculadora.printButtons("division");
+        })
+    </script>
+
+
+</head>
+<body>
+
+<input type="text" id="op1">
+<input type="text" id="op2">
+
+
+
+<div id="botonera"></div>
+
+<div id="resultado"></div>
+
+</body>
+</html>

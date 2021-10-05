@@ -6,13 +6,16 @@
 
     <script>
 
-        let doyFecha = new Date(2021, 0, 9);
+        document.addEventListener("DOMContentLoaded", function (){
+
+
+
 
         let contadorDias = 1;
         let contadorMes = 0;
         for (let i = 1; i <= 365; i++) {
 
-            doyFecha = new Date(2021, 0, i);
+            let doyFecha = new Date(2021, 0, i);
             if (doyFecha.getMonth() != contadorMes) {
                 contadorDias = 1;
                 ++contadorMes;
@@ -24,23 +27,40 @@
                 ++contadorDias;
             }
 
-             let hilera = document.createElement("tr");
-             let celdaMes = document.createElement("td");
-             let celdaDia = document.createElement("td");
-             let celdaDiaSemana = document.createElement("td");
-            celdaMes.appendChild(mes);
-            celdaDia.appendChild(dia);
-            celdaDiaSemana.appendChild(contadorDias);
-            hilera.appendChild(celdaMes);
-            hilera.appendChild(celdaDia);
-            hilera.appendChild(celdaDiaSemana);
-            document.getElementById("calendario").innerHTML;
-        }
+             let fila = document.createElement("tr");
+             let cuadricula_mes = document.createElement("td");
+             let cuadricula_dia = document.createElement("td");
+             let cuadricula_dia_semana = document.createElement("td");
+             cuadricula_mes.innerHTML = mes;
+             cuadricula_dia_semana.innerHTML = dia;
+             cuadricula_dia.innerHTML = contadorDias;
+            let festivos = ["11/10/2021", "12/10/2021"];
+            let x = festivos[0].split("/");
+            let festivo1 = new Date(x[2], (x[1]-1), (x[0]));
+            let y = festivos[1].split("/");
+            let festivo2 = new Date(y[2], (y[1]-1), (y[0]));
+
+            if (festivo1.valueOf() == doyFecha.valueOf()){
+                cuadricula_mes.style.color = "red";
+                cuadricula_dia_semana.style.color = "red";
+                cuadricula_dia.style.color = "red";
+            } else if (festivo2.valueOf() == doyFecha.valueOf()){
+                cuadricula_mes.style.color = "red";
+                cuadricula_dia_semana.style.color = "red";
+                cuadricula_dia.style.color = "red";
+            }
+             fila.appendChild(cuadricula_mes);
+             fila.appendChild(cuadricula_dia);
+             fila.appendChild(cuadricula_dia_semana);
 
 
-        for (let i = 0; i < doyFecha.length; i++){
-            console.log(doyFecha[i]);
+
+             document.getElementById("calendario").appendChild(fila);
+
+
         }
+
+        });
 
         function convertirDia(dia) {
             switch (dia) {
@@ -112,6 +132,7 @@
 
 </head>
 <body>
+
 
 
         <table id="calendario">
