@@ -55,10 +55,10 @@ calculadora = function()
     }
     ,init: init
     ,suma: suma
-        ,resta: resta
-        ,factorial: factorial
-        ,multiplicacion: multiplicacion
-        ,division: division
+    ,resta: resta
+    ,factorial: factorial
+    ,multiplicacion: multiplicacion
+    ,division: division
     ,printButtons : printButtons
     }
 };

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ordenar Procesos</title>
+
+    <script type="text/javascript">
+
+        function creaProceso (nombre, t_creacion, t_uso, matriz){
+            let proceso =  [nombre, t_creacion, t_uso];
+            matriz.push(proceso);
+            return matriz;
+        }
+        function compararProcesos (a, b){
+            if (a[1][0] < b[1][1]){
+                return -1;
+            } else if (a[1][1] > a[1][2]){
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+        let matriz = []
+
+        matriz = creaProceso("A", 0, 2, matriz);
+        matriz = creaProceso("B", 2, 4, matriz);
+        matriz = creaProceso("F", 0, 3, matriz);
+        matriz = creaProceso("C", 1, 1, matriz);
+
+        console.log(matriz.sort(compararProcesos));
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

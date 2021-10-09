@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>JSON</title>
-    <script type="text/javascript">
+    <title></title>
 
+    <script type="text/javascript">
         function loadXMLDoc(url) {
             let xmlhttp = new XMLHttpRequest();
+
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
                     if (xmlhttp.status == 200) {
@@ -20,22 +21,46 @@
                     }
                 }
             };
+
+
             xmlhttp.open("GET", url, true);
+
             xmlhttp.send();
         };
+
+
+
         document.addEventListener("DOMContentLoaded", function(event) {
             loadXMLDoc("https://palabras-aleatorias-public-api.herokuapp.com/random");
         });
-        function json (jsonObj){
-            let obj = JSON.parse(jsonObj);
-            let myDiv = obj["api_owner"];
-            document.getElementById("myDiv").innerHTML = "<br><strong>Autor: </strong>" + myDiv["author"] + "<br><strong>Cafecito: </strong>" + myDiv["cafecito"] + "<br><strong>Instagram: </strong>" + myDiv["instagram"] + "<br><strong>Github: </strong>" + myDiv["github"] + "<br><strong>Linkedin: </strong>" + myDiv["linkedin"] + "<br>";
-            let cuerpo = obj["body"];
-            document.getElementById("Word").innerHTML = "<h1>" + cuerpo["Word"] + "</h1>";
-            document.getElementById("Definition").innerHTML =unescape(cuerpo["Definition"]);
-        };
-    </script>
 
+        function json (jsonObj){
+            //console.log(JSON.parse(jsonObj));
+             let obj = JSON.parse(jsonObj);
+             let cuerpo = obj["body"];
+
+             document.getElementById("myDiv").innerHTML = unescape(cuerpo["Definition"]);
+            let relacionadas = cuerpo["Related"];
+
+            if (relacionadas.length > 0) {
+                let listaRelacionadas =  document.createElement("ul");
+                listaRelacionadas.textContent = "Palabras relacionadas:";
+                document.body.appendChild(listaRelacionadas);
+                for (let i = 0; i < relacionadas.length; i++){
+                    let palabraRelacionada = document.createElement("li");
+                   let relacionada = relacionadas[i];
+                   palabraRelacionada.textContent = relacionada["Word"];
+                   listaRelacionadas.appendChild(palabraRelacionada);
+                }
+
+
+            }
+
+
+        };
+
+
+    </script>
 </head>
 <body>
 
