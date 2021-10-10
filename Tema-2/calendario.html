@@ -6,12 +6,23 @@
 
     <script>
 
-        document.addEventListener("DOMContentLoaded", function (){
+        document.addEventListener("DOMContentLoaded", function () {
 
 
+            var mesInicio = 7;
+            var mesFin = 11;;
+            for (var i = mesInicio; i <= mesFin; i++) {
+
+                for (var j = 1; j <= 31; j++) {
+                    var fecha = new Date(2021, i, j);
+                    console.log(fecha.getDay() + " de " + fecha.getMonth() + "-" + j + " del año " + fecha.getFullYear());
+                }
+
+            }
 
 
-            let contadorDias = 1;
+        });
+         /*   let contadorDias = 1;
             let contadorMes = 0;
             for (let i = 1; i <= 365; i++) {
 
@@ -22,7 +33,19 @@
                 }
                 let dia = convertirDia(doyFecha.getDay());
                 let mes = convertirMes(doyFecha.getMonth());
-                console.log(contadorDias + " de " + mes + "-" + dia + " del año " + doyFecha.getFullYear());
+                let hola1 = doyFecha.getDate();
+                let hola2 = doyFecha.getDay();
+                let hola3 = doyFecha.getTime();
+                let hola4 = doyFecha.getMonth();
+
+                console.log(dia);
+                console.log(hola1);
+                console.log(hola2);
+                console.log(hola3);
+                console.log(hola4);
+                console.log(doyFecha);
+                console.log(mes);
+               // console.log(contadorDias + " de " + mes + "-" + dia + " del año " + doyFecha.getFullYear());
                 if (doyFecha.getMonth() == contadorMes) {
                     ++contadorDias;
                 }
@@ -126,7 +149,7 @@
                     return "Diciembre";
                     break;
             }
-        }
+        } */
 
     </script>
 

@@ -10,7 +10,19 @@ Calendario = function() {
     var version = '1.0';
 
      function init () {
-        let festivos = ["11/10/2021", "12/10/2021"];
+
+    }
+
+    function calendario (mesInicio, mesFin) {
+        for (var i = mesInicio; i <= mesFin; i++) {
+            for (var j = 1; j <= 31; j++) {
+                var fecha = new Date(2021, i, j);
+                console.log(Calendario.convertirDia(fecha.getDay()) + ", " + j + " de " + Calendario.convertirMes(fecha.getMonth()) + " del año " + fecha.getFullYear());
+                $calendario = document.getElementById("calendario");
+                console.log($calendario);
+
+            }
+        }
 
     }
 
@@ -98,5 +110,6 @@ Calendario = function() {
         ,init : init
         ,convertirDia : convertirDia
         ,convertirMes : convertirMes
+        ,calendario : calendario
     }
 };

@@ -6,7 +6,7 @@
 
     <script type="text/javascript" src="calculadora.js"></script>
     <script type="text/javascript">
-        var Calculadora = new calculadora();
+        var Calculadora = new Calculadora();
         document.addEventListener("DOMContentLoaded", function(event){
             document.getElementById("botonera").innerHTML = Calculadora.printButtons("suma");
             document.getElementById("botonera").innerHTML += Calculadora.printButtons("resta");

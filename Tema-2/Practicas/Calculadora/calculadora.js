@@ -1,6 +1,6 @@
-var calculadora = calculadora || {};
+var Calculadora = Calculadora || {};
 
-calculadora = function()
+Calculadora = function()
 {
     /**
      *  Private
