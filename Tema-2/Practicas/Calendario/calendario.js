@@ -14,30 +14,43 @@ Calendario = function() {
     }
 
     function calendario (mesInicio, mesFin, festivos) {
-         var festivos = festivos;
-         var calendario = "";
-        var z = 0;
+        var festivos = festivos;
+        var calendario = "";
+        var festivoActual = 0;
+        /**
+        * For para comprobar descartar los festivos que esten antes del mes de inicio que le introducimos.
+        */
+        let festivo = festivos[festivoActual].split("/");
+        let fechaFestivo = new Date(festivo[2], (festivo[1]-1), (festivo[0]));
+        for (var x = 0; x < festivos.length; x++){
+            if ((festivo[1]-1) < mesInicio){
+                festivoActual++;
+                festivo = festivos[festivoActual].split("/");
+                fechaFestivo = new Date(festivo[2], (festivo[1]-1), (festivo[0]));
+            } else {
+                x = festivos.length;
+            }
+        }
 
+        /**
+         * For que imprime todos los dias comprendidos entre mes de inicio y mes de fin. Si la fecha coincide con el primer festivo
+         * colorea esa fila de la tabla y pasa al siguiente festivo aumentando la posicion del array festivo en uno
+         */
         for (var i = mesInicio; i <= mesFin; i++) {
             for (var j = 1; j <= 31; j++) {
-                let festivo = festivos[z].split("/");
+                let festivo = festivos[festivoActual].split("/");
                 let fechaFestivo = new Date(festivo[2], (festivo[1]-1), (festivo[0]));
                 var fecha = new Date(2021, i, j);
                     if (fechaFestivo.valueOf() == fecha.valueOf()){
                         calendario += "<tr><td style=\"border-color: red; color: red\">" + j + "</td><td style=\"border-color: red; color: red\">" + convertirMes(fecha.getMonth()) + "</td><td style=\"border-color: red; color: red\">" + convertirDia(fecha.getDay()) + " --> FESTIVO</td></tr>";
-                        if (z < (festivos.length - 1)){
-                        z++;
+                        if (festivoActual < (festivos.length - 1)){
+                            festivoActual++;
                         }
-                    } else {
-                        calendario += "<tr><td>" + j + "</td><td>" + convertirMes(fecha.getMonth()) + "</td><td>" + convertirDia(fecha.getDay()) + "</td></tr>";
-                    }
-
-
+                        } else {
+                            calendario += "<tr><td>" + j + "</td><td>" + convertirMes(fecha.getMonth()) + "</td><td>" + convertirDia(fecha.getDay()) + "</td></tr>";
+                        }
             }
-
-
-            }
-
+        }
     return calendario;
     }
 
@@ -123,8 +136,6 @@ Calendario = function() {
             return version;
         }
         ,init : init
-        ,convertirDia : convertirDia
-        ,convertirMes : convertirMes
         ,calendario : calendario
     }
 };
