@@ -7,11 +7,11 @@
     <script type="text/javascript">
         var Calendario = new Calendario();
         document.addEventListener("DOMContentLoaded", function () {
-            let festivos = ["11/10/2021", "12/10/2021"];
+            let festivos = ["11/10/2021", "12/10/2021", "25/12/2021", "31/12/2021"];
             var mesInicio = 7;
             var mesFin = 11;
 
-            var calendario = "<tr><td>Mes</td><td>Dia</td><td>Dia de la semana</td></tr>" + Calendario.calendario(mesInicio, mesFin,festivos);
+            var calendario = "<h1>AÑO - 2021</h1><tr><td>DIA</td><td>MES</td><td>Dia de la semana</td></tr>" + Calendario.calendario(mesInicio, mesFin,festivos);
 
             document.getElementById("calendario").innerHTML = calendario;
         });
@@ -22,6 +22,9 @@
             border: solid;
             border-style: solid;
             border-color: black;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
         }
         td {
             border: solid;
@@ -35,6 +38,7 @@
 <body>
 
         <table id="calendario">
+
         </table>
 
 </body>
