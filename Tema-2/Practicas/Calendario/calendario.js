@@ -13,17 +13,32 @@ Calendario = function() {
 
     }
 
-    function calendario (mesInicio, mesFin) {
+    function calendario (mesInicio, mesFin, festivos) {
+         var festivos = festivos;
+         var calendario = "";
+        var z = 0;
+
         for (var i = mesInicio; i <= mesFin; i++) {
             for (var j = 1; j <= 31; j++) {
+                let festivo = festivos[z].split("/");
+                let fechaFestivo = new Date(festivo[2], (festivo[1]-1), (festivo[0]));
                 var fecha = new Date(2021, i, j);
-                console.log(Calendario.convertirDia(fecha.getDay()) + ", " + j + " de " + Calendario.convertirMes(fecha.getMonth()) + " del año " + fecha.getFullYear());
-                $calendario = document.getElementById("calendario");
-                console.log($calendario);
+                    if (fechaFestivo.valueOf() == fecha.valueOf()){
+                        calendario += "<tr><td style=\"border-color: red; color: red\">" + j + "</td><td style=\"border-color: red; color: red\">" + convertirMes(fecha.getMonth()) + "</td><td style=\"border-color: red; color: red\">" + convertirDia(fecha.getDay()) + " --> FESTIVO</td></tr>";
+                        if (z < (festivos.length - 1)){
+                        z++;
+                        }
+                    } else {
+                        calendario += "<tr><td>" + j + "</td><td>" + convertirMes(fecha.getMonth()) + "</td><td>" + convertirDia(fecha.getDay()) + "</td></tr>";
+                    }
+
 
             }
-        }
 
+
+            }
+
+    return calendario;
     }
 
     function convertirDia(dia) {

@@ -5,31 +5,36 @@
     <title>Title</title>
     <script type="text/javascript" src="calendario.js"></script>
     <script type="text/javascript">
-
         var Calendario = new Calendario();
+        document.addEventListener("DOMContentLoaded", function () {
+            let festivos = ["11/10/2021", "12/10/2021"];
+            var mesInicio = 7;
+            var mesFin = 11;
 
-        var mesInicio = 7;
-        var mesFin = 11;
+            var calendario = "<tr><td>Mes</td><td>Dia</td><td>Dia de la semana</td></tr>" + Calendario.calendario(mesInicio, mesFin,festivos);
 
-
-
-       Calendario.calendario(mesInicio, mesFin);
-
-
+            document.getElementById("calendario").innerHTML = calendario;
+        });
     </script>
+
+    <style>
+        #calendario {
+            border: solid;
+            border-style: solid;
+            border-color: black;
+        }
+        td {
+            border: solid;
+            border-style: solid;
+            border-color: black;
+            padding: 5px;
+        }
+    </style>
 
 </head>
 <body>
 
-
-
         <table id="calendario">
-            <tr>
-                <td>Mes</td>
-                <td>Dia</td>
-                <td>Dia de la semana</td>
-            </tr>
-
         </table>
 
 </body>
