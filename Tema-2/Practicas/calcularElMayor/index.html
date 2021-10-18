@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript" src="calcularElMayor.js"></script>
+    <script type="text/javascript">
+        var Calcular = new Calcular();
+        document.addEventListener("DOMContentLoaded", function(event){
+            document.getElementById("botonera").innerHTML = Calcular.printButtons("suma");
+            document.getElementById("botonera").innerHTML += Calcular.printButtons("resta");
+            document.getElementById("botonera").innerHTML += Calcular.printButtons("factorial");
+            document.getElementById("botonera").innerHTML += Calcular.printButtons("multiplicacion");
+            document.getElementById("botonera").innerHTML += Calcular.printButtons("division");
+            document.getElementById("botonera").innerHTML += Calcular.printButtons("calcularElMayor");
+        })
+    </script>
+</head>
+<body>
+
+<input type="text" id="op1">
+<input type="text" id="op2">
+
+<div id="botonera"></div>
+
+<div id="resultado"></div>
+
+</body>
+</html>
