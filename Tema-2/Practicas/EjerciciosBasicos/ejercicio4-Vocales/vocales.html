@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <style>
+    pre {
+      background: #cacaca;
+      border: 1px solid;
+      padding: 10px;
+      white-space: unset;
+    }
+    h3 {
+      margin:  2px 0px;
+    }
+  </style>
+  <title></title>
+
+  <script type="text/javascript">
+    var numVocales = 0;
+    function contarVocales(frase){
+
+      for (var i = 0; i < frase.length; i++){
+        var letra = frase.charAt(i);
+        if (letra === 'a' || letra === 'e' || letra === 'i' || letra === 'o' || letra === 'u' || letra === 'A' || letra === 'E' || letra === 'I' || letra === 'O' || letra === 'U'){
+          numVocales++;
+        }
+      }
+      return numVocales;
+    }
+
+
+  </script>
+</head>
+<body>
+
+<pre>
+	<b>Ejercicio 4</b>
+	<h3>Escribí un programa que, dada una frase por el usuario, muestre la cantidad total de vocales (tanto mayúsculas como minúsculas) que contiene.</h3>
+</pre>
+
+
+
+<input type="text" id="frase">
+<button onclick="document.getElementById('resultado').innerHTML = contarVocales(contarVocales(document.getElementById('frase').value))">Numero de Vocales</button>
+<div id="resultado"></div>
+
+</body>
+</html>
