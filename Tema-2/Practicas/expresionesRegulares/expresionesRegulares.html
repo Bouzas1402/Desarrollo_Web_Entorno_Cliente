@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expresiones regulares</title>
+
+    <script type="text/javascript">
+
+        function emailValido (email){
+
+            var expresion = new RegExp("/^[.]+[\@]{1}[A-Za-z]+[\.]{1}[a-z]/", "gim")
+        }
+
+    </script>
+
+</head>
+<body>
+<input type="text" id="email">
+<button onclick="compararFrase(document.getElementById('frase').value)">Palindromo</button>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        pre {
+            background: #cacaca;
+            border: 1px solid;
+            padding: 10px;
+            white-space: unset;
+        }
+        h3, ul{
+            margin:  2px 0px;
+        }
+
+        [class*="red"]{
+            background-color: red;
+        }
+        [class*="yellow"]{
+            background-color: yellow;
+        }
+        [class*="green"]{
+            background-color: green;
+        }
+        [class*="blue"]{
+            background-color: blue;
+        }
+        [class*="square"]{
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+        }
+    </style>
+    <title></title>
+
+    <script type="text/javascript">
+        function pintaFondo(color){
+            document.getElementById("body").setAttribute('class','');
+            document.getElementById("body").classList.add(''+color)
+        }
+
+        /**
+         *
+         * TU CODIGO
+         *
+         * */
+
+    </script>
+</head>
+<body id="body">
+
+<pre>
+		<b>Ejercicio 6</b>
+		<h3>Pinta 4 cuadrados de 4 coloores distintos y pinta el fondo de la pantalla del color del cuadrado cuando el raton pase sobre cualquiera de ellos</h3>
+	</pre>
+<div>
+		<span class="square-red" onmouseover="pintaFondo('red')">
+		</span>
+    <span class="square-yellow" onmouseover="pintaFondo('yellow')">
+		</span>
+    <span class="square-green" onmouseover="pintaFondo('green')">
+		</span>
+    <span class="square-blue" onmouseover="pintaFondo('blue')">
+		</span>
+
+</div>
+
+</body>

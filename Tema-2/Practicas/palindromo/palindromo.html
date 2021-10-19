@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Palindromo</title>
+</head>
+
+    <script type="text/javascript">
+        function compararFrase (frase){
+
+            var palindromo = true;
+            var fraseSinEspacios = frase.replace(/ /g, "");
+            var fraseEnMayuscula = fraseSinEspacios.toUpperCase();
+            var j = fraseSinEspacios.length - 1;
+
+            for (var i = 0; i < j; i++){
+                if (fraseEnMayuscula.charAt(i) !== fraseEnMayuscula.charAt(j)) {
+                    palindromo = false;
+                    break
+                }
+                j--;
+            }
+            if (palindromo === true){
+                document.getElementById("palindromo").innerHTML = "El texto es un palindromo";
+                document.getElementById("frase").style.background = "red";
+
+            } else if (palindromo === false){
+                document.getElementById("palindromo").innerHTML = "El texto no es un palindromo";
+                document.getElementById("frase").style.background = "green";
+            }
+
+        }
+    </script>
+
+<body>
+
+    <pre>
+		<b>Ejercicio 7</b>
+		<h3>Definir una función que determine si la cadena de texto que se le pasa como parámetro es un palíndromo, es decir, si se lee de la misma forma desde la izquierda y desde la derecha. Ejemplo de palíndromo complejo: "La ruta nos aporto otro paso natural". Si es un palindromo el propio input se pondrá en verde. En caso contrario se pondrá en rojo.</h3>
+	</pre>
+    <input type="text" id="frase">
+    <button onclick="compararFrase(document.getElementById('frase').value)">Palindromo</button>
+
+    <div id="palindromo"></div>
+
+</body>
+</html>
