@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Coche</title>
+<style>
+    pre {
+    background: #cacaca;
+    border: 1px solid;
+    padding: 10px;
+    white-space: unset;
+    }
+    h3, ul{
+    margin:  2px 0px;
+    }
+</style>
+
+	<script type="text/javascript">
+
+
+		var coche = {
+			matricula : prompt(),
+			gasolina : 50,
+			dinero : 50,
+			consumo : 50,
+			historico : [],
+
+			viajar : function (kilometros){
+				this.gasolina -= ((7 * kilometros) / 100);
+				console.log(this.gasolina);
+			},
+
+			repostar : function (gasolinera, cantidad){
+				this.dinero -= (cantidad * gasolinera.precioGasolina);
+				this.gasolina += cantidad;
+
+			}
+
+		};
+
+		var gasolinera = {
+			gasolina : 50,
+			dinero : 0,
+			precioGasolina : prompt("precio de la gasolina"),
+			historico: [],
+		}
+
+
+
+
+
+		document.addEventListener("DOMContentLoaded", function(event) {
+
+			Object.keys(coche).forEach(key => {
+						document.getElementById("coche").innerHTML += key + " - " + coche[key] + "<br>";
+					}
+			);
+
+			Object.keys(gasolinera).forEach(key => {
+						document.getElementById("gasolinera").innerHTML += key + " - " + gasolinera[key] + "<br>";
+					}
+			);
+
+		});
+
+
+
+
+
+	</script>
+</head>
+<body>
+
+<pre>
+    <h3>Crea un objeto coche:</h3>
+
+		<h3>El Coche tendrá los siguientes atributos:</h3>
+		<ul>
+			<li>Matricula (Se pedirá al usuario al cargar la página)</li>
+			<li>Gasolina (inicializado a 50)</li>
+			<li>Dinero (inicializado a 100)</li>
+			<li>Consumo (inicializado a 7 litros por cada 100 KM)</li>
+			<li>Historico de acciones (se guardará historico de viajes y repostajes junto con su fecha y hora)</li>
+		</ul>
+		<h3>Pinta la información del coche en la pantalla y debajo de la misma los siguientes botones</h3>
+		<ul>
+			<li>Viajar: Mostrará un input donde se deberá de introducir los kilometros del viaje</li>
+			<li>Repostar: Mostrará un input donde se deberá de introducir la cantidad de gasolina que se repostaá</li>
+		</ul>
+
+		<h3>Crea un objeto gasolinera:</h3>
+		<h3>La Gasolinera tendrá los siguientes atributos:</h3>
+		<ul>
+			<li>Gasolina (inicializado a 500)</li>
+			<li>Dinero (inicializado a 0)</li>
+			<li>Precio gasolina (Se pedirá al cargar la web tras haber pedido la matricula del vehiculo)</li>
+			<li>Historico: Donde se guardará fecha y hora, matricula y cantidad repostada</li>
+		</ul>
+		<h3>Durante la ejecución del programa deberá estar siempre visible</h3>
+</pre>
+
+<p id="coche"></p>
+<p id="gasolinera"></p>
+
+
+
+
+<input type="number" id="viajar">
+<button onclick="coche.viajar(document.getElementById('viajar').value)">Viajar</button>
+
+<input type="number" id="repostar">
+<button onclick="coche.repostar(document.getElementById('repostar').value)">Repostar</button>
+
+
+
+</body>
+</html>
