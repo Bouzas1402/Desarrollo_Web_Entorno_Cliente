@@ -19,22 +19,53 @@
 
 
 		var coche = {
-			matricula : prompt(),
-			gasolina : 50,
-			dinero : 50,
-			consumo : 50,
+			matricula : "",
+			gasolina : 0,
+			dinero : 0,
+			consumo : 0,
 			historico : [],
 
+			init : function (){
+				this.matricula = prompt(),
+				this.gasolina = 50,
+				this.dinero = 50,
+				this.consumo = 7,
+				this.historico = [],
+						this.print();
+			},
+
+			print : function () {
+				infoCoche = '<h1>Matricula</h1>' + this.matricula + '<br>';
+				infoCoche += '<h2>Gasolina</h2>' + this.gasolina + '<br><h2>Consumo</h2>' + this.consumo + 'l a los 100km<br>' + '<h2>Dinero:</h2> ' + this.consumo + '<br>';
+				document.getElementById("coche").outerHTML = infoCoche;
+			},
+
 			viajar : function (kilometros){
-				this.gasolina -= ((7 * kilometros) / 100);
-				console.log(this.gasolina);
+				var gasolinaViaje = ((7 * kilometros) / 100);
+				if (this.gasolina >= gasolinaViaje){
+				this.gasolina -= gasolinaViaje;
+				this.print();
+				} else {
+					document.getElementById("respuestaViaje").innerHTML = "No hay suficiente gasolina para hacer el viaje, debe repostar antes."
+				}
 			},
 
 			repostar : function (gasolinera, cantidad){
-				this.dinero -= (cantidad * gasolinera.precioGasolina);
+				var dinero = (cantidad * gasolinera.precioGasolina)
+				if (this.dinero >= dinero && gasolinera.gasolina >= cantidad) {
+				this.dinero -= dinero;
 				this.gasolina += cantidad;
+				gasolinera.gasolina -= cantidad;
+					this.print();
+			} else if(this.dinero >= dinero && gasolinera.gasolina <= cantidad) {
+					document.getElementById("respuestaRepostar").innerHTML = "No hay suficiente gasolina para repostar esa cantidad.";
+				} else if (this.dinero <= dinero && gasolinera.gasolina >= cantidad) {
+					document.getElementById("respuestaRepostar").innerHTML = "No tienes suficiente dinero para repostar esa cantidad de gasolina.";
+				} else {
+					document.getElementById("respuestaRepostar").innerHTML = "No tienes suficiente dinero ni hay sudiciente gasolina para repostar esa cantidad de gasolina.";
 
-			}
+				}
+			},
 
 		};
 
@@ -46,21 +77,19 @@
 		}
 
 
+		var coche = Object.create(Coche);
+		coche.init();
 
 
+		document.addEventListener("DOMContentLoade", function(event) {
 
-		document.addEventListener("DOMContentLoaded", function(event) {
 
-			Object.keys(coche).forEach(key => {
-						document.getElementById("coche").innerHTML += key + " - " + coche[key] + "<br>";
-					}
-			);
-
+			var informacionGasolinera = "";
 			Object.keys(gasolinera).forEach(key => {
-						document.getElementById("gasolinera").innerHTML += key + " - " + gasolinera[key] + "<br>";
+						informacionGasolinera += key + " - " + gasolinera[key] + "<br>";
 					}
 			);
-
+			document.getElementById("gasolinera").innerHTML = informacionGasolinera;
 		});
 
 
@@ -107,10 +136,13 @@
 
 <input type="number" id="viajar">
 <button onclick="coche.viajar(document.getElementById('viajar').value)">Viajar</button>
+<div id="respuestaViaje"></div>
+
+
 
 <input type="number" id="repostar">
-<button onclick="coche.repostar(document.getElementById('repostar').value)">Repostar</button>
-
+<button onclick="coche.repostar(gasolinera, document.getElementById('repostar').value)">Repostar</button>
+<div id="respuestaRepostar"></div>
 
 
 </body>
