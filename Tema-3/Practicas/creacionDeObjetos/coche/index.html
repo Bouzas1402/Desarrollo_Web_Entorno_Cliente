@@ -18,7 +18,7 @@
 	<script type="text/javascript">
 
 
-		var coche = {
+		var Coche = {
 			matricula : "",
 			gasolina : 0,
 			dinero : 0,
@@ -35,9 +35,9 @@
 			},
 
 			print : function () {
-				infoCoche = '<h1>Matricula</h1>' + this.matricula + '<br>';
-				infoCoche += '<h2>Gasolina</h2>' + this.gasolina + '<br><h2>Consumo</h2>' + this.consumo + 'l a los 100km<br>' + '<h2>Dinero:</h2> ' + this.consumo + '<br>';
-				document.getElementById("coche").outerHTML = infoCoche;
+				var infoCoche = '<h1>Matricula</h1>' + this.matricula + '<br>';
+				infoCoche += '<h2>Gasolina</h2>' + this.gasolina + '<br><h2>Consumo</h2>' + this.consumo + ' l a los 100km<br>' + '<h2>Dinero:</h2> ' + this.consumo + '<br>';
+				document.getElementById("coche").innerHTML = infoCoche;
 			},
 
 			viajar : function (kilometros){
@@ -69,27 +69,37 @@
 
 		};
 
-		var gasolinera = {
-			gasolina : 50,
+
+
+
+		var Gasolinera = {
+			gasolina : 0,
 			dinero : 0,
-			precioGasolina : prompt("precio de la gasolina"),
+			precioGasolina : "",
 			historico: [],
-		}
+
+		init : function (){
+			this.precioGasolina = prompt("precio de la gasolina"),
+			this.gasolina = 500,
+			this.dinero = 0,
+			this.historico = [],
+			this.print();
+		},
+
+		print : function () {
+			var infoGasolinera = '<h1>Gasolinera</h1><br>';
+			infoGasolinera += '<h2>Gasolina</h2>' + this.gasolina + '<br><h2>Dinero</h2>' + this.dinero + ' E<br>';
+			document.getElementById("gasolinera").innerHTML = infoGasolinera;
+		},
+	}
 
 
-		var coche = Object.create(Coche);
-		coche.init();
 
 
-		document.addEventListener("DOMContentLoade", function(event) {
 
-
-			var informacionGasolinera = "";
-			Object.keys(gasolinera).forEach(key => {
-						informacionGasolinera += key + " - " + gasolinera[key] + "<br>";
-					}
-			);
-			document.getElementById("gasolinera").innerHTML = informacionGasolinera;
+		document.addEventListener("DOMContentLoaded", function(event) {
+			Coche.init();
+			Gasolinera.init();
 		});
 
 
