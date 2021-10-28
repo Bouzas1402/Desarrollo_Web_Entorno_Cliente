@@ -26,7 +26,14 @@
 			historico : [],
 
 			init : function (){
-				this.matricula = prompt(),
+				var matriculaValida = true;
+				do {
+				this.matricula = prompt("Introduce una matricula:")
+				var comprobarMatricula = Coche.matriculaValida(this.matricula)
+					if (comprobarMatricula === true){
+						matriculaValida = false
+					}
+				} while (matriculaValida);
 				this.gasolina = 50,
 				this.dinero = 50,
 				this.consumo = 7,
@@ -35,15 +42,27 @@
 			},
 
 			print : function () {
-				var infoCoche = '<h1>Matricula</h1>' + this.matricula + '<br>';
-				infoCoche += '<h2>Gasolina</h2>' + this.gasolina + '<br><h2>Consumo</h2>' + this.consumo + ' l a los 100km<br>' + '<h2>Dinero:</h2> ' + this.consumo + '<br>';
+				var infoCoche = '<h1>Coche</h1><br>';
+				infoCoche += '<h2>Matricula: ' + this.matricula.toUpperCase() + '</h2><br><h2>Gasolina: ' + this.gasolina.toFixed(2) + '</h2><br><h2>Consumo: ' + this.consumo + ' l a los 100km</h2><br>' + '<h2>Dinero: ' + this.dinero.toFixed(2) + ' &#8364</h2><br>';
 				document.getElementById("coche").innerHTML = infoCoche;
+				var historicos = this.historico
+				historicos.forEach(function (historico) {
+					if (historico["0"] == "viaje") {
+						document.getElementById("historicoViajes").innerHTML += '<p>Kilometros recorridos: ' + historico[1] + ', fecha: ' + historico[2] + '</p>'
+					} else {
+						document.getElementById("historicoRepostajes").innerHTML += '<p>Litros repostados: ' + historico[1] + ', fecha: ' + historico[2] + '</p>'
+					}
+				});
+
 			},
 
 			viajar : function (kilometros){
 				var gasolinaViaje = ((7 * kilometros) / 100);
 				if (this.gasolina >= gasolinaViaje){
 				this.gasolina -= gasolinaViaje;
+				var fechaViaje = new Date()
+				var viaje = ['viaje', kilometros, fechaViaje]
+				this.historico.push(viaje)
 				this.print();
 				} else {
 					document.getElementById("respuestaViaje").innerHTML = "No hay suficiente gasolina para hacer el viaje, debe repostar antes."
@@ -54,8 +73,16 @@
 				var dinero = (cantidad * gasolinera.precioGasolina)
 				if (this.dinero >= dinero && gasolinera.gasolina >= cantidad) {
 				this.dinero -= dinero;
-				this.gasolina += cantidad;
-				gasolinera.gasolina -= cantidad;
+				this.gasolina = parseFloat(this.gasolina) + parseFloat(cantidad);
+				gasolinera.gasolina = parseFloat(gasolinera.gasolina) + parseFloat(cantidad);
+				gasolinera.dinero += dinero;
+				var fechaRepostaje = new Date()
+				var respostajeCoche = ['repostar', cantidad, fechaRepostaje]
+				this.historico.push(respostajeCoche)
+				var respostajeGasolinera = 	[fechaRepostaje, this.matricula, cantidad]
+				gasolinera.historico.push(respostajeGasolinera)
+
+					gasolinera.print();
 					this.print();
 			} else if(this.dinero >= dinero && gasolinera.gasolina <= cantidad) {
 					document.getElementById("respuestaRepostar").innerHTML = "No hay suficiente gasolina para repostar esa cantidad.";
@@ -63,9 +90,13 @@
 					document.getElementById("respuestaRepostar").innerHTML = "No tienes suficiente dinero para repostar esa cantidad de gasolina.";
 				} else {
 					document.getElementById("respuestaRepostar").innerHTML = "No tienes suficiente dinero ni hay sudiciente gasolina para repostar esa cantidad de gasolina.";
-
 				}
 			},
+
+			matriculaValida : function (matricula){
+				var expresion = /([0-9]{4}-[a-z]{3}|[a-zA-Z]{1,2}-[0-9]{4}-[a-zA-Z]{1,2})/ig;
+				return expresion.test(matricula);
+			}
 
 		};
 
@@ -79,7 +110,7 @@
 			historico: [],
 
 		init : function (){
-			this.precioGasolina = prompt("precio de la gasolina"),
+			this.precioGasolina = prompt("precio de la gasolina")
 			this.gasolina = 500,
 			this.dinero = 0,
 			this.historico = [],
@@ -88,8 +119,12 @@
 
 		print : function () {
 			var infoGasolinera = '<h1>Gasolinera</h1><br>';
-			infoGasolinera += '<h2>Gasolina</h2>' + this.gasolina + '<br><h2>Dinero</h2>' + this.dinero + ' E<br>';
+			infoGasolinera += '<h3>Gasolina: ' + this.gasolina.toFixed(2) + '</h3><br><h3>Precio gasolina: ' + this.precioGasolina + '</h3><br><h3>Dinero: ' + this.dinero.toFixed(2) + ' &#8364</h3> <br>';
 			document.getElementById("gasolinera").innerHTML = infoGasolinera;
+			var historicos = this.historico
+			historicos.forEach(function (historico) {
+					document.getElementById("historicoGasolinera").innerHTML += '<p>Fecha: ' + historico[0] + ', Matricula coche: ' + historico[1].toUpperCase() + ', Cantidad repostada: ' + historico[2] + '</p>'
+			});
 		},
 	}
 
@@ -139,20 +174,25 @@
 </pre>
 
 <p id="coche"></p>
-<p id="gasolinera"></p>
+<div id="historicoViajes"><h2>Historico viajes:</h2><br></div>
+<div id="historicoRepostajes"><h2>Historico repostajes:</h2><br></div>
 
+<p id="gasolinera"></p>
+<div id="historicoGasolinera"><h2>Historico Gasolinera:</h2><br></div>
 
 
 
 <input type="number" id="viajar">
-<button onclick="coche.viajar(document.getElementById('viajar').value)">Viajar</button>
+<button onclick="Coche.viajar(document.getElementById('viajar').value)">Viajar</button>
 <div id="respuestaViaje"></div>
 
 
 
 <input type="number" id="repostar">
-<button onclick="coche.repostar(gasolinera, document.getElementById('repostar').value)">Repostar</button>
+<button onclick="Coche.repostar(Gasolinera, document.getElementById('repostar').value)">Repostar</button>
 <div id="respuestaRepostar"></div>
+
+
 
 
 </body>
