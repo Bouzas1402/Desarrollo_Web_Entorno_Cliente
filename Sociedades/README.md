@@ -5,8 +5,7 @@
 Es una especilidad de la Sociedad de Responsabilidad Limitada.
 La diferencia con una SL es que el numero maximo de socios es 5 y el capital estara entre
 3.000  y 120.000 euros.
-El nombre de esta sociedad tendra que tener el nombre y los apellidos de uno de sus socios 
-undadores
+El nombre de esta sociedad tendra que tener el nombre y los apellidos de uno de sus socios fundadores
 seguido de un codigo y la indicación SLNE en el momento de su constitucion, ya que es mas rapida la tramitación,
 se podra modificar de manera gratuita en los 3 meses posteriores a su constitución.
 La gran ventaja de este tipo de sociedades es la simplificacion de los tramites.

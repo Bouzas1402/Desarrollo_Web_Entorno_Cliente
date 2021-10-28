@@ -48,9 +48,9 @@
 				var historicos = this.historico
 				historicos.forEach(function (historico) {
 					if (historico["0"] == "viaje") {
-						document.getElementById("historicoViajes").innerHTML += '<p>Kilometros recorridos: ' + historico[1] + ', fecha: ' + historico[2] + '</p>'
+						document.getElementById("historicoViajes").innerHTML = '<p>Kilometros recorridos: ' + historico[1] + ', fecha: ' + historico[2] + '</p>'
 					} else {
-						document.getElementById("historicoRepostajes").innerHTML += '<p>Litros repostados: ' + historico[1] + ', fecha: ' + historico[2] + '</p>'
+						document.getElementById("historicoRepostajes").innerHTML = '<p>Litros repostados: ' + historico[1] + ', fecha: ' + historico[2] + '</p>'
 					}
 				});
 
