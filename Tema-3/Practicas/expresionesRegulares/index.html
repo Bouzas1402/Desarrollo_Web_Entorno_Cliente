@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expresiones Regulares</title>
+    <style>
+      pre {
+        background: #cacaca;
+        border: 1px solid;
+        padding: 10px;
+        white-space: unset;
+      }
+      h3, ul{
+        margin:  2px 0px;
+      }
+      table, tr, th {
+        border: 1px solid black;
+      }
+    </style>
+  <script>
+
+    function validarMatricula (matricula){
+      if (matricula !== "" && matricula !== null){
+      var expresion = /^\d{4}-[a-zA-Z]{3}$|^[a-zA-Z]{1,2}-\d{4}-[a-zA-Z]{1,2}$/ig;
+      var matriculaValida = expresion.test(matricula);
+      if (matriculaValida === true){
+          document.getElementById("matriculas").innerHTML += '<tr><td style="background-color: chartreuse">' + matricula + '</td></tr>'
+      } else if (matriculaValida === false){
+          document.getElementById("matriculas").innerHTML += '<tr><td style="background-color: red">' + matricula + '</td></tr>'
+      }
+      } else {
+            document.getElementById("respuestaMatricula").innerHTML = "Introduce una matricula";
+      }
+    };
+
+    function validarFechaHora (fechaYHora) {
+        if (fechaYHora !== "" && fechaYHora !== null){
+            var expresion = /^(([0-2]\d|3[0-1])(\/|-)(0\d|1[0-2])(\/|-)([0-2]\d{3}|\d{2})\s([0-1]\d|2[0-3]):[0-5]\d:[0-5]\d)$/ig
+            var fechaValida = expresion.test(fechaYHora);
+            if (fechaValida === true){
+                document.getElementById("fechas").innerHTML += '<tr><td style="background-color: chartreuse">' + fechaYHora + '</td></tr>'
+            } else if (fechaValida === false){
+                document.getElementById("fechas").innerHTML += '<tr><td style="background-color: red">' + fechaYHora + '</td></tr>'
+            }
+        } else {
+            document.getElementById("respuestaFecha").innerHTML = "Introduce una fecha.";
+        }
+    };
+
+
+  </script>
+
+
+</head>
+<body>
+  <pre>
+		<h3>Crea dos campos input donde se valide lo siguiente:</h3>
+		<ul>
+			<li>Matricula válida</li>
+			<li>Fecha y hora</li>
+		</ul>
+		<h3>El campo input se pondrá en rojo si el valor no es válido, y verde si es correcto</h3>
+  </pre>
+
+  <input type="txt" id="matricula">
+  <button onclick="validarMatricula(document.getElementById('matricula').value)">Validar matricula</button>
+  <div id="respuestaMatricula"></div>
+
+  <input type="text" id="fecha">
+  <button onclick="validarFechaHora(document.getElementById('fecha').value)">Validar fecha</button>
+  <div id="respuestaFecha"></div>
+
+  <table id="matriculas">
+    <tr>
+        <th>Matricula</th>
+    </tr>
+  </table>
+
+  <table id="fechas">
+      <tr>
+          <th>Fechas</th>
+      </tr>
+  </table>
+
+</body>
+</html>

@@ -94,7 +94,7 @@
 			},
 
 			matriculaValida : function (matricula){
-				var expresion = /([0-9]{4}-[a-z]{3}|[a-zA-Z]{1,2}-[0-9]{4}-[a-zA-Z]{1,2})/ig;
+				var expresion = /^\d{4}-[a-zA-Z]{3}$|^[a-zA-Z]{1,2}-\d{4}-[a-zA-Z]{1,2}$/ig;;
 				return expresion.test(matricula);
 			}
 
