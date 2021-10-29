@@ -45,13 +45,16 @@
 				var infoCoche = '<h1>Coche</h1><br>';
 				infoCoche += '<h2>Matricula: ' + this.matricula.toUpperCase() + '</h2><br><h2>Gasolina: ' + this.gasolina.toFixed(2) + '</h2><br><h2>Consumo: ' + this.consumo + ' l a los 100km</h2><br>' + '<h2>Dinero: ' + this.dinero.toFixed(2) + ' &#8364</h2><br>';
 				document.getElementById("coche").innerHTML = infoCoche;
-				var historicos = this.historico
-				historicos.forEach(function (historico) {
+				var historicosViajes = "";
+				var historicosRepostajes = "";
+				this.historico.forEach(function (historico) {
 					if (historico["0"] == "viaje") {
-						document.getElementById("historicoViajes").innerHTML = '<p>Kilometros recorridos: ' + historico[1] + ', fecha: ' + historico[2] + '</p>'
+						historicosViajes += '<p>Kilometros recorridos: ' + historico[1] + ', fecha: ' + historico[2] + '</p>'
 					} else {
-						document.getElementById("historicoRepostajes").innerHTML = '<p>Litros repostados: ' + historico[1] + ', fecha: ' + historico[2] + '</p>'
+						historicosRepostajes += '<p>Litros repostados: ' + historico[1] + ', fecha: ' + historico[2] + '</p>'
 					}
+					document.getElementById("historicoViajes").innerHTML = historicosViajes;
+					document.getElementById("historicoRepostajes").innerHTML = historicosRepostajes;
 				});
 
 			},
@@ -121,10 +124,11 @@
 			var infoGasolinera = '<h1>Gasolinera</h1><br>';
 			infoGasolinera += '<h3>Gasolina: ' + this.gasolina.toFixed(2) + '</h3><br><h3>Precio gasolina: ' + this.precioGasolina + '</h3><br><h3>Dinero: ' + this.dinero.toFixed(2) + ' &#8364</h3> <br>';
 			document.getElementById("gasolinera").innerHTML = infoGasolinera;
-			var historicos = this.historico
-			historicos.forEach(function (historico) {
-					document.getElementById("historicoGasolinera").innerHTML += '<p>Fecha: ' + historico[0] + ', Matricula coche: ' + historico[1].toUpperCase() + ', Cantidad repostada: ' + historico[2] + '</p>'
+			var historicos = "";
+			this.historico.forEach(function (historico) {
+					historicos += '<p>Fecha: ' + historico[0] + ', Matricula coche: ' + historico[1].toUpperCase() + ', Cantidad repostada: ' + historico[2] + '</p>'
 			});
+			document.getElementById("historicoGasolinera").innerHTML = historicos;
 		},
 	}
 
@@ -174,14 +178,16 @@
 </pre>
 
 <p id="coche"></p>
-<div id="historicoViajes"><h2>Historico viajes:</h2><br></div>
-<div id="historicoRepostajes"><h2>Historico repostajes:</h2><br></div>
-
+<h3>Historico viajes:</h3>
+<div id="historicoViajes"></div>
+<br>
+<h3>Historico repostajes:</h3>
+<div id="historicoRepostajes"></div>
+<br>
 <p id="gasolinera"></p>
-<div id="historicoGasolinera"><h2>Historico Gasolinera:</h2><br></div>
-
-
-
+<h2>Historico Gasolinera:</h2>
+<div id="historicoGasolinera"></div>
+<br>
 <input type="number" id="viajar">
 <button onclick="Coche.viajar(document.getElementById('viajar').value)">Viajar</button>
 <div id="respuestaViaje"></div>
