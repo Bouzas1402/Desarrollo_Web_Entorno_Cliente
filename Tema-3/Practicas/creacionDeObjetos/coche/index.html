@@ -13,6 +13,9 @@
     h3, ul{
     margin:  2px 0px;
     }
+	table, tr, th, td{
+		border: 1px solid black;;
+	}
 </style>
 
 	<script type="text/javascript">
@@ -45,13 +48,15 @@
 				var infoCoche = '<h1>Coche</h1><br>';
 				infoCoche += '<h2>Matricula: ' + this.matricula.toUpperCase() + '</h2><br><h2>Gasolina: ' + this.gasolina.toFixed(2) + '</h2><br><h2>Consumo: ' + this.consumo + ' l a los 100km</h2><br>' + '<h2>Dinero: ' + this.dinero.toFixed(2) + ' &#8364</h2><br>';
 				document.getElementById("coche").innerHTML = infoCoche;
-				var historicosViajes = "";
-				var historicosRepostajes = "";
+				var historicosViajes = "<table><tr><th>Km recorridos</th><th>Fecha</th></tr>";
+				var historicosRepostajes = "<table><tr><th>Fecha</th><th>Litros respostados</th></tr>";
 				this.historico.forEach(function (historico) {
 					if (historico["0"] == "viaje") {
-						historicosViajes += '<p>Kilometros recorridos: ' + historico[1] + ', fecha: ' + historico[2] + '</p>'
+
+						historicosViajes += '<tr><td>' + historico[1].toUpperCase() + '</td><td>' + historico[2] + '</td></tr>'
 					} else {
-						historicosRepostajes += '<p>Litros repostados: ' + historico[1] + ', fecha: ' + historico[2] + '</p>'
+
+						historicosRepostajes += '<tr><td>' + historico[1].toUpperCase() + '</td><td>' + historico[2] + '</td></tr>'
 					}
 					document.getElementById("historicoViajes").innerHTML = historicosViajes;
 					document.getElementById("historicoRepostajes").innerHTML = historicosRepostajes;
@@ -77,7 +82,7 @@
 				if (this.dinero >= dinero && gasolinera.gasolina >= cantidad) {
 				this.dinero -= dinero;
 				this.gasolina = parseFloat(this.gasolina) + parseFloat(cantidad);
-				gasolinera.gasolina = parseFloat(gasolinera.gasolina) + parseFloat(cantidad);
+				gasolinera.gasolina = parseFloat(gasolinera.gasolina) - parseFloat(cantidad);
 				gasolinera.dinero += dinero;
 				var fechaRepostaje = new Date()
 				var respostajeCoche = ['repostar', cantidad, fechaRepostaje]
@@ -113,7 +118,17 @@
 			historico: [],
 
 		init : function (){
-			this.precioGasolina = prompt("precio de la gasolina")
+			var precioValido = true;
+			do {
+				this.precioGasolina = prompt("precio de la gasolina:")
+				var comprobarPrecio = Gasolinera.precioValido(this.precioGasolina);
+				if (comprobarPrecio === true){
+					precioValido = false
+				}
+			} while (precioValido);
+			if (this.precioGasolina.includes(',') === true) {
+				this.precioGasolina = this.precioGasolina.replace(',', '.');
+			}
 			this.gasolina = 500,
 			this.dinero = 0,
 			this.historico = [],
@@ -121,14 +136,20 @@
 		},
 
 		print : function () {
-			var infoGasolinera = '<h1>Gasolinera</h1><br>';
+			var infoGasolinera = '<h1>GASOLINERA:</h1>';
 			infoGasolinera += '<h3>Gasolina: ' + this.gasolina.toFixed(2) + '</h3><br><h3>Precio gasolina: ' + this.precioGasolina + '</h3><br><h3>Dinero: ' + this.dinero.toFixed(2) + ' &#8364</h3> <br>';
 			document.getElementById("gasolinera").innerHTML = infoGasolinera;
-			var historicos = "";
+			var historicos = "<table><tr><th>Matricula</th><th>Fecha</th><th>Litros respostados</th></tr>";
 			this.historico.forEach(function (historico) {
-					historicos += '<p>Fecha: ' + historico[0] + ', Matricula coche: ' + historico[1].toUpperCase() + ', Cantidad repostada: ' + historico[2] + '</p>'
+					historicos += '<tr><td>' + historico[1].toUpperCase() + '</td><td>' + historico[0] + '</td><td>' + historico[2] + '</td></tr>'
 			});
+			historicos += '</table>';
 			document.getElementById("historicoGasolinera").innerHTML = historicos;
+		},
+
+		precioValido : function (precioGasolina) {
+			var expresion = /^\d+(,|\.)\d*$/ig;
+			return expresion.test(precioGasolina);
 		},
 	}
 
@@ -147,59 +168,55 @@
 
 	</script>
 </head>
-<body>
+	<body>
 
-<pre>
-    <h3>Crea un objeto coche:</h3>
+		<pre>
+   			<h3>Crea un objeto coche:</h3>
 
-		<h3>El Coche tendrá los siguientes atributos:</h3>
-		<ul>
-			<li>Matricula (Se pedirá al usuario al cargar la página)</li>
-			<li>Gasolina (inicializado a 50)</li>
-			<li>Dinero (inicializado a 100)</li>
-			<li>Consumo (inicializado a 7 litros por cada 100 KM)</li>
-			<li>Historico de acciones (se guardará historico de viajes y repostajes junto con su fecha y hora)</li>
-		</ul>
-		<h3>Pinta la información del coche en la pantalla y debajo de la misma los siguientes botones</h3>
-		<ul>
-			<li>Viajar: Mostrará un input donde se deberá de introducir los kilometros del viaje</li>
-			<li>Repostar: Mostrará un input donde se deberá de introducir la cantidad de gasolina que se repostaá</li>
-		</ul>
+			<h3>El Coche tendrá los siguientes atributos:</h3>
+			<ul>
+				<li>Matricula (Se pedirá al usuario al cargar la página)</li>
+				<li>Gasolina (inicializado a 50)</li>
+				<li>Dinero (inicializado a 100)</li>
+				<li>Consumo (inicializado a 7 litros por cada 100 KM)</li>
+				<li>Historico de acciones (se guardará historico de viajes y repostajes junto con su fecha y hora)</li>
+			</ul>
+			<h3>Pinta la información del coche en la pantalla y debajo de la misma los siguientes botones</h3>
+			<ul>
+				<li>Viajar: Mostrará un input donde se deberá de introducir los kilometros del viaje</li>
+				<li>Repostar: Mostrará un input donde se deberá de introducir la cantidad de gasolina que se repostaá</li>
+			</ul>
 
-		<h3>Crea un objeto gasolinera:</h3>
-		<h3>La Gasolinera tendrá los siguientes atributos:</h3>
-		<ul>
-			<li>Gasolina (inicializado a 500)</li>
-			<li>Dinero (inicializado a 0)</li>
-			<li>Precio gasolina (Se pedirá al cargar la web tras haber pedido la matricula del vehiculo)</li>
-			<li>Historico: Donde se guardará fecha y hora, matricula y cantidad repostada</li>
-		</ul>
-		<h3>Durante la ejecución del programa deberá estar siempre visible</h3>
-</pre>
+			<h3>Crea un objeto gasolinera:</h3>
+			<h3>La Gasolinera tendrá los siguientes atributos:</h3>
+			<ul>
+				<li>Gasolina (inicializado a 500)</li>
+				<li>Dinero (inicializado a 0)</li>
+				<li>Precio gasolina (Se pedirá al cargar la web tras haber pedido la matricula del vehiculo)</li>
+				<li>Historico: Donde se guardará fecha y hora, matricula y cantidad repostada</li>
+			</ul>
+			<h3>Durante la ejecución del programa deberá estar siempre visible</h3>
+	</pre>
 
-<p id="coche"></p>
-<h3>Historico viajes:</h3>
-<div id="historicoViajes"></div>
-<br>
-<h3>Historico repostajes:</h3>
-<div id="historicoRepostajes"></div>
-<br>
-<p id="gasolinera"></p>
-<h2>Historico Gasolinera:</h2>
-<div id="historicoGasolinera"></div>
-<br>
-<input type="number" id="viajar">
-<button onclick="Coche.viajar(document.getElementById('viajar').value)">Viajar</button>
-<div id="respuestaViaje"></div>
-
-
-
-<input type="number" id="repostar">
-<button onclick="Coche.repostar(Gasolinera, document.getElementById('repostar').value)">Repostar</button>
-<div id="respuestaRepostar"></div>
+	<p id="coche"></p>
+	<h3>Historico viajes:</h3>
+	<div id="historicoViajes"></div>
+	<br>
+	<h3>Historico repostajes:</h3>
+	<div id="historicoRepostajes"></div>
+	<br>
+	<p id="gasolinera"></p>
+	<h2>Historico Gasolinera:</h2>
+	<div id="historicoGasolinera"></div>
+	<br>
+	<input type="number" id="viajar">
+	<button onclick="Coche.viajar(document.getElementById('viajar').value)">Viajar</button>
+		<div id="respuestaViaje"></div>
 
 
+		<input type="number" id="repostar">
+		<button onclick="Coche.repostar(Gasolinera, document.getElementById('repostar').value)">Repostar</button>
+		<div id="respuestaRepostar"></div>
 
-
-</body>
+	</body>
 </html>
