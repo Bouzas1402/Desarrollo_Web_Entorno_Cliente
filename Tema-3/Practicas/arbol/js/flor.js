@@ -7,6 +7,8 @@ var Flor = {
     inti : function (){
         this.edad = 0;
         this.edadMaduracion = Math.random() * 100 + 5;
+
+        print();
     },
      print : function (){
 
