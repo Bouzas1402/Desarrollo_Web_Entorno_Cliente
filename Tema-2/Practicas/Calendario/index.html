@@ -6,21 +6,21 @@
     <script type="text/javascript" src="calendario.js"></script>
     <script type="text/javascript">
         var Calendario = new Calendario();
+
         document.addEventListener("DOMContentLoaded", function () {
             let festivos = ["11/10/2021", "12/10/2021", "25/12/2021", "31/12/2021"];
             var mesInicio = 7;
             var mesFin = 9;
-
             var calendario = "<h1>AÑO - 2021</h1><tr><td>DIA</td><td>MES</td><td>Dia de la semana</td></tr>" + Calendario.calendario(mesInicio, mesFin,festivos);
 
-            document.getElementById("calendario").innerHTML = index;
+
+            document.getElementById("calendario").innerHTML = calendario;
         });
     </script>
 
     <style>
         #calendario {
             border: solid;
-            border-style: solid;
             border-color: black;
             width: 60%;
             margin-left: auto;
@@ -28,7 +28,6 @@
         }
         td {
             border: solid;
-            border-style: solid;
             border-color: black;
             padding: 5px;
         }

@@ -26,7 +26,7 @@
 				consumo : 0,
 				historico : [],
 
-				init : function (){
+				init(){
 					var matriculaValida = true;
 					do {
 						this.matricula = prompt("Introduce una matricula:")
@@ -42,7 +42,7 @@
 						this.print();
 				},
 
-				print : function () {
+				print() {
 					var infoCoche = '<h1>Coche</h1><br>';
 					infoCoche += '<h3>Matricula: ' + this.matricula.toUpperCase() + '</h3><br><h3>Gasolina: ' + this.gasolina.toFixed(2) + '</h3><br><h3>Consumo: ' + this.consumo + ' l a los 100km</h3><br>' + '<h3>Dinero: ' + this.dinero.toFixed(2) + ' &#8364</h3><br>';
 					document.getElementById("coche").innerHTML = infoCoche;
@@ -61,7 +61,7 @@
 					document.getElementById("historicoRepostajes").innerHTML = historicosRepostajes;
 				},
 
-				viajar : function (kilometros){
+				viajar(kilometros){
 					var gasolinaViaje = ((7 * kilometros) / 100);
 					if (this.gasolina >= gasolinaViaje){
 						this.gasolina -= gasolinaViaje;
@@ -74,7 +74,7 @@
 					}
 				},
 
-				repostar : function (gasolinera, cantidad){
+				repostar(gasolinera, cantidad){
 					var dinero = (cantidad * gasolinera.precioGasolina)
 					if (this.dinero >= dinero && gasolinera.gasolina >= cantidad) {
 						this.dinero -= dinero;
@@ -97,7 +97,7 @@
 					}
 				},
 
-				matriculaValida : function (matricula){
+				matriculaValida(matricula){
 					var expresion = /^\d{4}-[a-zA-Z]{3}$|^[a-zA-Z]{1,2}-\d{4}-[a-zA-Z]{1,2}$/ig;
 					return expresion.test(matricula);
 				},
@@ -110,7 +110,7 @@
 				precioGasolina : "",
 				historico: [],
 
-			init : function (){
+			init(){
 				var precioValido = true;
 				do {
 					this.precioGasolina = prompt("precio de la gasolina:");
@@ -128,7 +128,7 @@
 				this.print();
 			},
 
-			print : function () {
+			print() {
 				var infoGasolinera = '<h1>GASOLINERA:</h1>';
 				infoGasolinera += '<h3>Gasolina: ' + this.gasolina.toFixed(2) + '</h3><br><h3>Precio gasolina: ' + this.precioGasolina + '</h3><br><h3>Dinero: ' + this.dinero.toFixed(2) + ' &#8364</h3> <br>';
 				document.getElementById("gasolinera").innerHTML = infoGasolinera;
@@ -140,9 +140,9 @@
 				document.getElementById("historicoGasolinera").innerHTML = historicos;
 			},
 
-			precioValido : function (precioGasolina) {
-				var expresion = /^(\d+(,|\.)\d{1,4}$|^\d+)$/ig;
-				return expresion.test(precioGasolina);
+			precioValido(precioGasolina) {
+				var RegExp = /^(\d+(,|\.)\d{1,4}$|^\d+)$/ig;
+				return RegExp.test(precioGasolina);
 			},
 			};
 
