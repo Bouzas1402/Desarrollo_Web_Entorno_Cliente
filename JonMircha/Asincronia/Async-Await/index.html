@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Async - Await</title>
+
+  <script type="text/javascript">
+    function cuadradoPromesa(value){
+
+      if (typeof value !== "number") {
+        return Promise.reject(`Error, el " ${value} " ingresado no es un numero`);
+      }
+
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({
+            value: value,
+            result: value * value,
+          });
+        }, 0 | Math.random() * 1000);
+      });
+    }
+
+    async function funcionAsincronaDeclarada (){
+      try {
+        console.log("Inicio Async Function");
+        let obj = await cuadradoPromesa(0);
+        console.log(`Async Function 0: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(1);
+        console.log(`Async Function 1: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(2);
+        console.log(`Async Function 2: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(3);
+        console.log(`Async Function 3: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(4);
+        console.log(`Async Function 4: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(5);
+        console.log(`Async Function 5: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(6);
+        console.log(`Async Function 6: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(7);
+        console.log(`Async Function 7: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(8);
+        console.log(`Async Function 8: ${obj.value}, ${obj.result}`);
+
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    var funcionAsincronadaExpresa = async () => {
+      try {
+        console.log("Inicio Async Function");
+        let obj = await cuadradoPromesa(0);
+        console.log(`Async Function 0: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(1);
+        console.log(`Async Function 1: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(2);
+        console.log(`Async Function 2: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(3);
+        console.log(`Async Function 3: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(4);
+        console.log(`Async Function 4: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa("5");
+        console.log(`Async Function 5: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(6);
+        console.log(`Async Function 6: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(7);
+        console.log(`Async Function 7: ${obj.value}, ${obj.result}`);
+
+        obj = await cuadradoPromesa(8);
+        console.log(`Async Function 8: ${obj.value}, ${obj.result}`);
+
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    funcionAsincronaDeclarada();
+    funcionAsincronadaExpresa();
+
+  </script>
+
+
+</head>
+<body>
+<h1>Async - Await</h1>
+<!-- callbacks o llamada de vuelta, es una funcion que se va a ejecutar despues de que otra lo haga
+
+ -->
+
+</body>
+</html>
+
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrow Function</title>
+    <script type="text/javascript">
+
+      /* Funciones flecha
+      *  Son una forma de declarar funciones anonimas expresadas.
+      *   una funcion expresada es cuando se le asigna a una variable el valor de una funcion anonima. Como por ejemplo:
+      * */
+
+      /* Una funcion declarada seria function saludar () {}
+       * una funcion asi declarada podria llamar en cualquier parte del programa
+       * con una funcion expresada como la de abajo si yo pusiera en la siguiente linea esto
+       * saludar();
+       * No funcionaria ya que la funcion saludar no esta declarada aun
+       *  */
+
+      const saludar = function () {
+        console.log("Hola");
+      }
+
+      saludar();
+
+      // esto puedo declararlo asi:
+      const saludar2 = () => console.log("HELLO!");
+      saludar2();
+      // si la funcion recibe un, solo 1, parametro los parentesis podrian desaparecer
+      const saludar3 = nombre => console.log("BUENOS DIAS!");
+      saludar3();
+
+
+      /* Otro ejemplo, esto:
+      *  const sumar = function(a,b) {
+      * return a + b;
+      *  }
+      * se quedaria asi: (los parentesis al ser mas de un apremetro vuelven)
+      * */
+
+      const sumar = (a,b) => a + b;
+
+      console.log(sumar(6, 7));
+
+      // Si la funcion tiene varias lineas quedara asi;
+
+      const funcionDeVariables = () => {
+        console.log("uno - 1");
+        console.log("dos - 2");
+        console.log("tres - 3");
+        console.log("cuatro - 4");
+      }
+
+      funcionDeVariables();
+
+      const numeros = [1,2,3,4,5];
+
+      /* Un for each por ejemplo como este con el array numeros:
+      * numeros.forEach(function(elementos, posicion){
+      *   console.log(`El elemento ${elementos} esta en la posicion ${posicion}`);
+      * });
+      * Pordria quedar:
+      * */
+
+      numeros.forEach((elementos, posicion) => console.log(`El elemento ${elementos} esta en la posicion ${posicion}`));
+
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

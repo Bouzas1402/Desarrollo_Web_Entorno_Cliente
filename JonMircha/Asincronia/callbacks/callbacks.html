@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Callbacks</title>
+
+    <script type="text/javascript">
+      function cuadradoCallback(value, callback){
+        setTimeout(() => {
+            callback(value, value * value);
+        }, 0 | Math.random() * 1000);
+      }
+    cuadradoCallback(0, (value, result) => {
+        console.log("Inicia Callback");
+        console.log(`Callback1: ${value}, ${result}`);
+            cuadradoCallback(1, (value, result) => {
+            console.log(`Callback 2: ${value}, ${result}`);
+                cuadradoCallback(2, (value, result) => {
+                console.log(`Callback 3: ${value}, ${result}`);
+                    cuadradoCallback(3, (value, result) => {
+                        console.log(`Callback 4: ${value}, ${result}`);
+                        cuadradoCallback(4, (value, result) => {
+                            console.log(`Callback 5: ${value}, ${result}`);
+                            cuadradoCallback(5, (value, result) => {
+                                console.log(`Callback 6: ${value}, ${result}`);
+                                cuadradoCallback(6, (value, result) => {
+                                    console.log(`Callback 7: ${value}, ${result}`);
+                                    cuadradoCallback(7, (value, result) => {
+                                        console.log(`Callback 8: ${value}, ${result}`);
+                                        cuadradoCallback(8, (value, result) => {
+                                            console.log(`Callback 9: ${value}, ${result}`);
+                                            cuadradoCallback(8, (value, result) => {
+                                                console.log(`Callback 10: ${value}, ${result}`);
+                                                cuadradoCallback(11, (value, result) => {
+                                                    console.log(`Callback 11: ${value}, ${result}`);
+                                                    console.log("Fin CALLBACKS");
+                                                    console.log("Callback Hell!!!!!");
+                                                    console.log("http://callbackhell.com/");
+                                                });
+                                            });
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+    });
+    </script>
+
+
+</head>
+<body>
+<h1>CALLBACKS</h1>
+<!-- callbacks o llamada de vuelta, es una funcion que se va a ejecutar despues de que otra lo haga
+
+ -->
+
+</body>
+</html>
