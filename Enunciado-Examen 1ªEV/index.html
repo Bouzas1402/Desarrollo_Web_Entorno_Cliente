@@ -1,0 +1,60 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Parking</title>
+	<script type="text/javascript" src="js/parking.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript">
+		var app;
+		var parking;
+		function inicializar(){
+			app = new App();
+
+
+			/*
+			*
+			*  TU CODIGO
+			*
+			*/
+		}
+
+		setInterval(function (){
+			app.actualizarPantalla();
+		}, 1000);
+	</script>
+	<style type="text/css">
+		.hidden{
+			display: none;
+		}
+		.success{
+			background: #0F0;
+		}
+		.warning{
+			background: #0FF;
+		}
+		.danger{
+			background: #F00;
+		}
+	</style>
+</head>
+<body onload="inicializar()">
+
+<!--  -->
+
+	<main>
+		<div class="container-fluid">
+			
+			<div id="date"></div>
+			<div id="cajero"></div>
+			<div id="msg" class="hidden alert alert-danger" role="alert"></div>
+			<h1 id="ocupacion">Ocupacion: 0%</h1>
+			
+			<table class="table" id="parking"></table>
+			<hr/>
+			<table class="table" id="history"></table>
+
+		</div>
+	</div>	
+</main>
+</body>
+</html>
