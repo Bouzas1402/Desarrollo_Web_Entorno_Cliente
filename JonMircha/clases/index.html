@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clases</title>
+
+      <script type="text/javascript">
+        /* Las clases es un prototipo de objeto, las clases surgen un javascript para facilitar la escritura.
+        * Aunque usamos clases es un engaño, javascript sigue trabajando con objetos.
+        * Los metodos de cada clase se cargan en el prototipo objeto y no en el objeto, lo que hace que se cargue menos
+        * peso en memoria.
+        * */
+        class Animal {
+          // La funcion constructora se inicia cuando creamos el objeto de este tipo
+          constructor(nombre, genero){
+            this.nombre = nombre;
+            this.genero = genero;
+          }
+          sonar() {
+            console.log("Hago sonidos por que estoy vivo");
+          }
+          saludar() {
+            console.log(`Hola me llamo ${this.nombre}`)
+          }
+        }
+
+        // Herencia:
+        class Perro extends Animal {
+          constructor(nombre, genero, raza) {
+            // super es un metodo especial que nos permite ejecutar la clase constructora de la clase a de la cual se extiende
+            super(nombre, genero);
+            this.raza = raza;
+          }
+          sonar() {
+            console.log("Soy un perro y mi sonido es un ladrido.")
+          }
+          ladrar() {
+            console.log("GUAUUUUUUUUUUUUU!!!!")
+          }
+        }
+
+        const mimi = new Animal("Mimi", "Hembra");
+        const scooby = new Perro("Scooby", "Macho", "Gran Danes");
+        /* se le llama azucar sintetica por que los metodos colgar y saludar ya no cuelgan del objeto animal si no del prototipo
+        *  Las clases simplifican la escritura pero por bambalinas sigue interpretando estas clases como prototipos
+        * */
+        console.log("************Objeto Animal************");
+        console.log(mimi);
+        mimi.saludar();
+        mimi.sonar();
+        console.log("************Objeto perro extendido de animal************");
+        console.log(scooby);
+        scooby.saludar();
+        console.log("************Variable var hola************");
+        console.log("*Vemos que sonar se sobreescribio*");
+        scooby.sonar();
+        scooby.ladrar();
+
+
+      </script>
+</head>
+<body>
+<h1>CLASES</h1>
+</body>
+</html>
