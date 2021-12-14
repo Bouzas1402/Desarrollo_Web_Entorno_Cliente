@@ -1,5 +1,31 @@
-import { estaciones as Estaciones } from './estaciones.js';
-export { Lineas as lineas};
+class Lineas {
+    constructor(nombre, estaciones) {
+        this.nombre = nombre;
+        this.estaciones = [];
+        for (let i = 0; i < estaciones.length; i++) {
+            let estacion = new Estaciones(estaciones[i])
+            if (i > 0) {
+                let camino = new Camino(estaciones[i -1], 1, this.nombre);
+                estacion.addCamino(camino);
+            }
+            if (i < estaciones.length - 1) {
+                let camino = new Camino(estaciones[i + 1], 1, this.nombre);
+                estacion.addCamino(camino);
+            }
+            this.estaciones.push(estacion)
+        }
+    }
+
+    getEstacion(nombre){
+        for (let i = 0; i < this.estaciones.length; i++) {
+            if (this.estaciones[i].nombre === nombre){
+                return this.estaciones[i];
+            }
+        }
+        return null;
+    }
+}
+/*
 export var Lineas = [
     {
         "linea 1": {

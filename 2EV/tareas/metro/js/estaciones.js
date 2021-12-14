@@ -1,52 +1,50 @@
-import { lineas as Lineas} from  './lineas.js';
-export { Estaciones as estaciones };
-export var Estaciones = [{
+class Estaciones {
+    constructor(nombre) {
+        this.nombre = nombre;
+        this.caminos = [];
+    }
+
+    addCamino(camino){
+        this.caminos.push(camino);
+    }
+
+}
+/*
+var Estaciones = [{
         "nombre": "PuebloNuevo",
-        "lineas": [Lineas[2]]
     },
     {
         "nombre": "Alonso Martinez",
-        "lineas": [Lineas[1], Lineas[2]]
     },
     {
         "nombre": "Goya",
-        "lineas": [Lineas[2]]
     },
     {
         "nombre": "Lista",
-        "lineas": [Lineas[0], Lineas[2]]
     },
     {
         "nombre": "Complutense",
-        "lineas": [Lineas[2]]
     },
     {
         "nombre": "Manoteras",
-        "lineas": [Lineas[0], Lineas[1]]
     },
     {
         "nombre": "Universidad",
-        "lineas": [Lineas[1]]
     },
     {
         "nombre": "Charmartin",
-        "lineas": [Lineas[0], Lineas[1]]
     },
     {
         "nombre": "Lago",
-        "lineas": [Lineas[1]]
     },
     {
         "nombre": "Quintana",
-        "lineas": [Lineas[0]]
     },
     {
         "nombre": "Parque Santa Maria",
-        "lineas": [Lineas[0]]
     },
     {
         "nombre": "Pinto",
-        "lineas": [Lineas[0]]
     },
 ];
 
