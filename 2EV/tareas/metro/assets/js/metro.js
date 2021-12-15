@@ -50,12 +50,6 @@ class Metro {
                     "<button type='button' class='btn btn-close' data-bs-dismiss='modal' aria-bs-label='Close'></button>" +
                     "</div><div class='modal-body'>";
 
-
-
-
-
-
-
                     metro += "<div class='row text-center justify-content-center mb-5'>" +
                         "                    <div class='col-xl-6 col-lg-8'>" +
                         "                        <h3 class=''>" + this.lineas[i].nombre.toUpperCase() + "</h3>" +
@@ -67,17 +61,17 @@ class Metro {
                     if (this.lineas[i].estaciones[j].caminos.length > 1) {
                         metro += "    <div class='timeline-steps aos-init aos-animate' data-aos='fade-up'>" +
                             "           <div class='timeline-step'>" +
-                            "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top' title='' data-content='' data-original-title='2003'>" +
+                            "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top'>" +
                             "               <div class='inner-circle' style='background-color: " + this.lineas[i].color + "'></div>" +
                             "                <p class='h6 mt-3 mb-1'>" + this.lineas[i].estaciones[j].caminos[0].destino + "</p>" +
                             "            </div></div>" +
                             "        <div class='timeline-step'>" +
-                            "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top' title='' data-content='' data-original-title='2003'>" +
+                            "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top'>" +
                             "                <div class='inner-circle' style='background-color: " + this.lineas[i].color + "'></div>" +
                             "                <p class='h6 mt-3 mb-1'>" + this.lineas[i].estaciones[j].nombre + "</p>" +
                             "            </div></div>" +
                             "         <div class='timeline-step'>" +
-                            "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top' title='' data-content='' data-original-title='2003'>" +
+                            "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top'>" +
                             "                <div class='inner-circle' style='background-color: " + this.lineas[i].color + "'></div>" +
                             "                <p class='h6 mt-3 mb-1'>" + this.lineas[i].estaciones[j].caminos[1].destino + "</p>" +
                             "            </div></div>" +
@@ -86,38 +80,56 @@ class Metro {
                     } else {
                         metro += "    <div class='timeline-steps aos-init aos-animate' data-aos='fade-up'>" +
                             "           <div class='timeline-step'>" +
-                            "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top' title='' data-content='' data-original-title='2003'>" +
+                            "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top'>" +
                             "               <div class='inner-circle' style='background-color: " + this.lineas[i].color + "'></div>" +
                             "                <p class='h6 mt-3 mb-1'>" + this.lineas[i].estaciones[j].caminos[0].destino + "</p>" +
                             "            </div></div>" +
                             "           <div class='timeline-step'>" +
-                            "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top' title='' data-content='' data-original-title='2003'>" +
+                            "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top'>" +
                             "                <div class='inner-circle' style='background-color: " + this.lineas[i].color + "'></div>" +
                             "                <p class='h6 mt-3 mb-1'>" + this.lineas[i].estaciones[j].nombre + "</p>" +
                             "            </div></div>" +
                             "        </div>";
                     }
-
-
-                    metro += "                        </div>" +
-                        "                    </div>" +
+                    metro += "                    </div>" +
                         "                </div>";
 
-
-
-
-
-
-
-
-
-
-                metro += "</div><div class='modal-footer'><button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Cerrar</button></div></div></div></div>";
+                    metro += "</div><div class='modal-footer'><button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Cerrar</button></div></div></div></div>";
 
             }
 
         }
+
         document.getElementById("metro").innerHTML = metro;
+
+
+        let templateLineas = document.getElementById('plantilla-metro').content;
+        //const templateLinea = document.getElementById('platilla-linea').content;
+        for (let i = 0; i < this.lineas.length; i++) {
+            let templateParadas = document.getElementById('plantilla-lineas').content;
+
+            // templateLineas.appendChild(templateParadas.cloneNode(true));
+            //document.getElementById('prueba').appendChild(templateLineas);
+            for (let j = 0; j < this.lineas[i].estaciones.length; j++) {
+                templateLineas.appendChild(templateParadas.cloneNode(true));
+            }
+           // template1.appendChild(template2.cloneNode((true)));
+            document.getElementById('prueba').appendChild(templateLineas.cloneNode(true));
+            templateParadas.textContent = "";
+        }
+
+
+        //template1.appendChild(template2.cloneNode(true));
+
+        //document.getElementById('prueba').appendChild(template1.cloneNode(true));
+       // document.getElementById('prueba').appendChild(template1.cloneNode(true));
+
+
+
+
+
+
+
 
     }
 
