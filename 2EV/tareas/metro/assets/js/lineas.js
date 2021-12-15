@@ -1,6 +1,7 @@
 class Lineas {
-    constructor(nombre, estaciones) {
+    constructor(nombre, color, estaciones) {
         this.nombre = nombre;
+        this.color = color;
         this.estaciones = [];
         for (let i = 0; i < estaciones.length; i++) {
             let estacion = new Estaciones(estaciones[i])

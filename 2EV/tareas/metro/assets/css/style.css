@@ -1,0 +1,23 @@
+/* Dancing */
+@font-face {
+    font-family: 'Dancing Script';
+    font-style: auto;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../font/DancingScript.ttf) format('truetype');
+}
+
+.linea-titulo {
+    font-family: 'Dancing Script', serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 70px;
+}
+.boton-paradas {
+    background-color: transparent;
+    position: absolute;
+    height: 2.5rem;
+    width: 2.5rem;
+    min-width: 2.5rem;
+    border-radius: 6.25rem;
+}
