@@ -105,9 +105,10 @@ class Metro {
 
         let templateLineas = document.getElementById('plantilla-metro').content;
         //const templateLinea = document.getElementById('platilla-linea').content;
-        for (let i = 0; i < this.lineas.length; i++) {
-            let templateParadas = document.getElementById('plantilla-lineas').content;
+        let templateParadas = document.getElementById('plantilla-lineas').content;
 
+        for (let i = 0; i < this.lineas.length; i++) {
+            let metro = templateLineas.content;
             // templateLineas.appendChild(templateParadas.cloneNode(true));
             //document.getElementById('prueba').appendChild(templateLineas);
             for (let j = 0; j < this.lineas[i].estaciones.length; j++) {
