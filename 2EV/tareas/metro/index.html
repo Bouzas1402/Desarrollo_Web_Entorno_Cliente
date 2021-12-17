@@ -24,12 +24,15 @@
             {"nombre": "linea-2", "estaciones": ["Manoteras", "Universidad", "Alonso-Martinez", "Charmartin", "Lago"]},
             {"nombre": "linea-3", "estaciones": ["Pueblo-Nuevo", "Alonso-Martinez", "Goya", "Lista", "Complutense"]}
             ];
-        var metro;
+        let metro;
+
         function inicializar(){
             metro = new Metro(lineas);
             console.log(metro);
             console.log(metro.getEstacion("Alonso Martinez"));
         }
+
+
 
     </script>
 </head>
@@ -41,84 +44,9 @@
 </div>
 
 
-<div class="row text-center justify-content-center mb-5">
-    <div class="col-xl-6 col-lg-8">
-        <h2 class="linea-titulo">A Company Evolution</h2>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col">
-        <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
 
 
-            <div class="timeline-step">
-                <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
-                    <div class="inner-circle"></div>
-                    <p class="h6 mt-3 mb-1">2003</p>
-                </div>
-            </div>
-            <div class="timeline-step">
-                <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
-                    <div class="inner-circle"><button type="button" class="btn boton-paradas" data-bs-toggle="modal" data-bs-target="#dialogo1"></button></div>
-                    <p class="h6 mt-3 mb-1"><a ></a>2004</p>
-                </div>
-            </div>
-            <div class="timeline-step">
-                <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
-                    <div class="inner-circle" style='background-color: red'></div>
-                    <p class="h6 mt-3 mb-1">2005</p>
-                    <p class="h6 text-muted mb-0 mb-lg-0">Launched Messanger</p>
-                </div>
-            </div>
 
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" role="dialog"aria-bs-hidden="true" tabindex="-1" id="dialogo1">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Título del diálogo</h4>
-                <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-bs-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <div class="row text-center justify-content-center mb-5">
-                    <div class="col-xl-6 col-lg-8">
-                        <h3 class="">A Company Evolution</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
-
-
-                            <div class="timeline-step">
-                                <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
-                                    <div class="inner-circle"></div>
-                                    <p class="h6 mt-3 mb-1"></p>
-                                </div>
-                            </div>
-                            <div class="timeline-step">
-                                <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
-                                    <div class="inner-circle"></div>
-                                    <p class="h6 mt-3 mb-1"><a ></a>Goya</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
     <template id="plantilla-metro">
@@ -133,8 +61,8 @@
 
         <div class="timeline-step">
             <div class="timeline-content" data-toggle="popover" data-trigger="hover">
-                <div class="inner-circle"><button type="button" class="btn boton-paradas" data-bs-toggle="modal" data-bs-target="#dialogo1"></button></div>
-                <p class="nombre-linea h6 mt-3 mb-1"></p>
+                <div class="inner-circle"><button type="button" class="btn boton-paradas" data-bs-toggle="modal" data-bs-target="#modal"></button></div>
+                <p class="nombre-linea h6 mt-3 mb-1">dfsdf</p>
             </div>
         </div>
 
@@ -149,14 +77,14 @@
 
 
     <template id="plantilla-modales">
-        <div class="modal fade" role="dialog"aria-bs-hidden="true" tabindex="-1" id="#">
+        <div class="modal fade" role="dialog" aria-bs-hidden="true" tabindex="-1" >
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Título del diálogo</h4>
                         <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-bs-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div id="cuerpo-modal" class="modal-body">
 
 
 
@@ -169,39 +97,30 @@
             </div>
         </div>
     </template>
-<div class="timeline-step">
-    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
-        <div class="inner-circle"></div>
-        <p class="h6 mt-3 mb-1">2003</p>
+
+
+<div class="modal fade" role="dialog" aria-bs-hidden="true" tabindex="-1" id="modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Título del diálogo</h4>
+                <button type="button" class="btn btn-close" onclick="metro.cerrarModal();" data-bs-dismiss="modal" aria-bs-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="metro.cerrarModal();"  data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
     </div>
 </div>
-<div class="timeline-step">
-    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
-        <div class="inner-circle"><button type="button" class="btn boton-paradas" data-bs-toggle="modal" data-bs-target="#dialogo1"></button></div>
-        <p class="h6 mt-3 mb-1"><a ></a>2004</p>
-    </div>
-</div>
-<div class="timeline-step">
-    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
-        <div class="inner-circle" style='background-color: red'></div>
-        <p class="h6 mt-3 mb-1">2005</p>
-        <p class="h6 text-muted mb-0 mb-lg-0">Launched Messanger</p>
-    </div>
-</div>
-<div id="prueba">
 
-</div>
-<div id="prueba1">
 
-</div>
-<div id="prueba2">
-
-</div>
-<div id="prueba3">
-
-</div>
-
- <script type="text/javascript" src="assets/bootstrap/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/bootstrap/js/jquery.min.js"></script>
 
 </body>
 </html>
