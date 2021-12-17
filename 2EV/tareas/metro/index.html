@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css">
 
 
-
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.bundle.js"></script>
     <script type="text/javascript" src="assets/js/metro.js"></script>
     <script type="text/javascript" src="assets/js/estaciones.js"></script>
     <script type="text/javascript" src="assets/js/lineas.js"></script>
@@ -124,28 +124,70 @@
     <template id="plantilla-metro">
         <div class="row text-center justify-content-center mb-5">
             <div class="col-xl-6 col-lg-8">
-                <h2 class="linea-titulo">dfds</h2>
+                <h2 class="linea-titulo"></h2>
             </div>
         </div>
-
     </template>
 
-    <template id="platilla-linea">
+    <template id="plantilla-estaciones">
+
+        <div class="timeline-step">
+            <div class="timeline-content" data-toggle="popover" data-trigger="hover">
+                <div class="inner-circle"><button type="button" class="btn boton-paradas" data-bs-toggle="modal" data-bs-target="#dialogo1"></button></div>
+                <p class="nombre-linea h6 mt-3 mb-1"></p>
+            </div>
+        </div>
 
     </template>
 
     <template id="plantilla-lineas">
         <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
-            <div class="timeline-step">
-                <div class="timeline-content" data-toggle="popover" data-trigger="hover">
-                    <div class="inner-circle"><button type="button" class="btn boton-paradas" data-bs-toggle="modal" data-bs-target="#dialogo1"></button></div>
-                    <p class="h6 mt-3 mb-1">frgfd</p>
+
+        </div>
+
+    </template>
+
+
+    <template id="plantilla-modales">
+        <div class="modal fade" role="dialog"aria-bs-hidden="true" tabindex="-1" id="#">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Título del diálogo</h4>
+                        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-bs-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
                 </div>
             </div>
         </div>
     </template>
-
-
+<div class="timeline-step">
+    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+        <div class="inner-circle"></div>
+        <p class="h6 mt-3 mb-1">2003</p>
+    </div>
+</div>
+<div class="timeline-step">
+    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+        <div class="inner-circle"><button type="button" class="btn boton-paradas" data-bs-toggle="modal" data-bs-target="#dialogo1"></button></div>
+        <p class="h6 mt-3 mb-1"><a ></a>2004</p>
+    </div>
+</div>
+<div class="timeline-step">
+    <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+        <div class="inner-circle" style='background-color: red'></div>
+        <p class="h6 mt-3 mb-1">2005</p>
+        <p class="h6 text-muted mb-0 mb-lg-0">Launched Messanger</p>
+    </div>
+</div>
 <div id="prueba">
 
 </div>
@@ -155,8 +197,11 @@
 <div id="prueba2">
 
 </div>
+<div id="prueba3">
+
+</div>
 
  <script type="text/javascript" src="assets/bootstrap/js/jquery.min.js"></script>
- <script type="text/javascript" src="assets/bootstrap/js/bootstrap.bundle.js"></script>
+
 </body>
 </html>
