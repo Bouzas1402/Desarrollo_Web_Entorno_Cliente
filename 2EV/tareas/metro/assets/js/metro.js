@@ -22,119 +22,69 @@ class Metro {
         return estaciones;
     }
 
-    printMetro(importedNode, deep) {
+    printMetro() {
         let metro = "";
-        for (let i = 0; i < this.lineas.length; i++) {
-
-            metro += "<div class='row text-center justify-content-center mb-5'><div class='col-xl-6 col-lg-8'><h2 class='linea-titulo'>" + this.lineas[i].nombre.replace('-', ' ') + "</h2></div></div><div class='row'><div class='col'><div class='timeline-steps aos-init aos-animate' data-aos='fade-up'>";
-            for (let j = 0; j < this.lineas[i].estaciones.length; j++) {
-                metro += "<div class='timeline-step'><div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top' title='' data-original-title='" + this.lineas[i].estaciones[j].nombre + "'>" +
-                    "<div class='inner-circle' style='background-color: " + this.lineas[i].color + "'>" +
-                    "<button type='button' class='btn boton-paradas' data-bs-toggle='modal' data-bs-target='#" + this.lineas[i].nombre + this.lineas[i].estaciones[j].nombre + "'></button></div>" +
-                    "<p class='h6 mt-3 mb-1'>" + this.lineas[i].estaciones[j].nombre.replaceAll('-', ' ') + "</p></div></div>";
-            }
-            metro += "</div></div></div></div>";
-        }
-
-
-        for (let i = 0; i < this.lineas.length; i++) {
-
-
-            for (let j = 0; j < this.lineas[i].estaciones.length; j++) {
-                metro += "<div class='modal fade' role='dialog' aria-bs-hidden='true' tabIndex='-1' id='" + this.lineas[i].nombre + this.lineas[i].estaciones[j].nombre + "'>" +
-                    "<div class='modal-dialog modal-dialog-centered' role='document'><div class='modal-content'>" +
-                    "<div class='modal-header'>" +
-                    "<h4 class='modal-title'>" + this.lineas[i].estaciones[j].nombre.replace('-', ' ') + "</h4>" +
-                    "<button type='button' class='btn btn-close' data-bs-dismiss='modal' aria-bs-label='Close'></button>" +
-                    "</div><div class='modal-body'>";
-
-                metro += "<div class='row text-center justify-content-center mb-5'>" +
-                    "                    <div class='col-xl-6 col-lg-8'>" +
-                    "                        <h3 class=''>" + this.lineas[i].nombre.toUpperCase() + "</h3>" +
-                    "                    </div>" +
-                    "                </div>" +
-                    "                <div class='row'>" +
-                    "                    <div class='col'>";
-
-                if (this.lineas[i].estaciones[j].caminos.length > 1) {
-                    metro += "    <div class='timeline-steps aos-init aos-animate' data-aos='fade-up'>" +
-                        "           <div class='timeline-step'>" +
-                        "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top'>" +
-                        "               <div class='inner-circle' style='background-color: " + this.lineas[i].color + "'></div>" +
-                        "                <p class='h6 mt-3 mb-1'>" + this.lineas[i].estaciones[j].caminos[0].destino + "</p>" +
-                        "            </div></div>" +
-                        "        <div class='timeline-step'>" +
-                        "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top'>" +
-                        "                <div class='inner-circle' style='background-color: " + this.lineas[i].color + "'></div>" +
-                        "                <p class='h6 mt-3 mb-1'>" + this.lineas[i].estaciones[j].nombre + "</p>" +
-                        "            </div></div>" +
-                        "         <div class='timeline-step'>" +
-                        "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top'>" +
-                        "                <div class='inner-circle' style='background-color: " + this.lineas[i].color + "'></div>" +
-                        "                <p class='h6 mt-3 mb-1'>" + this.lineas[i].estaciones[j].caminos[1].destino + "</p>" +
-                        "            </div></div>" +
-                        "         </div>";
-
-                } else {
-
-                    metro += "    <div class='timeline-steps aos-init aos-animate' data-aos='fade-up'>" +
-                        "           <div class='timeline-step'>" +
-                        "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top'>" +
-                        "               <div class='inner-circle' style='background-color: " + this.lineas[i].color + "'></div>" +
-                        "                <p class='h6 mt-3 mb-1'>" + this.lineas[i].estaciones[j].caminos[0].destino + "</p>" +
-                        "            </div></div>" +
-                        "           <div class='timeline-step'>" +
-                        "            <div class='timeline-content' data-toggle='popover' data-trigger='hover' data-placement='top'>" +
-                        "                <div class='inner-circle' style='background-color: " + this.lineas[i].color + "'></div>" +
-                        "                <p class='h6 mt-3 mb-1'>" + this.lineas[i].estaciones[j].nombre + "</p>" +
-                        "            </div></div>" +
-                        "        </div>";
-                }
-                metro += "                    </div>" +
-                    "                </div>";
-
-                metro += "</div><div class='modal-footer'><button type='button' class='btn btn-primary' data-bs-dismiss='modal'>Cerrar</button></div></div></div></div>";
-
-            }
-
-        }
-
-        document.getElementById("metro").innerHTML = metro;
-
-
-        //const templateLinea = document.getElementById('platilla-linea').content;
         const templateLineas = document.querySelector('#plantilla-metro').content;
         const templateParadas = document.querySelector('#plantilla-estaciones').content;
         const templateParada = document.querySelector('#plantilla-lineas').content;
         const lineas = new DocumentFragment();
+        this.lineas.forEach(linea => {
+                templateLineas.querySelector('h2').textContent = linea.nombre;
+                lineas.appendChild(document.importNode(templateLineas, true));
+                templateParada.querySelector('div').id = linea.nombre;
+                lineas.appendChild(document.importNode(templateParada, true));
+            linea.estaciones.forEach(estacion =>
+                {
+                    templateParadas.querySelector('.inner-circle').style.backgroundColor = linea.color;
+                    templateParadas.querySelector('p').textContent = estacion.nombre;
+                    templateParadas.querySelector('button').setAttribute('onclick', "metro.abrirModal('" + estacion.nombre + "');")
+                    //templateParadas.querySelector('button').setAttribute('data-bs-target', '#'+ estacion.nombre);
+                    lineas.getElementById(linea.nombre).appendChild(document.importNode(templateParadas, true));
+                })
+        })
+        document.getElementById("metro").appendChild(lineas);
+    }
 
-        for (let i = 0; i < this.lineas.length; i++) {
-            templateLineas.querySelector('h2').textContent = this.lineas[i].nombre;
-            lineas.appendChild(document.importNode(templateLineas, true));
-            templateParada.querySelector('div').id = this.lineas[i].nombre;
-            lineas.appendChild(document.importNode(templateParada, true));
-            for (let j = 0; j < this.lineas[i].estaciones.length; j++) {
-                templateParadas.querySelector('.inner-circle').style.backgroundColor = this.lineas[i].color;
-                templateParadas.querySelector('p').textContent = this.lineas[i].estaciones[j].nombre;
-                lineas.getElementById(this.lineas[i].nombre).appendChild(document.importNode(templateParadas, true));
-            }
-        }
-        document.getElementById("prueba").appendChild(lineas);
+    abrirModal(estacion){
+        let caminos = [];
+        this.lineas.forEach(linea => {
+                linea.estaciones.forEach(parada =>
+                    {
+                        if (parada.nombre === estacion) {
+                            caminos.push(parada.caminos);
+                        }
+                    })
+        })
+        console.log(caminos);
+        const templateLineas = document.querySelector('#plantilla-metro').content;
+        const templateParadas = document.querySelector('#plantilla-estaciones').content;
+        const templateParada = document.querySelector('#plantilla-lineas').content;
+        const contenidoModal = new DocumentFragment();
+        caminos.forEach(camino => {
 
 
-        const templateModales = document.querySelector('#plantilla-modales').content;
-        const modales = new DocumentFragment();
-        for (let i = 0; i < this.lineas.length; i++) {
-            for (let j = 0; j < this.lineas[i].estaciones.length; j++) {
-                modales.appendChild(document.importNode(templateModales, true));
-            }
 
+            contenidoModal.appendChild(document.importNode(templateParada, true));
+            camino.forEach(llegada => {
+                templateParadas.querySelector('p').textContent = llegada.destino;
+                contenidoModal.appendChild(document.importNode(templateParadas, true));
 
-        }
-        document.getElementById("prueba").appendChild(modales);
+            })
+        })
+        document.getElementById('modal').querySelector('.modal-body').appendChild(contenidoModal);
+    };
+
+    cerrarModal(){
+        let borrar = document.getElementById('cuerpo-modal');
+        let elementoBorrar = document.getElementsByTagName("aos-init");
+        //borrar.removeChild(borrar.childNodes);
+       // document.querySelector('#cuerpo-modal').remove();
+    }
 
     }
 
 
-}
+
+
+
 // getStacion (nombreStacion) return caminos que conectan
