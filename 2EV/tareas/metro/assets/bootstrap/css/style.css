@@ -18,19 +18,19 @@ body{margin-top:20px;}
         content: "";
         display: block;
         border-top: .25rem dotted #030202;
-        width: 3.46rem;
+        width: 3.7rem;
         position: absolute;
-        left: 7.5rem;
-        top: .4125rem
+        left: 7.2rem;
+        top: .5625rem
     }
     .timeline-steps .timeline-step:not(:first-child):before {
         content: "";
         display: block;
         border-top: .25rem dotted #030202;
-        width: 3.8125rem;
+        width: 3.7rem;
         position: absolute;
-        right: 7.5rem;
-        top: .4125rem
+        right: 7.2rem;
+        top: .5625rem
     }
 }
 
@@ -40,6 +40,7 @@ body{margin-top:20px;}
 }
 
 .timeline-steps .timeline-content .inner-circle {
+    border: 1px solid;
     border-radius: 1.5rem;
     height: 1.5rem;
     width: 1.5rem;

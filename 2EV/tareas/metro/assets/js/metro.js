@@ -1,13 +1,13 @@
-const colores = ["red", "blue","yellow", "lime", "aqua", "fuchsia", "gray", "olive", "navy", "maroon", "green", "purple"];
+// const colores = ["red", "blue","yellow", "lime", "aqua", "fuchsia", "gray", "olive", "navy", "maroon", "green", "purple"];
 
 class Metro {
     constructor(lineas) {
         this.nombre = "Metro madrid";
         this.lineas = [];
-        for (let i = 0; i < lineas.length; i++) {
-            let linea = new Lineas(lineas[i].nombre, colores[i], lineas[i].estaciones);
-            this.lineas.push(linea);
-        }
+        lineas.forEach(linea => {
+            let nuevaLinea = new Lineas(linea.nombre, linea.color, linea.estaciones);
+            this.lineas.push(nuevaLinea);
+        })
         this.printMetro();
     }
 
@@ -23,68 +23,63 @@ class Metro {
     }
 
     printMetro() {
-        let metro = "";
-        const templateLineas = document.querySelector('#plantilla-metro').content;
+        const templateLineas = document.querySelector('#plantilla-lineas').content;
         const templateParadas = document.querySelector('#plantilla-estaciones').content;
-        const templateParada = document.querySelector('#plantilla-lineas').content;
         const lineas = new DocumentFragment();
         this.lineas.forEach(linea => {
                 templateLineas.querySelector('h2').textContent = linea.nombre;
+                templateLineas.querySelector('.aos-animate').id = linea.nombre;
                 lineas.appendChild(document.importNode(templateLineas, true));
-                templateParada.querySelector('div').id = linea.nombre;
-                lineas.appendChild(document.importNode(templateParada, true));
-            linea.estaciones.forEach(estacion =>
-                {
-                    templateParadas.querySelector('.inner-circle').style.backgroundColor = linea.color;
-                    templateParadas.querySelector('p').textContent = estacion.nombre;
-                    templateParadas.querySelector('button').setAttribute('onclick', "metro.abrirModal('" + estacion.nombre + "');")
-                    //templateParadas.querySelector('button').setAttribute('data-bs-target', '#'+ estacion.nombre);
-                    lineas.getElementById(linea.nombre).appendChild(document.importNode(templateParadas, true));
-                })
+                linea.estaciones.forEach(estacion =>
+                    {
+                        templateParadas.querySelector('.inner-circle').style.backgroundColor = linea.color;
+                        templateParadas.querySelector('p').textContent = estacion.nombre;
+                        templateParadas.querySelector('button').setAttribute('onclick', "metro.abrirModal('" + estacion.nombre + "');")
+                        lineas.getElementById(linea.nombre).appendChild(document.importNode(templateParadas, true));
+                    })
         })
         document.getElementById("metro").appendChild(lineas);
     }
 
-    abrirModal(estacion){
-        let caminos = [];
+    abrirModal(estacion) {
+        document.getElementById('cuerpo-modal').innerHTML = "";
+        document.querySelector('.modal-title').innerHTML = estacion;
+        const caminos = [];
+        let contador = 0;
         this.lineas.forEach(linea => {
                 linea.estaciones.forEach(parada =>
                     {
                         if (parada.nombre === estacion) {
-                            caminos.push(parada.caminos);
+                            caminos.push([linea.nombre, linea.color, parada.nombre]);
+                            parada.caminos.forEach(camino => {
+                                caminos[contador].push(camino.destino);
+                            })
+                            contador++;
                         }
                     })
         })
-        console.log(caminos);
-        const templateLineas = document.querySelector('#plantilla-metro').content;
+        const templateLineas = document.querySelector('#plantilla-lineas').content;
         const templateParadas = document.querySelector('#plantilla-estaciones').content;
-        const templateParada = document.querySelector('#plantilla-lineas').content;
         const contenidoModal = new DocumentFragment();
+        let marcador;
         caminos.forEach(camino => {
-
-
-
-            contenidoModal.appendChild(document.importNode(templateParada, true));
-            camino.forEach(llegada => {
-                templateParadas.querySelector('p').textContent = llegada.destino;
-                contenidoModal.appendChild(document.importNode(templateParadas, true));
-
-            })
+            templateLineas.querySelector('h2').style.fontSize = '50px';
+            templateLineas.querySelector('h2').textContent = camino[0];
+            templateLineas.querySelector('.aos-animate').id = camino[0]+camino[2];
+            contenidoModal.appendChild(document.importNode(templateLineas, true));
+            templateParadas.querySelector('.inner-circle').innerHTML = "";
+            templateParadas.querySelector('.inner-circle').style.backgroundColor = camino[1];
+            marcador = 3;
+            if (camino.length === 5) {
+                templateParadas.querySelector('p').textContent = camino[3];
+                contenidoModal.querySelector('#' + camino[0]+camino[2]).appendChild(document.importNode(templateParadas, true));
+                marcador = 4;
+            }
+            templateParadas.querySelector('p').textContent = camino[2];
+            contenidoModal.querySelector('#' + camino[0]+camino[2]).appendChild(document.importNode(templateParadas, true));
+            templateParadas.querySelector('p').textContent = camino[marcador];
+            contenidoModal.querySelector('#' + camino[0]+camino[2]).appendChild(document.importNode(templateParadas, true));
         })
         document.getElementById('modal').querySelector('.modal-body').appendChild(contenidoModal);
-    };
-
-    cerrarModal(){
-        let borrar = document.getElementById('cuerpo-modal');
-        let elementoBorrar = document.getElementsByTagName("aos-init");
-        //borrar.removeChild(borrar.childNodes);
-       // document.querySelector('#cuerpo-modal').remove();
     }
-
     }
-
-
-
-
-
-// getStacion (nombreStacion) return caminos que conectan
