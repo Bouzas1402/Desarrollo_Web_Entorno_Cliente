@@ -7,6 +7,38 @@
     src: url(../font/DancingScript.ttf) format('truetype');
 }
 
+/* icono tren  (html entity: &#xe900;&#xe901;&#xe902;)
+<span class="icon-lineas"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>*/
+.icon-lineas .path1:before {
+    content: "\e900";
+    color: #111;
+}
+.icon-lineas .path2:before {
+    content: "\e901";
+    color: #fff;
+    margin-left: -1em;
+}
+.icon-lineas .path3:before {
+    content: "\e902";
+    color: #fff;
+    margin-left: -1em;
+}
+
+@font-face {
+    font-family: 'Tren';
+    src:  url('../iconos/icon-lineas.eot?rur75c'); /
+src:  url('../iconos/icon-lineas.eot?rur75c#iefix') format('embedded-opentype'),
+url('../iconos/icon-lineas.ttf?rur75c') format('truetype'),
+url('../iconos/icon-lineas.woff?rur75c') format('woff'),
+url('../iconos/icon-lineas.svg?rur75c#scherzoicons') format('svg');
+font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+
+
+
 .linea-titulo {
     font-family: 'Dancing Script', serif;
     text-transform: uppercase;
