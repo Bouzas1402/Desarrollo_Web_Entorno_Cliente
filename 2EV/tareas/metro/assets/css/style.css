@@ -12,6 +12,11 @@
     text-transform: uppercase;
     text-align: center;
     font-size: 70px;
+}#linea-titulo2 {
+    font-family: 'Dancing Script', serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 70px;
 }
 .boton-paradas {
     background-color: transparent;
@@ -20,4 +25,8 @@
     width: 2.5rem;
     min-width: 2.5rem;
     border-radius: 6.25rem;
+}
+/* Este hace el color del hover */
+.dropdown-menu>li>button:hover {
+    background-color: #4d4d4d !important;
 }

@@ -16,7 +16,6 @@ class Lineas {
             this.estaciones.push(estacion)
         }
     }
-
     getEstacion(nombre){
         this.estaciones.forEach(estacion => {
             if (estacion.nombre === nombre){
