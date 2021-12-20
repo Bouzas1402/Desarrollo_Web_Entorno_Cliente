@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Var VS Let y Const</title>
+    <script type="text/javascript">
+        /* si la declaras con var la variable hace lo que se concoce como elevación
+         es decir, la variable sera de ambito global o por arriba de la funcion si se declara fuera de alguna funcion
+         Si declaras una variable con var la variable va a ser de ambito global.*/
+        console.log("************Variable var hola************");
+        var hola = "Hola Mundo";
+        console.log(hola);
+
+        /* Para tener ambito de bloque, como usan otros lenguajes como java, tenemos que usar let.
+         la variable let permite que la variable exista solo en el bloque donde esta definido */
+        console.log("************Variable let hello************");
+        let hello = "Hello world";
+        console.log(hello);
+
+        console.log("*********************Objeto window*********************");
+        console.log("Aqui se vera como hola si esta en la ventana de manera global pero no hello, por el uso de var y de let")
+        console.log(window);
+        console.log(window.hola);
+        console.log(window.hello);
+
+        // Ambito bloque
+
+        console.log("*********************var*********************");
+
+        var musica = "Rock";
+        console.log("Variable música antes del bloque ", musica);
+        {
+            var musica = "Pop";
+            console.log("Variable música dentro del bloque ", musica);
+        }
+        console.log("Variable música despues del bloque ", musica);
+
+        console.log("*********************let*********************");
+
+        let musica2 = "Rock2";
+        console.log("Variable música antes del bloque ", musica2);
+        {
+            let musica2 = "Pop2";
+            console.log("Variable música dentro del bloque ", musica2);
+        }
+        console.log("Variable música despues del bloque ", musica2);
+
+
+
+        // CONSTANTES:
+        console.log("****************CONSTANTES****************")
+        /* Varibles que no van a cambiar su valor durante el flujo
+* const VACIO; no puedo hacer esto aunque si esto let vacio; o var vacio; y darle valor luego.
+* No se pueden redeclarar, no se pueden reasignar.
+* */
+        const PI = 3.1416;
+        // Esto es para valores primitivos que son booleanos, es decir, que son una eso o no.
+
+        /* Para valores compuestos no funciona igual, objetos y arreglos, por ejemplo, como tal no accedemos al valor directamente
+        *  si no a una referencia de ese valor, para javascript la referencia del objeto no cambia si le agregamos valores o no,
+        *  sigue siendo el mismo objeto o arreglo solo que con valores distintos. Siempre les vas a poder sumar o restar elementos.
+        *  El objeto sigue siendo el mismo y esa es la referencia que mantiene const en un valor compuesto.
+        * * */
+        const objeto = {
+            nombre : "Carlos",
+            edad : 30,
+        }
+
+        const colores = ["azul","blanco","violeta","verde","negro"];
+
+        let objeto2 = {
+            nombre : "Juan",
+            edad : 32,
+        }
+
+        let colores2 = ["Marron","Amarillo","Rojo","Lila","Morado"];
+
+        console.log("**********CONST valores simples**********");
+        console.log(PI);
+        console.log("**********CONST Objetos, arrays con let**********");
+        console.log(objeto2);
+        console.log(colores2);
+
+        objeto2.correo = "carlos.bouzas@eduaca.madrid.org";
+        objeto2.hijo = "Eiden";
+
+        colores2.push("naranja");
+
+        console.log("**********Objetos, arrays despues de ionsertar valores con let**********");
+        console.log(objeto2);
+        console.log(colores2);
+
+        console.log("**********Objetos, arrays con const**********");
+        console.log(objeto);
+        console.log(colores);
+
+        objeto.correo = "carlos.bouzas@eduaca.madrid.org";
+        objeto.modulo = "DAW";
+
+        colores.push("naranja");
+
+        console.log("**********Objetos, arrays despues de ionsertar valores con const**********");
+        console.log(objeto);
+        console.log(colores);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

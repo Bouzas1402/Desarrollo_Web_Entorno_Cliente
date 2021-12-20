@@ -132,7 +132,6 @@ class Metro {
         let indiceComienzo = 0;
         let indiceDestino = "No existe la parada";
         let respuesta = 0;
-
         for (let i = 0; i < linea.estaciones.length; i++) {
             if (linea.estaciones[i].nombre === estacionComienzo){
                 indiceComienzo = i;

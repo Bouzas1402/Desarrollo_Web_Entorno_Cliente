@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototipo</title>
+
+    <script type="text/javascript">
+        // Al crear un objeto de tipo String por ejemplo:
+        let str = 'Hello Worl!';
+        console.log('*******************String*******************');
+        console.log(str);
+        // O de tipo array por ejemplo
+        let arr = [1,2,3,4];
+        console.log('*******************Array*******************');
+        console.log(arr);
+        // O un objeto:
+        console.log('*******************Objeto*******************');
+        let obj = {id: 1, value: "Some value"};
+        console.log(obj);
+        // Observamos que tienen una serie de metodos comunes a todos
+        console.log('*******************Metodos comunes a todos del mismo tipo*******************');
+        console.log('*******************String(metodo indexOf con la letra W)*******************');
+        console.log(str.indexOf('W'));
+        console.log('*******************array(metodo reverse)*******************');
+        console.log(arr.reverse());
+        console.log('*********************objeto(metodo hasOwnProperty con el id)*****************');
+        console.log(obj.hasOwnProperty('id'));
+
+        // Podemos definir nuestros propios metodos:
+        console.log('*******************Metodo test creado para arr*******************');
+        arr.test = function () {
+            return 'Hi';
+        }
+        console.log(arr.test());
+        // Pero si creamos otra variable array:
+        console.log('*******************arr2*******************');
+        let arr2 = Array(3,7,5,1);
+        console.log(arr2);
+        //console.log('*******************funcion test de arr no es valida para arr2*******************');
+        // Vemos que la funcion creada test no esta en arr2
+        //console.log(arr2.test());
+
+        console.log('********************Creamos una función constructora para foo******************');
+        let foo = function(name) {
+            this.myName = name;
+            this.tellMyName = function() {
+                console.log(this.myName);
+            }}
+        console.log(foo);
+        console.log('*******************Y dos objetos foo y llamamos a tellMyName, que vemos que se crea en los dos objetos foo creados*******************');
+        let fooObj1 = new foo('Carlos');
+        console.log(fooObj1);
+        let fooObj2 = new foo('Juan');
+        console.log(fooObj2);
+        fooObj2.tellMyName();
+        fooObj1.tellMyName();
+
+        // Esto genera un problema de memoria ya que cada vez que creamos una instancia de foo el metodo tellMyName ocupa un espeacio en el sistema
+        // Hay que guardarlo en un solo lugar y hacer que nuestras instancias se refieran desde ese lugar
+        console.log('********************Creamos fo******************');
+
+        let foo2 = function (name){
+            this.myName = name;
+        }
+        foo2.prototype.tellMyName = function (){
+            console.log(this.myName);
+        }
+        console.log(foo2);
+        console.log('*******************Y dos objetos foo2*******************');
+        let foo2Obj1 = new foo('Carlos');
+        console.log(foo2Obj1);
+        let foo2Obj2 = new foo('Juan');
+        console.log(foo2Obj2);
+        foo2Obj1.tellMyName();
+        foo2Obj2.tellMyName();
+
+        /* Las clases es un prototipo de objeto, las clases surgen un javascript para facilitar la escritura.
+        * Aunque usamos clases es un engaño, javascript sigue trabajando con objetos.
+        * Los metodos de cada clase se cargan en el prototipo objeto y no en el objeto, lo que hace que se cargue menos
+        * peso en memoria.
+        * */
+        class Animal {
+            // La funcion constructora se inicia cuando creamos el objeto de este tipo
+            constructor(nombre, genero){
+                this.nombre = nombre;
+                this.genero = genero;
+            }
+            sonar() {
+                console.log("Hago sonidos por que estoy vivo");
+            }
+            saludar() {
+                console.log(`Hola me llamo ${this.nombre}`)
+            }
+        }
+
+        // Herencia:
+        class Perro extends Animal {
+            constructor(nombre, genero, raza) {
+                // super es un metodo especial que nos permite ejecutar la clase constructora de la clase a de la cual se extiende
+                super(nombre, genero);
+                this.raza = raza;
+            }
+            sonar() {
+                console.log("Soy un perro y mi sonido es un ladrido.")
+            }
+            ladrar() {
+                console.log("GUAUUUUUUUUUUUUU!!!!")
+            }
+        }
+
+        const mimi = new Animal("Mimi", "Hembra");
+        const scooby = new Perro("Scooby", "Macho", "Gran Danes");
+        /* se le llama azucar sintetica por que los metodos colgar y saludar ya no cuelgan del objeto animal si no del prototipo
+        *  Las clases simplifican la escritura pero por bambalinas sigue interpretando estas clases como prototipos
+        * */
+        console.log("************Objeto Animal************");
+        console.log(mimi);
+        mimi.saludar();
+        mimi.sonar();
+        console.log("************Objeto perro extendido de animal************");
+        console.log(scooby);
+        scooby.saludar();
+        console.log("************Variable var hola************");
+        console.log("*Vemos que sonar se sobreescribio*");
+        scooby.sonar();
+        scooby.ladrar();
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
