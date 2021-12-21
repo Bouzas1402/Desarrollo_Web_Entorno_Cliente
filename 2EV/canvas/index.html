@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+
+
+    <style>
+      canvas {
+        width: 800px;
+        height: 400px;
+        border: 1px solid #664d03;
+      }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas"></canvas>
+
+<script type="text/javascript">
+  let canvas = document.getElementById('myCanvas');
+  let contexto = canvas.getContext('2d');
+  contexto.fillStyle = "#e22c79";
+  contexto.fillRect(50, 10, 200, 125);
+  contexto.moveTo(150,0);
+  contexto.lineTo(150, 150);
+  contexto.stroke();
+  contexto.moveTo(0,75);
+  contexto.lineTo(400, 75);
+  contexto.stroke();
+  contexto.beginPath();
+  contexto.arc(150, 73.8, 60, 1.56, 2.01 * Math.PI);
+  contexto.stroke();
+  let graduacion = contexto.createLinearGradient(0, 0, 200, 0)
+  graduacion.addColorStop(0, "red");
+  graduacion.addColorStop(1, "white");
+  contexto.fillStyle = graduacion;
+  contexto.fillRect(10, 10, 150, 80);
+</script>
+</body>
+</html>
