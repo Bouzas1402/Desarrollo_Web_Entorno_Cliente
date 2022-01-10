@@ -63,7 +63,7 @@ class Metro {
         this.lineas.forEach(linea => {
             for (let j = 0; j < linea.estaciones.length; j++) {
                 if (linea.estaciones[j].nombre === estacionComienzo) {
-                    caminos.push([linea.nombre, linea.color]);
+                    caminos.push([linea.nombre, linea.color, estacionComienzo]);
                     linea.estaciones[j].caminos.forEach(camino => {
                         caminos[contador].push(camino.destino);
                     })
@@ -127,20 +127,20 @@ class Metro {
 
     calcularParadas(lineaParada){
         let estacionComienzo = document.getElementById(lineaParada + 'paradahidden').value;
-        let estacionDestino = document.getElementById(lineaParada + 'selectinput').value.replaceAll(" ", "-").toLowerCase();
+        let estacionDestino = document.getElementById(lineaParada + 'selectinput').value;
 
         let indiceComienzo = 0;
         let indiceDestino = "No existe la parada o no está en esta linea";
         let respuesta = 0;
         let linea = this.getLinea(lineaParada);
         for (let i = 0; i < linea.estaciones.length; i++) {
-            if (linea.estaciones[i].nombre.toLowerCase() === estacionComienzo){
+            if (linea.estaciones[i].nombre === estacionComienzo){
                 indiceComienzo = i;
                 break;
             }
         }
         for (let i = 0; i < linea.estaciones.length; i++) {
-            if (linea.estaciones[i].nombre.toLowerCase() === estacionDestino){
+            if (linea.estaciones[i].nombre === estacionDestino){
                 indiceDestino = i;
                 break;
             }
