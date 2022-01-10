@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		class Rectangle{
+			constructor(height, width){
+				this.height = height;
+				this.width = width;
+			}
+
+			get area(){
+				return this.calcArea();
+			}
+
+			calcArea(){
+				return this.height * this.width
+			}
+		}
+		const square = new Rectangle(10,10);
+		console.log(square.area);
+
+
+
+
+		function Circle(radio){
+			this.radio = radio;
+		}
+		Circle.prototype.calcArea = function calcArea(){
+			return 2*3.14*this.radio;
+		}
+		const circle = new Circle(4);
+		console.log(circle.calcArea());
+	</script> 
+
+</body>
+</html>

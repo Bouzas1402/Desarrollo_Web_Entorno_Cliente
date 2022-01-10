@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+
+  <script>
+    
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+  if ('content' in document.createElement('template')) {
+
+    // Instanciar la tabla con el tbody existente
+    // y la fila con el template
+    var t = document.querySelector('#productrow'),
+    td = t.content.querySelectorAll("td");
+    td[0].textContent = "1235646565";
+    td[1].textContent = "Stuff";
+
+    // Clonar la nueva fila e insertarla en la tabla
+    var tb = document.querySelector("tbody");
+    var clone = document.importNode(t.content, true);
+    tb.appendChild(clone);
+
+    // Crear una nueva fila
+    td[0].textContent = "0384928528";
+    td[1].textContent = "Acme Kidney Beans";
+
+    // Clonar la nueva fila e insertarla en la tabla
+    var clone2 = document.importNode(t.content, true);
+    tb.appendChild(clone2);
+
+  } else {
+    // Buscar otra manera de añadir filas a la tabla porque el
+    // elemento template no está soportado.
+  }
+
+    });
+
+    
+
+
+  </script>
+</head>
+<body>
+
+
+<table id="producttable">
+  <thead>
+    <tr>
+      <td>UPC_Code</td>
+      <td>Product_Name</td>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- datos opcionales pueden incluirse aquí opcionalmente -->
+  </tbody>
+</table>
+
+<template id="productrow">
+  <tr>
+    <td class="record"></td>
+    <td></td>
+  </tr>
+</template>
+
+</body>
+</html>

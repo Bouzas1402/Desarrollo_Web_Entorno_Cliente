@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Documentation and examples for opt-in styling of tables (given their prevalent use in JavaScript plugins) with Bootstrap.">
+    
+    <title>Superman - Template</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link rel='stylesheet' href='../block-library/themes/man/css/bootstrapwp.css' type='text/css' media='all' />
+
+    <link rel='stylesheet' href='../../../bootstrap-5.1.1/dist/css/bootstrap.min.css' type='text/css' media='all' />
+    
+    <link rel='stylesheet' href='../css/style.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='../block-library/contact-form/css/styles.css' type='text/css' media='all' />
+    
+    <link rel='stylesheet' href='../block-library/themes/man/css/custom.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='../block-library/themes/man/font/monstro.css' type='text/css' media='all' />
+    
+    
+    
+    <link rel='stylesheet' href='css/docs.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='css/custom.css' type='text/css' media='all' />
+    
+    
+    
+</head>
+<body>
+    <div class="skippy visually-hidden-focusable overflow-hidden">
+        <div class="container-xl">
+            <a class="d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
+            <a class="d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a>
+        </div>
+    </div>
+    
+    
+    <header class="navbar navbar-expand-md navbar-dark bd-navbar">
+        
+    </header>
+    
+    <nav class="bd-subnavbar py-2" aria-label="Secondary navigation">
+        <div class="container-xxl d-flex align-items-md-center">
+            <button class="btn bd-sidebar-toggle d-md-none py-0 px-1 ms-3 order-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-expand" fill="currentColor" viewBox="0 0 16 16">
+                    <title>Expand</title>
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-collapse" fill="currentColor" viewBox="0 0 16 16">
+                    <title>Collapse</title>
+                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+    
+    
+    <div class="container-xxl my-md-4 bd-layout">
+        <aside class="bd-sidebar">
+            <nav class="collapse bd-links" id="bd-docs-nav" aria-label="Docs navigation"><ul class="list-unstyled mb-0 py-3 pt-md-1">
+                <li class="mb-1">
+                    <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#getting-started-collapse" aria-expanded="false">
+                        Getting started
+                    </button>
+                    
+                    <div class="collapse" id="getting-started-collapse">
+                        <ul class="list-unstyled fw-normal pb-1 small">
+                            <li><a href="/docs/5.1/getting-started/introduction/" class="d-inline-flex align-items-center rounded">Introduction</a></li>
+                            
+                        </ul>
+                    </div>
+                </li>
+                
+            </ul>
+        </nav>
+        
+    </aside>
+    
+    <main class="bd-main order-1">
+        <div class="bd-intro ps-lg-4">
+            <div class="d-md-flex align-items-center justify-content-between">
+                <h1 class="bd-title" id="content">SUPER-MAN</h1>
+            </div>
+            <p class="bd-lead">Documentacion de la plantilla de superman inspirada en Bootstrap.</p> 
+        </div>
+        
+        <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
+            <strong class="d-block h6 my-2 pb-2 border-bottom">En esta página</strong>
+            <nav id="TableOfContents">
+                <ul>
+                    <li><a href="#barra-de-navegacion">Barra de navegación</a>
+                        <!--<ul>
+                            <li><a href="#striped-rows">Striped rows</a></li>
+                            <li><a href="#hoverable-rows">Hoverable rows</a></li>
+                            <li><a href="#active-tables">Active tables</a></li>
+                        </ul>
+                    -->
+                </li>
+                <li><a href="#listado">Listado</a></li>
+                <li><a href="#contact-form">Formulario de contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    
+    <div class="bd-content ps-lg-4">                
+        <h2 id="barra-de-navegacion">Navigation Bar</h2>
+        <p></p>
+        <div class="bd-example">                
+            <div class="menu-main-home">  	
+                <div class="container-fluid">
+                    <div class="menu-bar">
+                        <div class="lft-side">
+                            <div class="lft-ribbon"></div>
+                            <div class="left-menu">
+                                <a href="#aboutus">Chi siamo</a>
+                                <a href="#servizi">Cosa facciamo</a>
+                            </div>
+                        </div>
+                        <div class="ctr-side">
+                            <div class="bar-logo">
+                                <img src="../block-library/themes/man/img/logo-man.png">
+                                <span class="bar-logo-super"><img src="../block-library/themes/man/img/super-label.png"></span>
+                            </div>
+                            <div id="right-triangle"></div>
+                            <div id="left-triangle"></div>
+                        </div>
+                        <div class="right-side">
+                            <div class="right-ribbon"></div>
+                            <div class="right-menu">
+                                <a href="#portfolio">Progetti</a>
+                                <a href="#contactus">Contatti</a>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="menu-hor">
+                        <li><a href="#aboutus">About Us</a></li>
+                        <li><a href="portfolio/">Our projects</a></li>
+                        <li><a href="blog/">Blog</a></li>
+                        <li><a href="contact/">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about">
+                <div class="stars">
+                    <div class="container-fluid">
+                        <div class="logo">
+                            <a href="#">
+                                <div class="logo-eroe"><img src="../block-library/themes/man/img/mansuper.png"></div>
+                                <div class="logo-lines"><img src="../block-library/themes/man/img/lines.png"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="highlight">
+            <pre tabindex="0" class="chroma">
+                <code>
+                    <textarea style="width: 100%;float: left;" rows="50">
+                        <div class="menu-main-home">  	
+                            <div class="container-fluid">
+                                <div class="menu-bar">
+                                    <div class="lft-side">
+                                        <div class="lft-ribbon"></div>
+                                        <div class="left-menu">
+                                            <a href="#aboutus">Chi siamo</a>
+                                            <a href="#servizi">Cosa facciamo</a>
+                                        </div>
+                                    </div>
+                                    <div class="ctr-side">
+                                        <div class="bar-logo">
+                                            <img src="../block-library/themes/man/img/logo-man.png">
+                                            <span class="bar-logo-super"><img src="../block-library/themes/man/img/super-label.png"></span>
+                                        </div>
+                                        <div id="right-triangle"></div>
+                                        <div id="left-triangle"></div>
+                                    </div>
+                                    <div class="right-side">
+                                        <div class="right-ribbon"></div>
+                                        <div class="right-menu">
+                                            <a href="#portfolio">Progetti</a>
+                                            <a href="#contactus">Contatti</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="menu-hor">
+                                    <li><a href="#aboutus">About Us</a></li>
+                                    <li><a href="portfolio/">Our projects</a></li>
+                                    <li><a href="blog/">Blog</a></li>
+                                    <li><a href="contact/">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="about">
+                            <div class="stars">
+                                <div class="container-fluid">
+                                    <div class="logo">
+                                        <a href="#">
+                                            <div class="logo-eroe"><img src="../block-library/themes/man/img/mansuper.png"></div>
+                                            <div class="logo-lines"><img src="../block-library/themes/man/img/lines.png"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </textarea>
+                </code>
+            </pre>
+        </div>
+        
+        
+        <div class="bd-content ps-lg-4">                
+            <h2 id="listado">Listado</h2>
+            <p>description</p>
+            <div class="bd-example">                
+                <div class="baobab-fluid">
+                    <h3 class="projects-label">PROGETTI</h3>
+                    <div class="projects-d">
+                        <div class="container-content">
+                            <h2>Ecco alcuni dei nostri progetti, costruiti con amore e spirito impavido</h2>
+                        </div>
+                    </div>
+                    <ul class="row-fluid">
+                        <li class="span6"><a href="#">Giunti Editore</a>
+                            <div class="port-cat"></div>                               
+                        </li>
+                        <li class="span6"><a href="#">Mostra Internazionale Dell’Artigianato</a>
+                            <div class="port-cat"></div>                                
+                        </li>
+                        <li class="span6"><a href="#">IKEA At Home</a>
+                            <div class="port-cat"></div>                                
+                        </li>
+                        <li class="span6"><a href="#">Firenze Made In Tuscany</a>
+                            <div class="port-cat"></div>                                
+                        </li>
+                        <li class="span6"><a href="#">DAMI International</a>
+                            <div class="port-cat"></div>
+                        </li>
+                        <li class="span6"><a href="#">Italian Angels For Growth</a>
+                            <div class="port-cat"></div>                               
+                        </li>
+                        <li class="span6"><a href="#">Parlamento italiano</a>
+                            <div class="port-cat"></div>                                
+                        </li>
+                        <li class="span12">
+                            <div class="post-more-p"><a href="#"><div class="left-bord"></div><div class="more-projects-caption">Vedi tutti</div><div class="right-bord"></div></a></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>            
+        </div>
+        <div class="highlight">
+            <pre tabindex="0" class="chroma">
+                <code>
+                    <textarea style="width: 100%;float: left;" rows="50">
+                        <div class="baobab-fluid">
+                            <h3 class="projects-label">PROGETTI</h3>
+                            <div class="projects-d">
+                                <div class="container-content">
+                                    <h2>Ecco alcuni dei nostri progetti, costruiti con amore e spirito impavido</h2>
+                                </div>
+                            </div>
+                            <ul class="row-fluid">
+                                <li class="span6"><a href="#">Giunti Editore</a>
+                                    <div class="port-cat"></div>                               
+                                </li>
+                                <li class="span6"><a href="#">Mostra Internazionale Dell’Artigianato</a>
+                                    <div class="port-cat"></div>                                
+                                </li>
+                                <li class="span6"><a href="#">IKEA At Home</a>
+                                    <div class="port-cat"></div>                                
+                                </li>
+                                <li class="span6"><a href="#">Firenze Made In Tuscany</a>
+                                    <div class="port-cat"></div>                                
+                                </li>
+                                <li class="span6"><a href="#">DAMI International</a>
+                                    <div class="port-cat"></div>
+                                </li>
+                                <li class="span6"><a href="#">Italian Angels For Growth</a>
+                                    <div class="port-cat"></div>                               
+                                </li>
+                                <li class="span6"><a href="#">Parlamento italiano</a>
+                                    <div class="port-cat"></div>                                
+                                </li>
+                                <li class="span12">
+                                    <div class="post-more-p"><a href="#"><div class="left-bord"></div><div class="more-projects-caption">Vedi tutti</div><div class="right-bord"></div></a></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </textarea>                   
+                </code>
+            </pre>
+        </div>
+        
+        
+        
+        
+        
+        
+        <div class="bd-content ps-lg-4">                
+            <h2 id="contact-form">Contact Form</h2>
+            <p>description</p>
+            
+            <style>
+                .spot-light {
+                    position: absolute;
+                    top: -19px;
+                    left: 12%;
+                }
+            </style>
+            <div class="bd-example">                
+                <div class="contact">
+                    <div class="container-fluid">
+                        <a href="https://www.man-super.com/cv/"><div class="joinus" style="opacity: 1;"></div></a>
+                        <div class="light"></div>
+                        <div class="spot1">
+                            <img src="https://www.man-super.com/wp-content/themes/man/img/spot-light-center.png">
+                            <div class="spot-content">
+                                <h3 class="contact-label"><span class="contact-label-l">Keep calm and<br>
+                                </span>call Man</h3>
+                                <div role="form" class="wpcf7" id="wpcf7-f10-o1" lang="en-US" dir="ltr">
+                                    <div class="screen-reader-response"></div>
+                                    <form action="#" method="post" class="wpcf7-form" novalidate="novalidate">
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="inputEmail" aria-required="true" aria-invalid="false" placeholder="Name"></span>
+                                            </div>
+                                            <p></p>
+                                        </div>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail"></span>
+                                            </div>
+                                            <p></p>
+                                        </div>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <span class="wpcf7-form-control-wrap your-message"><textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Message"></textarea></span>
+                                            </div>
+                                            <p></p>
+                                        </div>
+                                        <div class="control-group">
+                                            <div class="controls">
+                                                <input type="submit" value="Send" class="wpcf7-form-control wpcf7-submit btn"><span class="ajax-loader"></span>
+                                            </div>
+                                            <p></p>
+                                        </div>
+                                        <p></p>
+                                    </form>
+                                    <div class="wpcf7-response-output wpcf7-display-none"></div>
+                                </div>        
+                            </div>
+                        </div>
+                        <div class="spot-light"><img src="https://www.man-super.com/wp-content/themes/man/img/spot-light.png"></div>
+                        
+                    </div>
+                    <div class="city1-contact-bottom"></div>
+                </div>
+            </div>            
+        </div>
+        <div class="highlight">
+            <pre tabindex="0" class="chroma">
+                <code>
+                    <textarea style="width: 100%;float: left;" rows="50">
+                        <div class="contact">
+                            <div class="container-fluid">
+                                <a href="https://www.man-super.com/cv/">
+                                    <div class="joinus" style="opacity: 1;"></div>
+                                </a>
+                                <div class="light"></div>
+                                <div class="spot1">
+                                    <img src="https://www.man-super.com/wp-content/themes/man/img/spot-light-center.png">
+                                    <div class="spot-content">
+                                        <h3 class="contact-label">
+                                            <span class="contact-label-l">
+                                                Keep calm and<br>
+                                            </span>call Man
+                                        </h3>
+                                        <div role="form" class="wpcf7" id="wpcf7-f10-o1" lang="en-US" dir="ltr">
+                                            <div class="screen-reader-response"></div>
+                                            <form action="#" method="post" class="wpcf7-form" novalidate="novalidate">
+                                                <div class="control-group">
+                                                    <div class="controls">
+                                                        <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" id="inputEmail" aria-required="true" aria-invalid="false" placeholder="Name"></span>
+                                                    </div>
+                                                    <p></p>
+                                                </div>
+                                                <div class="control-group">
+                                                    <div class="controls">
+                                                        <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="E-mail"></span>
+                                                    </div>
+                                                    <p></p>
+                                                </div>
+                                                <div class="control-group">
+                                                    <div class="controls">
+                                                        <span class="wpcf7-form-control-wrap your-message">
+                                                            < textarea name="your-message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Message">< /textarea>
+                                                        </span>
+                                                    </div>
+                                                    <p></p>
+                                                </div>
+                                                <div class="control-group">
+                                                    <div class="controls">
+                                                        <input type="submit" value="Send" class="wpcf7-form-control wpcf7-submit btn"><span class="ajax-loader"></span>
+                                                    </div>
+                                                    <p></p>
+                                                </div>
+                                                <p></p>
+                                            </form>
+                                            <div class="wpcf7-response-output wpcf7-display-none"></div>
+                                        </div>        
+                                    </div>
+                                </div>
+                                <div class="spot-light">
+                                    <img src="https://www.man-super.com/wp-content/themes/man/img/spot-light.png">
+                                </div>
+                            </div>
+                            <div class="city1-contact-bottom"></div>
+                        </div>
+                    </textarea>                   
+                </code>
+            </pre>
+        </div>
+        
+        
+        
+        <div class="bd-content ps-lg-4">                
+            <h2 id="barra-de-navegacion">Title section</h2>
+            <p>description</p>
+            <div class="bd-example">                
+                ...
+            </div>            
+        </div>
+        <div class="highlight">
+            <pre tabindex="0" class="chroma">
+                <code>
+                    <textarea style="width: 100%;float: left;" rows="50">
+                        ...
+                    </textarea>                   
+                </code>
+            </pre>
+        </div>
+    </main>
+</div>
+
+
+<footer class="bd-footer py-5 mt-5 bg-light">
+    <div class="container py-5">
+        
+    </div>
+</footer>
+
+
+
+<script src="../../../bootstrap-5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/docs.js"></script>
+
+
+
+
+</body>
+</html>

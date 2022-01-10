@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<script type="text/javascript" src="variableLocal.js"></script>
+	<script type="text/javascript" src="variableGlobal.js"></script>
+
+	<script type="text/javascript">
+
+		console.log("Bucles con let");
+		for (let i = 0; i < 2; i++) {
+			console.log("bucle 1:"+i);
+			for (let i = 0; i < 2; i++) {
+				console.log("bucle 2:"+i);
+			}
+		}
+		var  f="nhj";
+		var  f="njidad";
+		console.log("Bucles con var");
+		for (var i = 0; i < 2; i++) {
+			console.log("bucle 1:"+i);
+			for (var i = 0; i < 2; i++) {
+				console.log("bucle 2:"+i);
+			}
+		}
+		
+		var nombre = 'Fer';
+		var sexo ="Masculino";
+
+		nombre = "Lola";
+		sexo = "Femenino";
+
+		//var nombre4;
+
+//let nombre2;
+		function foo(){
+			let nombre2 = "Alberto";
+			let sexo2 = "Masculino";
+
+			var nombre4 = "jose";
+
+			return [nombre2, nombre4];
+		}
+
+		console.log(foo());
+
+
+
+		const nombre3 = "Jesus";
+		const sexo3 = "Masculino"
+
+		
+
+		console.log(nombre);
+		console.log(sexo);
+
+		
+
+		console.log(nombre3);
+		console.log(sexo3);
+
+		console.log(planeta1);
+		console.log(planeta2);
+
+		//console.log(nombre4);
+
+		console.log(nombre2);
+		console.log(sexo2);
+
+		nombre3 = "María";
+		sexo3 = "Femenino";
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+let planeta2 = "Marte";

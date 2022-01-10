@@ -1,0 +1,208 @@
+<!--
+		index.php
+		Lorenzo Savini
+	* form per caricamento candidature
+	* $_GET['ret'] viene utilizzato per gestire il risultato di 'insert.php'
+-->
+
+
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Join the TEAM Super</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link href="http://www.man-super.com/wp-content/themes/man/font/monstro.css" rel="stylesheet" type="text/css" />
+    <link href="http://www.man-super.com/wp-content/themes/man/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
+  
+	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link type="text/css" href="bootstrap/css/bootstrap-fileupload.min.css" rel="stylesheet">
+	<link type="text/css" href="bootstrap/css/custom_cv.css" rel="stylesheet">
+</head>
+	
+	<body>
+		<div class="menu-main">
+			<div class="container-fluid">
+				<div class="menu-bar">
+					<div class="lft-side">
+						<div class="lft-ribbon"></div>
+						<div class="left-menu">
+							<a href="http://www.man-super.com/#aboutus">Chi siamo</a>
+							<a href="http://www.man-super.com/#servizi">Cosa facciamo</a>
+						</div>
+					</div>
+					<div class="ctr-side">
+						<div class="bar-logo">
+							<img src="http://www.man-super.com/wp-content/themes/man/img/logo-man.png">
+							<span class="bar-logo-super"><img src="http://www.man-super.com/wp-content/themes/man/img/super-label.png"></span>
+						</div>
+						<div id="right-triangle"></div>
+						<div id="left-triangle"></div>
+					</div>
+					<div class="right-side">
+						<div class="right-ribbon"></div>
+						<div class="right-menu">
+							<a href="http://www.man-super.com/#portfolio">Progetti</a>
+							<a href="http://www.man-super.com/#contactus">Contatti</a>
+						</div>
+					</div>
+				</div>
+				<ul class="menu-hor">
+					<li><a href="http://www.man-super.com/#aboutus">About Us</a></li>
+					<li><a href="http://www.man-super.com/portfolio/">Our projects</a></li>
+					<li><a href="http://www.man-super.com/blog/">Blog</a></li>
+					<li><a href="http://www.man-super.com/contact/">Contact Us</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="kingkong"></div>
+
+		<div class="container">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12 row-fluid wrapper_cv">
+						<div class="row-fluid title">
+							<div class="pull-left span6"><h2>Compila adesso la tua candidatura!</h2></div>
+							<div class="pull-right span6"><p>I campi contrassegnati con * sono obbligatori</p></div>
+						</div>
+												<form action="insert.php" id="contact-form" class="form-horizontal" method="post" enctype="multipart/form-data">
+							<fieldset>
+								<div class="span6">
+									<label for="name"><strong>Nome</strong><span class="required">*</span></label>
+									<input type="text" class="input-xlarge" name="name" id="name" required autofocus>
+									<label for="surn"><strong>Cognome</strong><span class="required">*</span></label>
+									<input type="text" class="input-xlarge" name="surn" id="surn" required>
+									<label for="birth"><strong>Data di nascita</strong><span class="required">*</span></label>
+									<input type="date" class="input" placeholder="gg/mm/aaaa" name="birth" id="birth" required>
+									<label for="check"><strong>Settore d'interesse</strong></label>
+									<div id="check">
+										<ul>
+											<li class="squaredFour"><input type="checkbox" name="w_des" value="Web designer">Web Designer</li>
+											<li class="squaredFour"><input type="checkbox" name="w_dev" value="Web developer">Web Developer</li>
+											<li class="squaredFour"><input type="checkbox" name="fe_dev" value="Front-End developer">Front-End Developer</li>
+											<li class="squaredFour"><input type="checkbox" name="s_spe" value="Seo specialist">Seo Specialist</li>
+											<li class="squaredFour"><input type="checkbox" name="s_man" value="Social manager">Social Manager</li>
+											<li class="squaredFour"><input type="checkbox" name="commer" value="Commerciale">Commerciale</li>
+											<li class="squaredFour"><input type="checkbox" name="other" id="other" value="Altro" >Altro</li>
+											<li class="squaredFour">
+												<div id="other_wi">
+													<label for="other_w"><strong>Inserisci il tuo settore d'interesse</strong></label>
+													<input type="text" class="input" name="other_w" id="other_w">
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="span6">
+									<label>&nbsp;<strong>Carica una foto</strong><span class="note">(estensioni accettate: .jpg / .png / .gif / .bmp)</span></label>
+									<div class="fileupload fileupload-new" data-provides="fileupload">
+										<div class="fileupload-new thumbnail">
+											<img src="http://www.placehold.it/80x80/EFEFEF/AAAAAA&text=immagine" />
+										</div>
+										<div class="fileupload-preview fileupload-exists thumbnail"></div>
+										<span class="btn btn-file">
+											<span class="fileupload-new">Seleziona immagine</span>
+											<span class="fileupload-exists">Cambia</span>
+											<input type="file" id="img" name="img"/>
+										</span>
+										<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Rimuovi</a>
+									</div>
+									<label><strong>Curriculum vitae</strong><span class="required">*</span><span class="note">(estensioni accettate: .pdf / .doc)</span></label>
+									<div class="fileupload fileupload-new" data-provides="fileupload">
+										<div class="input-append">
+											<div class="uneditable-input">
+												<i class="icon-file fileupload-exists"></i> 
+												<span class="fileupload-preview"></span>
+											</div>
+											<span class="btn btn-file">
+												<span class="fileupload-new">Seleziona file</span>
+												<span class="fileupload-exists">Cambia</span>
+												<input type="file" name="cv" id="cv"  />
+											</span>
+											<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Rimuovi</a>
+										</div>
+									</div>	
+									<label for="url"><strong>Sito web</strong></label>
+									<input type="text" class="input-xlarge" placeholder="http://" name="url" id="url" >
+									<label for="asp"><strong>Aspirazioni / Motivazioni</strong></label>
+									<textarea name="asp" id="asp"></textarea>
+								</div>
+									
+								<div class="span12 buttons">
+									<button type="submit" class="btn btn-primary btn-large">Invia</button>
+									<button type="reset" class="btn btn-large">Reset</button>
+								</div>
+									
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+				
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="bootstrap/js/bootstrap-fileupload.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+			    
+			    $('#other').is(':checked') ? $("#other_wi").show() : $("#other_wi").hide();
+
+			    $('#other').change(function() {
+			        $('#other').is(':checked') ? $("#other_wi").show() : $("#other_wi").hide();
+			    });
+			    
+			    $("#contact-form").submit(function() {
+			        if( $("#cv").val()=='' ) {
+			            alert("Inserisci il tuo curriculum???");
+			            event.preventDefault();
+			        } else if( (!$("input[name=w_des]").is(":checked")) && (!$("input[name=w_dev]").is(":checked")) && (!$("input[name=fe_dev]").is(":checked")) && (!$("input[name=s_spe]").is(":checked")) && (!$("input[name=s_man]").is(":checked")) && (!$("input[name=commer]").is(":checked")) && (!$("#other").is(":checked"))) {
+			            alert("Dovresti inserire almeno un settore di interesse");
+			            event.preventDefault();
+			        }
+			    });
+			});
+		</script>
+		
+		<div class="footer">
+			<div class="container-office">
+				<div class="row-fluid">
+					<div class="span6">
+						<a target="_blank" href="http://maps.google.pl/maps?saddr=Via+della+Piazzuola&amp;hl=it&amp;ll=43.786927,11.27502&amp;spn=0.030269,0.066047&amp;sll=43.789098,11.276707&amp;sspn=0.001892,0.004128&amp;geocode=FQQrnAIdphGsAA&amp;mra=mr&amp;t=m&amp;z=15">
+						<span class="office">Florence</span>
+						<span class="office-c">Italy</span><br>
+						Via della Piazzuola 45<br>
+						50133 Firenze</a><br>
+						tel. +39 055 5530635<br>
+						fax +39 055 5530628<br>
+					</div>
+					<div class="span6">
+						<a target="_blank" href="http://maps.google.pl/maps?saddr=Miami+USA+1001+Brickell+Bay+Drive+Suite+1402+Miami,+fl+33131&amp;hl=it&amp;sll=43.786927,11.27502&amp;sspn=0.030269,0.066047&amp;mra=ls&amp;t=m&amp;z=17">
+						<span class="office">Miami</span>
+						<span class="office-c">USA</span><br>
+						1001 Brickell Bay Drive Suite 1402<br>
+						Miami, fl 33131</a><br>
+						tel. +1 (786) 360 2535<br>
+						fax +1 (786) 360 2536<br>
+					</div>
+				</div>
+				<div class="followus">
+					<a target="_blank" href="https://www.facebook.com/manadv"><div class="social fb"><span></span></div></a>
+					<a target="_blank" href="https://twitter.com/mansrl"><div class="social tw"><span></span></div></a>
+					<a target="_blank" href="http://it.linkedin.com/in/manadv"><div class="social in"><span></span></div></a>
+					<a target="_blank" href="http://dribbble.com/Man"><div class="social dr"><span></span></div></a>
+				</div>
+				<div class="foot">Made with all the love by MAN adv.</div>
+			</div>
+		</div>
+				
+	</body>
+</html>
+    
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>PArtida cartas</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+
+    <script src='js/mazo.js'></script>
+    <script src='js/jugador.js'></script>
+    <script src='js/caracteristica.js'></script>
+    <script src='js/carta.js'></script>
+    <script src='js/app.js'></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+
+            let configBaraja = [
+                {
+                    'nombre': 'thor',
+                    'caracteristicas' : 
+                        {
+                            'vida': 89,
+                            'puntuacion' : 90,
+                            'fuerza' : 91,
+                        }
+
+                },
+                {
+                    'nombre': 'ares',
+                    'caracteristicas' : 
+                        {
+                            'vida': 99,
+                            'puntuacion' : 70,
+                            'fuerza' : 81,
+                        }
+                    
+                },
+                {
+                    'nombre': 'aquaman',
+                    'caracteristicas' : 
+                        {
+                            'vida': 56,
+                            'puntuacion' : 75,
+                            'fuerza' : 21,
+                        }
+                    
+                },
+                {
+                    'nombre': 'batman',
+                    'caracteristicas' : 
+                        {
+                            'vida': 46,
+                            'puntuacion' : 65,
+                            'fuerza' : 27,
+                        }
+                    
+                },
+            ]
+			app = new App();
+            app.crearBaraja(configBaraja);
+			app.crearJugadores(2);
+
+            app.jugarPartida();
+		});
+
+    </script>
+</head>
+<body>
+
+
+    <div id="cartaSeleccionada"></div>
+    
+</body>
+</html>

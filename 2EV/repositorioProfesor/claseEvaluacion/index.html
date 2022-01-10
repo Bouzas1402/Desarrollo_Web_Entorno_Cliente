@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>ClassRoom</title>
+
+    <script src = "lib/faker/faker.js" type = "text/javascript"></script>
+    <script>
+      var randomName = faker.name.findName(); // Caitlyn Kerluke
+      var randomEmail = faker.internet.email(); // Rusty@arne.info
+      var randomCard = faker.helpers.createCard(); // random contact card containing many properties
+    </script>
+  
+    
+    <!-- include source files here... -->
+    <script src="src/student.js"></script>
+    <script src="src/classroom.js"></script>
+    <script src="src/app.js"></script>
+  
+    <script>
+
+        var app;
+        document.addEventListener("DOMContentLoaded", function(event) { 
+          app = new App();
+          app.createClassRooms(5);  
+          
+          
+
+          
+        });
+      </script>
+  
+</head>
+<body >
+    
+</body>
+</html>

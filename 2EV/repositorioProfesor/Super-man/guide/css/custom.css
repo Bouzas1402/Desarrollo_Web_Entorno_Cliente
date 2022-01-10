@@ -1,0 +1,13 @@
+.bd-navbar {
+    padding: 0.75rem 0;
+    background-color: #b72f2f;
+}
+
+body{
+    background-color: transparent;
+}
+
+.btn{
+    background-image: none;
+    box-shadow: none;
+}
