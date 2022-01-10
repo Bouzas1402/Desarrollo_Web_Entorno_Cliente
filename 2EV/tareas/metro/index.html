@@ -7,11 +7,11 @@
 
     <!-- Favicons -->
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <link rel="stylesheet" href="">
+
 
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="../faker/assets/bootstrap/css/style.css">
-    <link rel="stylesheet" type="text/css" href="../faker/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
     <!-- <link rel="json" type="json" href="json/lineas.json"> -->
 
     <script type="text/javascript" src="assets/js/metro.js"></script>
@@ -19,6 +19,7 @@
     <script type="text/javascript" src="assets/js/lineas.js"></script>
     <script type="text/javascript" src="assets/js/caminos.js"></script>
 
+    <script type="application/json" src="assets/json/lineas.json"></script>
 
     <script type="text/javascript">
        const lineas = [{"nombre": "linea-1", "color": "#ffc107", "estaciones": ["Villanueva-de-Castellon","Alberic","Massalaves","Montortal","La-Alcudia","Benimodo","Carlet","Ausias-March","Alginet","Font-Almaguer","Espinoca","Omet","Picassent","Sant-Ramon","Realon","Colegio-el-Vedat","Torrent","Picanya","Paiporta","Valencia-Sur","Sant-Isidre","Safranar","Patraix","Joaquin-Sorolla-Jesus","Plaza-España","A-Guimera","Turia","Campanar","Beniferri","Empalme","Burjassot","Burjassot-Godella","Godella","Rocafort","Massarrojos","Moncada-Alfara","Seminari-CEU","Masies","Hospital-Psiquiatric","Betera"]},
@@ -30,17 +31,11 @@
            {"nombre": "linea-7", "color": "#fd7e14", "estaciones": ["Maritim-Serreria","Ayora","Amistat-Casa-de-Salud","Aragon","Alameda","Colon","Bailen","Joaquin-Sorolla-Jesus","Patraix","Safranar","Sant-Isidre","Valencia-Sur","Paiporta","Picanya","Torrent","Torrent-Avinguda"]},
            {"nombre": "linea-8", "color": "#00FFFF", "estaciones": ["Maritim-Serreria","Frencesc-Cubells","Grau-Canyamelar","Marina-Reial-Joan-Carles-I"]},
            {"nombre": "linea-9", "color": "#664d03", "estaciones": ["Riba-roja-de-Turia","Masia-de-Traver","La-Presa","La-Coya","Aereopuerto","Rosas","Manises", "Salto-del-Agua", "Quart-del-Poblet", "Faitanar", "Mislata-Almassil", "Mislata", "Nou-de-Octubre","Av-del-Cid","A-Guimera","Xativa","Colon","Alameda","Facultats","Benimaclet","Machado","Alboraya-Palmaret","Alboraya-Peris-Arago"]}];
-        let metro;
 
-        function inicializar(){
-
-        }
-       document.addEventListener("DOMContentLoaded", function (event){
+       let metro;
+       document.addEventListener("DOMContentLoaded", function (){
            metro = new Metro(lineas);
        });
-
-
-
 
 
     </script>
@@ -146,7 +141,7 @@
     </template>
 <span class="icon-lineas"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
 
-    <script type="text/javascript" src="../faker/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

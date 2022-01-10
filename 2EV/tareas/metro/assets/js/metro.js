@@ -1,8 +1,6 @@
-// const colores = ["red", "blue","yellow", "lime", "aqua", "fuchsia", "gray", "olive", "navy", "maroon", "green", "purple"];
-
 class Metro {
     constructor(lineas) {
-        this.nombre = "Metro madrid";
+        this.nombre = "Metro Valencia";
         this.lineas = [];
         lineas.forEach(linea => {
             let nuevaLinea = new Lineas(linea.nombre, linea.color, linea.estaciones);
@@ -11,6 +9,7 @@ class Metro {
         this.printLineasBarra();
         this.printMetro(this.lineas[0].nombre);
     }
+
 
     getEstacion(nombre){
         let estaciones = [];
@@ -55,26 +54,25 @@ class Metro {
         document.getElementById('menu-lineas').appendChild(menuLineas);
     }
 
-    abrirModal(estacion) {
-        //
+    abrirModal(estacionComienzo) {
         document.getElementById('cuerpo-modal').innerHTML = "";
-        //
-        document.querySelector('.modal-title').innerHTML = estacion;
+        document.querySelector('.modal-title').innerHTML = estacionComienzo.replaceAll('-', ' ');
         const caminos = [];
         let contador = 0;
+
         this.lineas.forEach(linea => {
-                linea.estaciones.forEach(parada =>
-                    {
-                        if (parada.nombre === estacion) {
-                            caminos.push([linea.nombre, linea.color, parada.nombre]);
-                            parada.caminos.forEach(camino => {
-                                caminos[contador].push(camino.destino);
-                            })
-                            contador++;
-                        }
+            for (let j = 0; j < linea.estaciones.length; j++) {
+                if (linea.estaciones[j].nombre === estacionComienzo) {
+                    caminos.push([linea.nombre, linea.color]);
+                    linea.estaciones[j].caminos.forEach(camino => {
+                        caminos[contador].push(camino.destino);
                     })
+                    contador++;
+                    break;
+                }
+            }
         })
-        //
+
         const templateLineas = document.querySelector('#plantilla-lineas').content;
         const templateParadas = document.querySelector('#plantilla-estaciones').content;
         const templateOptions = document.querySelector('#plantilla-options').content;
@@ -116,8 +114,11 @@ class Metro {
             options.querySelector('.parada-hidden').id = camino[0] + 'paradahidden';
             options.querySelector('.div-respuesta span').style.color = camino[1];
             options.querySelector('.div-respuesta').id = camino[0] + 'respuesta';
+            options.querySelector('datalist').innerHTML = "";
             this.getLinea(camino[0]).estaciones.forEach(estacion => {
-                options.querySelector('datalist').innerHTML += "<option value='" + estacion.nombre + "'>";
+              if (estacion.nombre !== estacionComienzo) {
+                  options.querySelector('datalist').innerHTML += "<option value='" + estacion.nombre + "'>";
+              }
             })
             contenidoModal.appendChild(document.importNode(options, true))
         })
@@ -126,20 +127,20 @@ class Metro {
 
     calcularParadas(lineaParada){
         let estacionComienzo = document.getElementById(lineaParada + 'paradahidden').value;
-        let estacionDestino = document.getElementById(lineaParada + 'selectinput').value;
+        let estacionDestino = document.getElementById(lineaParada + 'selectinput').value.replaceAll(" ", "-").toLowerCase();
 
-        let linea = this.getLinea(lineaParada);
         let indiceComienzo = 0;
-        let indiceDestino = "No existe la parada";
+        let indiceDestino = "No existe la parada o no está en esta linea";
         let respuesta = 0;
+        let linea = this.getLinea(lineaParada);
         for (let i = 0; i < linea.estaciones.length; i++) {
-            if (linea.estaciones[i].nombre === estacionComienzo){
+            if (linea.estaciones[i].nombre.toLowerCase() === estacionComienzo){
                 indiceComienzo = i;
                 break;
             }
         }
         for (let i = 0; i < linea.estaciones.length; i++) {
-            if (linea.estaciones[i].nombre === estacionDestino){
+            if (linea.estaciones[i].nombre.toLowerCase() === estacionDestino){
                 indiceDestino = i;
                 break;
             }
