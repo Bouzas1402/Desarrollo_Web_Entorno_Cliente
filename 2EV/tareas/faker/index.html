@@ -3,13 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Faker</title>
-    <link rel="stylesheet" type="text/css" href="../faker/assets/bootstrap/css/bootstrap.min.css">
 
+    <script src="assets/js/faker.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+
+    <script>
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let x = document.querySelector('#img');
+            let x1 = document.querySelector('#img1');
+            let x2 = document.querySelector('#img2');
+            let y = faker.image.animals();
+            let z = faker.image.lorempicsum.image(0,0, false);
+            let z1 = faker.image.lorempixel.abstract();
+            x.src = y;
+            x1.src = z;
+            x2.src = z1;
+            console.log(z);
+
+        })
+
+    </script>
 </head>
 <body>
-<img src="http://placeimg.com/640/480/food" alt="Girl in a jacket" width="500" height="600">
+<img id="img" alt="Girl in a jacket" width="200" height="200">
+<img id="img1" alt="Girl in a jacket" width="400" height="400">
+<img id="img2" alt="Girl in a jacket" width="500" height="600">
 
-<script type="text/javascript" href="assets/js/faker.js" media="all"></script>
+
+
+<script type="text/javascript" href="assets/js/script.js"></script>
 <script type="text/javascript" src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>

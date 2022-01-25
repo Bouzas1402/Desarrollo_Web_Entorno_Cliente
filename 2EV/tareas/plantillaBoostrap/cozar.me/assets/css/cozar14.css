@@ -521,6 +521,10 @@ center{
     min-height: 280px;
 }
 
+.fa-github {
+    margin-right: 15px;
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (max-width: 767px) {
 
