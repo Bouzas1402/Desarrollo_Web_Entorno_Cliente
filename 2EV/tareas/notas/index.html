@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notas</title>
+
+    <script src="assets/data/data-couses.js"></script>
+    <script src="assets/faker/faker.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function (){
+            for (let i = 0; i < cursos.length; i++){
+                let alumnos = [];
+                for (let j = 0; j < cursos[i].capacidad; j++){
+                    alumnos.push(faker.name.findName());
+                }
+                cursos[i].estudiantes.push(alumnos);
+            }
+        console.log(cursos);
+        })
+
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+[{
+  "curso" : "1DAW",
+  "capacidad" : 30,
+  "estudiantes" : [],
+  "Final": []
+},
+{
+  "curso" : "2DAW",
+  "capacidad" : 20,
+  "estudiantes" : [],
+  "Final": []
+},
+{
+  "curso" : "1DAM",
+  "capacidad" : 30,
+  "estudiantes" : [],
+  "Final": []
+},
+{
+  "curso" : "2DAM",
+  "capacidad" : 20,
+  "estudiantes" : [],
+  "Final": []
+}
+]
