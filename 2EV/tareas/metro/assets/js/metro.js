@@ -8,6 +8,9 @@ class Metro {
         })
         this.printLineasBarra();
         this.printMetro(this.lineas[0].nombre);
+
+        //sleep(500).then ver esto para cargar datos json, como la ejecucion sigue aunque la carga de datos sigue debes esperar
+        // un tiempo para que se complete la carga de los datos, hay otros metodos, ese es uno
     }
 
 
