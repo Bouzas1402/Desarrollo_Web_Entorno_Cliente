@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: arial;
+}
+
+header {
+  margin: 30px 0;
+  text-align: center;
+}
+
+nav {
+  margin: 0;
+  padding: 20px 0;
+  border-top: 1px dashed rgba(0, 0, 0, 0.15);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+}
+
+header nav {
+  margin-top: 30px;
+}
+
+footer nav {
+  border-bottom: none;
+}
+
+.breadcrumbs ul {
+  flex-wrap: wrap;
+}
+
+h1 sub {
+  font-size: 30px;
+  font-style: italic;
+}
+
+h1 em {
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 8px;
+  display: block;
+  font-style: italic;
+  font-weight: normal;
+}
+
+h4 {
+  margin-bottom: 4px;
+}
+
+a:hover {
+  transition: all linear 0.2s;
+  text-decoration: underline;
+}
+
+body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.toggle-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.toggle-panel > label {
+  text-decoration: underline;
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+}
+
+.toggle-panel > label:hover {
+  color: #0d0d0e;
+}
+
+.toggle-panel > input[type=checkbox] {
+  display: none;
+}
+
+.toggle-panel .toggle-panel-content {
+  display: none;
+  clear: both;
+}
+
+.toggle-panel > input[type=checkbox]:checked + .toggle-panel-content {
+  display: block;
+}
+
+body {
+  padding: 0 20px;
+}
+
+.unmasked-value {
+  float: left;
+}
+
+.form-item {
+  clear: both;
+}
+
+.section-h {
+  margin-top: 50px;
+}
+
+.section-h a {
+  text-decoration: none;
+}
+
+.section-h:after {
+  content: '#';
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.3);
+  margin-left: 8px;
+}
+
+.example__complete {
+  display: none;
+  margin-left: 5px;
+}
+
+.example__complete::after {
+  content: '✔';
+}
+
+.learn-more {
+  position: absolute;
+  right: 1rem;
+  bottom: 0;
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-top: 20px;
+}
+
+.color-input {
+  position: relative;
+}
+
+#color-box {
+  display: block;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  width: 30px;
+  background-color: #ff0;
+}
+
+kbd {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+fieldset p {
+  margin: 10px 0;
+}
+
+fieldset *:last-child {
+  margin-bottom: 0;
+}
+
+.input-select {
+  display: flex;
+}
+
+.input-select select {
+  width: 150px;
+}
+
+.input-checkbox {
+  display: flex;
+}
+
+.input-checkbox label input {
+  transform: translateY(2px);
+}
+.input-checkbox label {
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  margin: 0;
+}
+
+/* rating */
+.star-rating form {
+  display: none;
+}
+.star-rating .thanks-msg {
+  display: none;
+  font-size: 20px;
+  margin: 40px auto;
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1411764705882353);
+  padding: 8px 20px;
+  border-left: 3px solid #4caf50;
+  border-radius: 20px;
+}
+.star-rating input {
+  display: none;
+}
+.star-rating {
+  margin: 50px auto;
+  display: table;
+  width: 350px;
+}
+.star-rating label {
+  padding: 10px;
+  float: right;
+  font-size: 44px;
+  color: #eee;
+}
+.star-rating input:not(:checked) ~ label:hover,
+.star-rating input:not(:checked) ~ label:hover ~ label {
+  color: #ffc107;
+}
+.star-rating input:checked ~ label {
+  color: #ffc107;
+}
+.star-rating form .rating-reaction:before {
+  width: 100%;
+  float: left;
+  color: #ffc107;
+}
+.star-rating #rating-1:checked ~ form .rating-reaction:before {
+  content: "I hate it";
+}
+.star-rating #rating-2:checked ~ form .rating-reaction:before {
+  content: "I don't like it";
+}
+.star-rating #rating-3:checked ~ form .rating-reaction:before {
+  content: "It is good";
+}
+.star-rating #rating-4:checked ~ form .rating-reaction:before {
+  content: "I like it";
+}
+.star-rating #rating-5:checked ~ form .rating-reaction:before {
+  content: "I love it";
+}
+.star-rating input:checked ~ form {
+  border-top: 1px solid #ddd;
+  width: 100%;
+  padding-top: 15px;
+  margin-top: 15px;
+  display: inline-block;
+}
+.star-rating form .rating-reaction {
+  font-size: 24px;
+  float: left;
+  text-transform: capitalize;
+}
+.star-rating form .submit-rating {
+  border: none;
+  outline: none;
+  background: #795548;
+  color: #ffc107;
+  font-size: 18px;
+  border-radius: 4px;
+  padding: 5px 15px;
+  cursor: pointer;
+  float: right;
+}
+form .submit-rating:hover {
+  background-color: #333;
+}
