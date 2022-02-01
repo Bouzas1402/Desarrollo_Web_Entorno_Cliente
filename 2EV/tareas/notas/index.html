@@ -2,175 +2,337 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Notas</title>
 
+    <link href="assets/bootstrap/css/bootstrap.min.css">
+    <link href="assets/style.css">
 
     <script src="assets/faker/faker.js"></script>
     <script src="assets/js/App.js"></script>
 
     <script>
 
-
-         /*   sleep(500).then(() => {
-
-                for (let i = 0; i < cursos.length; i++){
-                    for (let j = 0; j < cursos[i].capacidad; j++){
-                        cursos[i].estudiantes.push(faker.name.findName());
-                    }
-                    for (let j = 0; j < Object.keys(cursos[i].calificaciones).length - 1; j++) {
-                        for (let k = 0; k < cursos[i].capacidad; k++) {
-                            let notaEstudiante = {nombre : cursos[i].estudiantes[k], nota: notaAleatoria()}
-                            Object.values(cursos[i].calificaciones)[j].push(notaEstudiante);
-                        }
-                    }
-                    for (let k = 0; k < cursos[i].capacidad; k++) {
-                        let notaFinal = Math.round((Object.values(cursos[i].calificaciones)[2][k].nota + Object.values(cursos[i].calificaciones)[1][k].nota + Object.values(cursos[i].calificaciones)[0][k].nota) / 3);
-                        let notaEstudiante = {nombre : cursos[i].estudiantes[k], nota: notaFinal}
-                        Object.values(cursos[i].calificaciones)[3].push(notaEstudiante);
-                    }
-
-                }
-
-
-            }); */
-            var datos = [];
+        var app;
         document.addEventListener('DOMContentLoaded', function (){
-            datos = sacarDatos();
-            sleep(1000).then(() => {
-                console.log(datos);
-                pintarPlantillas(datos);
-            });
+            app = new App();
+            app.sacarDatos();
+            app.sleep(600).then(() => {
+                app.pintarGraficas();
+            })
 
         })
-
-        function notaAleatoria(){
-            return faker.datatype.float({min: 1, max: 10, precision: .1});
-        }
     </script>
 
 
 </head>
 <body>
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar col-4">
 
-    <div class="chart-container justify-content-center col-md-12">
-        <canvas id="myChart"></canvas>
-    </div>
-    <div class="chart-container justify-content-center col-md-12">
-        <canvas id="myChart1"></canvas>
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link " href="index.html">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="components-alerts.html">
+                        <i class="bi bi-circle"></i><span>Alerts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-accordion.html">
+                        <i class="bi bi-circle"></i><span>Accordion</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-badges.html">
+                        <i class="bi bi-circle"></i><span>Badges</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-breadcrumbs.html">
+                        <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-buttons.html">
+                        <i class="bi bi-circle"></i><span>Buttons</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-cards.html">
+                        <i class="bi bi-circle"></i><span>Cards</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-carousel.html">
+                        <i class="bi bi-circle"></i><span>Carousel</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-list-group.html">
+                        <i class="bi bi-circle"></i><span>List group</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-modal.html">
+                        <i class="bi bi-circle"></i><span>Modal</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-tabs.html">
+                        <i class="bi bi-circle"></i><span>Tabs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-pagination.html">
+                        <i class="bi bi-circle"></i><span>Pagination</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-progress.html">
+                        <i class="bi bi-circle"></i><span>Progress</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-spinners.html">
+                        <i class="bi bi-circle"></i><span>Spinners</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-tooltips.html">
+                        <i class="bi bi-circle"></i><span>Tooltips</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="forms-elements.html">
+                        <i class="bi bi-circle"></i><span>Form Elements</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-layouts.html">
+                        <i class="bi bi-circle"></i><span>Form Layouts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-editors.html">
+                        <i class="bi bi-circle"></i><span>Form Editors</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-validation.html">
+                        <i class="bi bi-circle"></i><span>Form Validation</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Forms Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="tables-general.html">
+                        <i class="bi bi-circle"></i><span>General Tables</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="tables-data.html">
+                        <i class="bi bi-circle"></i><span>Data Tables</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Tables Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="charts-chartjs.html">
+                        <i class="bi bi-circle"></i><span>Chart.js</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="charts-apexcharts.html">
+                        <i class="bi bi-circle"></i><span>ApexCharts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="charts-echarts.html">
+                        <i class="bi bi-circle"></i><span>ECharts</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Charts Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="icons-bootstrap.html">
+                        <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="icons-remix.html">
+                        <i class="bi bi-circle"></i><span>Remix Icons</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="icons-boxicons.html">
+                        <i class="bi bi-circle"></i><span>Boxicons</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Icons Nav -->
+
+        <li class="nav-heading">Pages</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>Profile</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>F.A.Q</span>
+            </a>
+        </li><!-- End F.A.Q Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-contact.html">
+                <i class="bi bi-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </li><!-- End Contact Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-register.html">
+                <i class="bi bi-card-list"></i>
+                <span>Register</span>
+            </a>
+        </li><!-- End Register Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-login.html">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>Login</span>
+            </a>
+        </li><!-- End Login Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-error-404.html">
+                <i class="bi bi-dash-circle"></i>
+                <span>Error 404</span>
+            </a>
+        </li><!-- End Error 404 Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-blank.html">
+                <i class="bi bi-file-earmark"></i>
+                <span>Blank</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
+    </ul>
+
+</aside>
+
+    <div id="graficos">
+
     </div>
 
     <template id="div-canvas">
-        <div class="chart-container justify-content-center col-md-12">
-
+        <div class="col-8">
+            <div class="chart-container justify-content-center">
+                <h1></h1>
+            </div>
         </div>
+
     </template>
 
+ <!-- Mirar esta barra -->
+<!--         <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Vertical Bar Chart</h5>
+
+               Vertical Bar Chart
+<div id="verticalBarChart" style="min-height: 400px;" class="echart"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        echarts.init(document.querySelector("#verticalBarChart")).setOption({
+            title: {
+                text: 'World Population'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {},
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                boundaryGap: [0, 0.01]
+            },
+            yAxis: {
+                type: 'category',
+                data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'World']
+            },
+            series: [{
+                name: '2011',
+                type: 'bar',
+                data: [18203, 23489, 29034, 104970, 131744, 630230]
+            },
+                {
+                    name: '2012',
+                    type: 'bar',
+                    data: [19325, 23438, 31000, 121594, 134141, 681807]
+                }
+            ]
+        });
+    });
+</script>
+ End Vertical Bar Chart
+
+</div>
+</div>
+</div> -->
+    <script src="assets/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="assets/chart/chart.js"></script>
-     <script>
-        /*   const template = document.querySelector('#div-canvas').content;
-          const div = new DocumentFragment();
-          div.appendChild(document.importNode(template, true));
-          const datosNota = [];
-          const datosAlumnos = [];
-          for (let i = 0; i < cursosCentro.length; i++) {
-
-              let tablaAlumnosNota = document.createElement("canvas");
-              let tablaMediaNotas = document.createElement("canvas");
-              tablaAlumnosNota.id = cursos[i].curso;
-              tablaMediaNotas.id = cursos[i].curso + '-media';
-
-              div.appendChild(tablaAlumnosNota)
-              document.body.insertBefore(div, document.lastChild);
-
-          for (let j = 0; j < cursosCentro[i].capacidad; j++) {
-              datosNota.push(Object.values(cursosCentro[i].calificaciones)[3][j].nota);
-              datosAlumnos.push(Object.values(cursosCentro[i].calificaciones)[3][j].nombre);
-          }
-
-          const ctx1 = document.getElementById(cursos[i].curso);
-          const myChart = new Chart(ctx1, {
-              type: 'bar',
-              data: {
-                  labels: datosAlumnos,
-                  datasets: [{
-                      label: ' - Nota Final',
-                      data: datosNota,
-                      backgroundColor: function (context) {
-                          var index = context.dataIndex;
-                          var value = context.dataset.data[index];
-                          return value < 5 ? 'rgba(239,101,101,0.93)' :
-                              value >= 5 && value < 8 ? 'rgba(166,180,238,0.88)' :
-                                  'rgba(187,245,175,0.78)';
-                      },
-                      borderColor: function (context) {
-                          var index = context.dataIndex;
-                          var value = context.dataset.data[index];
-                          return value < 5 ? 'rgb(182,0,0)' :
-                              value >= 5 && value < 8 ? 'rgb(0,19,159)' :
-                                  'rgb(42,194,1)';
-                      },
-                      borderWidth: 2
-                  }]
-              },
-              options: {
-                  title: {
-                    display: true,
-                    position: 'top',
-                    text: cursosCentro[0].curso
-                  },
-                  scales: {
-                      y: {
-                          max: 10,
-                          beginAtZero: true
-                      }
-                  }
-              }
-          });
-          let suspensos = 0;
-          let aprobados = 0;
-          let sobresalientes = 0;
-
-          for (let i = 0; i < datosNota.length; i++){
-              if(datosNota[i] < 5){
-                  suspensos++;
-              } else if(datosNota[i] > 5 && datosNota[i] < 8){
-                  aprobados++;
-              } else {
-                  sobresalientes++;
-              }
-
-          }
-
-          const ctx2 = document.getElementById(cursos[i].curso + '-media');
-          const myChart1 = new Chart(ctx2, {
-              type: 'bar',
-              data: {
-                  labels: ['Suspensos', 'Aprobados', 'Sobresalientes'],
-                  datasets: [{
-                      label: ' - Nota Final',
-                      data: [suspensos, aprobados, sobresalientes],
-                      backgroundColor: [
-                          'rgba(239,101,101,0.93)',
-                          'rgba(187,245,175,0.78)',
-                          'rgba(166,180,238,0.88)'
-                      ],
-                      borderColor: [
-                          'rgb(182,0,0)',
-                          'rgb(0,19,159)',
-                          'rgb(42,194,1)'
-                      ],
-                      borderWidth: 2
-                  }]
-              },
-              options: {
-                  title: {
-                      display: true,
-                      position: 'top',
-                      text: 'Aprobados'
-                  }
-              }
-          });
-          } */
-    </script>
 </body>
 </html>
