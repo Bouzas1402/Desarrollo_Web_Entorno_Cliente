@@ -20,7 +20,8 @@
             app = new App();
             app.sacarDatos();
             app.sleep(600).then(() => {
-                app.pintarGraficas();
+
+                app.pintarComienzo();
             })
 
         })
@@ -39,13 +40,12 @@
                 <li class="nav-item">
                     <a class="nav-link " href="">
                         <i class="bi bi-grid"></i>
-                        <span>Dashboard</span>
+                        <span>Todos los cursos</span>
                     </a>
-                </li><!-- End Dashboard Nav -->
-
+                </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#nombre-modal" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+                        <span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="nombre-modal" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                         <li>
@@ -60,7 +60,7 @@
         </aside>
         <main id="main">
             <section class="section dashboard">
-                <div id="graficos" class="col">
+                <div id="graficos" class="col-10">
 
                 </div>
             </section>
@@ -95,6 +95,14 @@
                 </div>
             </div>
         </div>
+    </template>
+
+    <template id="lista-cursos">
+        <li class="nav-item">
+            <a class="nav-link " href="">
+                <span></span>
+            </a>
+        </li>
     </template>
 
  <!-- Mirar esta barra -->
