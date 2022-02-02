@@ -49,18 +49,19 @@ class App {
     pintarGraficas() {
         for (let i = 0; i < this.cursos.length; i++) {
             const divNotas = app.generarDivCanvas();
-            const divNotasMedias = app.generarDivCanvas();
+            //const divNotasMedias = app.generarDivCanvas();
+           divNotas.querySelector('.card-title').textContent = this.cursos[i].cursos;
 
             let tablaAlumnosNota = document.createElement("canvas");
-            let tablaMediaNotas = document.createElement("canvas");
+            //let tablaMediaNotas = document.createElement("canvas");
             tablaAlumnosNota.id = this.cursos[i].curso;
-            tablaMediaNotas.id = this.cursos[i].curso + '-media';
+            //tablaMediaNotas.id = this.cursos[i].curso + '-media';
 
             divNotas.querySelector('.chart-container').appendChild(tablaAlumnosNota);
-            divNotasMedias.querySelector('.chart-container').appendChild(tablaMediaNotas);
+            //divNotasMedias.querySelector('.chart-container').appendChild(tablaMediaNotas);
 
             document.getElementById('graficos').appendChild(divNotas);
-            document.getElementById('graficos').appendChild(divNotasMedias);
+            //document.getElementById('graficos').appendChild(divNotasMedias);
 
             const datosNota = [];
             const datosAlumnos = [];
@@ -71,7 +72,7 @@ class App {
             const ctx1 = document.getElementById(this.cursos[i].curso);
             app.graficaNotaAlumno(ctx1, datosAlumnos, datosNota);
 
-
+/*
             let suspensos = 0;
             let aprobados = 0;
             let sobresalientes = 0;
@@ -87,7 +88,7 @@ class App {
             }
                 const ctx2 = document.getElementById(this.cursos[i].curso + '-media');
                 app.graficaNotaMedia(ctx2, suspensos, aprobados, sobresalientes);
-
+    */
         }
     }
 
