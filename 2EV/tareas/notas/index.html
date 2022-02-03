@@ -12,22 +12,12 @@
 
     <script src="assets/faker/faker.js"></script>
     <script src="assets/js/App.js"></script>
-
     <script>
-
-        var app;
+        let app;
         document.addEventListener('DOMContentLoaded', function (){
-            app = new App();
-            app.sacarDatos();
-            app.sleep(600).then(() => {
-
-                app.pintarComienzo();
-            })
-
+            app = new App("assets/data/data-courses.json");
         })
     </script>
-
-
 </head>
 <body>
 <!-- ======= Sidebar ======= -->

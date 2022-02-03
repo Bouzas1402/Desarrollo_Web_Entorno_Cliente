@@ -1,10 +1,10 @@
 class Metro {
-    constructor() {
+    constructor(url) {
         this.nombre = "Metro Valencia";
         this.lineas = [];
         let datos;
-        var req = new XMLHttpRequest();
-        req.open('GET', "assets/json/lineas.json");
+        let req = new XMLHttpRequest();
+        req.open('GET', url);
         req.onreadystatechange = function () {
             if (req.readyState === 4) {
                 if (req.status === 200) {

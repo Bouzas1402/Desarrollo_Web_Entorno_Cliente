@@ -1,15 +1,17 @@
 class App {
-    constructor() {
+    constructor(url) {
         this.cursos = [];
+        this.sacarDatos(url);
     }
 
-    sacarDatos() {
+    sacarDatos(url) {
         var req = new XMLHttpRequest();
-        req.open('GET', "assets/data/data-courses.json");
+        req.open('GET', url);
         req.onreadystatechange = function () {
             if (req.readyState === 4) {
                 if (req.status === 200) {
                     app.rellenarCursos(JSON.parse(req.responseText));
+                    app.pintarComienzo();
                 } else {
                     console.log("Error loading page\n");
                 }
