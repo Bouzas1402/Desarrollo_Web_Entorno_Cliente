@@ -1,18 +1,31 @@
 class Metro {
-    constructor(lineas) {
+    constructor() {
         this.nombre = "Metro Valencia";
         this.lineas = [];
-        lineas.forEach(linea => {
-            let nuevaLinea = new Lineas(linea.nombre, linea.color, linea.estaciones);
-            this.lineas.push(nuevaLinea);
-        })
-        this.printLineasBarra();
-        this.printMetro(this.lineas[0].nombre);
-
-        //sleep(500).then ver esto para cargar datos json, como la ejecucion sigue aunque la carga de datos sigue debes esperar
-        // un tiempo para que se complete la carga de los datos, hay otros metodos, ese es uno
+        let datos;
+        var req = new XMLHttpRequest();
+        req.open('GET', "assets/json/lineas.json");
+        req.onreadystatechange = function () {
+            if (req.readyState === 4) {
+                if (req.status === 200) {
+                    datos = JSON.parse(req.responseText);
+                    metro.crearLineas(datos);
+                    metro.printLineasBarra();
+                    metro.printMetro(metro.lineas[0].nombre);
+                } else {
+                    datos = "Error loading page\n";
+                }
+            }
+        };
+        req.send();
     }
 
+    crearLineas(datos){
+        for (let i = 0; i < datos.length; i++) {
+            let nuevaLinea = new Lineas(datos[i].nombre, datos[i].color, datos[i].estaciones);
+            this.lineas.push(nuevaLinea);
+        }
+    }
 
     getEstacion(nombre){
         let estaciones = [];

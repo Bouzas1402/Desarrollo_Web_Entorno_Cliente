@@ -4,7 +4,6 @@ class App {
     }
 
     sacarDatos() {
-        let datos;
         var req = new XMLHttpRequest();
         req.open('GET', "assets/data/data-courses.json");
         req.onreadystatechange = function () {
@@ -12,7 +11,7 @@ class App {
                 if (req.status === 200) {
                     app.rellenarCursos(JSON.parse(req.responseText));
                 } else {
-                    datos = "Error loading page\n";
+                    console.log("Error loading page\n");
                 }
             }
         };
@@ -40,10 +39,15 @@ class App {
     }
 
     pintarComienzo() {
+        app.pintarTodosLosCursos(true);
+        app.pintarBarraLateral();
+    }
+
+    pintarTodosLosCursos(boolean){
+        document.getElementById('graficos').innerHTML = "";
         for (let i = 0; i < this.cursos.length; i++) {
-            app.generarDivCanvas(this.cursos[i], true);
-            app.pintarBarraLateral(this.cursos[i]);
-           }
+            app.generarDivCanvas(this.cursos[i].curso, boolean);
+        }
     }
 
     graficaNotaAlumno(curso){
@@ -92,7 +96,6 @@ class App {
                 }
             }
         });
-
     }
     graficaNotaMedia(curso){
         let datosNota = [];
@@ -143,14 +146,17 @@ class App {
                     }
                 }
             });
-        }
+        }S
 
-    pintarBarraLateral(curso){
-        const template = document.querySelector('#lista-cursos').content;
-        const listaCursos = new DocumentFragment();
-        listaCursos.appendChild(document.importNode(template, true));
-        listaCursos.querySelector('span').textContent = curso.curso;
-        document.querySelector('#sidebar-nav').appendChild(listaCursos);
+    pintarBarraLateral(){
+        for (let i = 0; i < this.cursos.length; i++) {
+            const template = document.querySelector('#lista-cursos').content;
+            const listaCursos = new DocumentFragment();
+            listaCursos.appendChild(document.importNode(template, true));
+            listaCursos.querySelector('input').value = this.cursos[i].curso;
+            listaCursos.querySelector('input').setAttribute('onclick', 'app.elegirCurso("' + this.cursos[i].curso + '", true);');
+            document.querySelector('#sidebar-nav').appendChild(listaCursos);
+        }
     }
 
 
@@ -158,20 +164,26 @@ class App {
         const template = document.querySelector('#div-canvas').content;
         const divCanvas = new DocumentFragment();
         divCanvas.appendChild(document.importNode(template, true));
-        divCanvas.querySelector('.card-title').childNodes[0].before(curso.curso);
+        divCanvas.querySelector('.card-title').childNodes[0].before(curso);
         let tablaAlumnosNota = document.createElement("canvas");
         if (boolean === false){
-            tablaAlumnosNota.id = curso.curso;
+            tablaAlumnosNota.id = curso;
         } else if (boolean === true){
-            tablaAlumnosNota.id = curso.curso + '-media';
+            tablaAlumnosNota.id = curso + '-media';
         }
         divCanvas.querySelector('.chart-container').appendChild(tablaAlumnosNota);
         document.getElementById('graficos').appendChild(divCanvas);
+        let cursoDibujar = app.getCursoPorNombre(curso);
         if (boolean === false){
-            app.graficaNotaAlumno(curso);
+            app.graficaNotaAlumno(cursoDibujar);
         } else if (boolean === true){
-            app.graficaNotaMedia(curso);
+            app.graficaNotaMedia(cursoDibujar);
         }
+    }
+
+    elegirCurso(curso, boolean){
+        document.getElementById('graficos').innerHTML = "";
+        app.generarDivCanvas(curso, boolean);
     }
 
     notaAleatoria(){
@@ -181,6 +193,13 @@ class App {
     sleep(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
+    getCursoPorNombre(curso){
+        for (let i = 0; i < this.cursos.length; i++) {
+            if (this.cursos[i].curso === curso){
+                return this.cursos[i];
+            }
+        }
 
+    }
 
 }

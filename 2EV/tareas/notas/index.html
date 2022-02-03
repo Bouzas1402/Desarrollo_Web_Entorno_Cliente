@@ -38,10 +38,9 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="">
-                        <i class="bi bi-grid"></i>
-                        <span>Todos los cursos</span>
-                    </a>
+
+                    <button onclick="app.pintarTodosLosCursos(true);" class="nav-link w-100"><i class="bi bi-grid"></i>Todos los cursos</button>
+
                 </li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#nombre-modal" data-bs-toggle="collapse" href="#">
@@ -50,8 +49,22 @@
                     <ul id="nombre-modal" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                         <li>
                             <a href="">
-                                <i class="bi bi-circle"></i><span>Alerts</span>
+                                <span>Alerts</span>
                             </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span>Alerts</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span>Alerts</span>
+                            </a>
+                        </li>
+                        <li>
+
+                            <button type="button" class="w-100" style="">hola</button>
                         </li>
 
                     </ul>
@@ -70,8 +83,6 @@
 
 
 
-
-
     <template id="div-canvas">
         <div class="col-12">
             <div class="card">
@@ -81,7 +92,7 @@
                         <li class="dropdown-header text-start">
                             <h6>Filtros</h6>
                         </li>
-                        <li><a class="dropdown-item" href="#">Agregar filtros</a></li>
+                        <li><a class="dropdown-item" href="#" >Agregar filtros</a></li>
 
                     </ul>
                 </div>
@@ -99,9 +110,8 @@
 
     <template id="lista-cursos">
         <li class="nav-item">
-            <a class="nav-link " href="">
-                <span></span>
-            </a>
+            <input type="button" class="nav-link w-100">
+
         </li>
     </template>
 
