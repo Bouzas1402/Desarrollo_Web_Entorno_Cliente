@@ -7,6 +7,9 @@
     <title>Notas</title>
     <link type="text/css" rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css" >
+    <link rel="stylesheet" type="text/css" href="assets/dataTables/css/jquery.dataTables.min.css"/>
+
+
     <link type="text/css" rel="stylesheet" href="assets/css/style.css">
     <script src="assets/faker/faker.js"></script>
     <script src="assets/js/App.js"></script>
@@ -17,6 +20,7 @@
             app.sacarDatos();
             app.sleep(600).then(() => {
                 app.pintarComienzo();
+                app.cargarDataTable();
             })
         })
     </script>
@@ -39,6 +43,49 @@
                 </section>
             </main>
     </div>
+
+
+        <div>
+
+            <table id="alumnos" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td>2011/04/25</td>
+                    <td>$320,800</td>
+                </tr>
+
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+                </tfoot>
+            </table>
+
+        </div>
+
+
+
+
     </div>
 <!-- ======= TEMPLATES ======= -->
 <!-- ======= Template para graficas graficas ======= -->
@@ -75,7 +122,9 @@
             </ul>
         </li>
     </template>
+<script src="assets/jquery/jquery-3.5.1.js"></script>
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="assets/dataTables/js/jquery.dataTables.min.js"></script>
     <script src="assets/chart/chart.js"></script>
 </body>
 </html>

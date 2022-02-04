@@ -1,0 +1,165 @@
+
+* {
+    margin: 0;
+    padding: 0
+}
+
+html {
+    height: 100%
+}
+.bi-archive {
+    color: #0a53be;
+    font-size: 30px;
+}
+
+.accordion-header {
+    border-bottom: 5px solid #0a53be;
+}
+
+/* ESTILOS ETAPAS */
+h2{
+    color: #4e73e7;
+}
+#form {
+    text-align: center;
+    position: relative;
+    margin-top: 20px
+}
+
+#form fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+    position: relative
+}
+
+.finish {
+    text-align: center
+}
+
+#form fieldset:not(:first-of-type) {
+    display: none
+}
+
+#form .previous-step, .next-step {
+    width: 100px;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px 10px 0px;
+    float: right
+}
+
+.form, .previous-step {
+    background: #616161;
+}
+
+.form, .next-step {
+    background: #4e73e7;
+}
+
+#form .previous-step:hover,
+#form .previous-step:focus {
+    background-color: #000000
+}
+
+#form .next-step:hover,
+#form .next-step:focus {
+    background-color: #4e73e7
+}
+
+.text {
+    color: #4e73e7;
+    font-weight: normal
+}
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey
+}
+
+#progressbar .active {
+    color: #4e73e7
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400
+}
+
+#progressbar ::before{
+    display: inline-block;
+    padding: 0 5px;
+    font-family: bootstrap-icons;
+    font-size: 26px;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#progressbar #step1:before {
+    content: " \f10c";
+}
+
+#progressbar #step2:before {
+    content: "\f10c";
+}
+
+#progressbar #step3:before {
+    content: "\f10c";
+}
+
+#progressbar #step4:before {
+    content: "\f10c";
+}
+
+
+
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #4e73e7
+}
+
+.progress {
+    height: 20px
+}
+
+.progress-bar {
+    background-color: #4e73e7
+}

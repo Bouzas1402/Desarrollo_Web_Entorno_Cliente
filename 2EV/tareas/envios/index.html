@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Envios</title>
+    <link type="text/css" rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/bootstrap/bootstrap-icons/bootstrap-icons.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+    <script>
+
+    </script>
+
+</head>
+<body>
+
+    <div class="container fluid">
+        <header>
+            <div class="h-25">
+                <div class="text-center"
+                        style="background-image: url('assets/imagenes/descarga.png'); height: 400px;">
+                    <div class="h-100" style="background-color: rgba(0, 0, 0, 0.6);">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <div class="text-white">
+                                <h1 class="mb-3">Pedido</h1>
+                                <h4 class="mb-3">$estado</h4>
+                                <a class="btn btn-outline-light btn-lg" href="#" role="button"
+                                >haceralgo()?</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <main>
+            <div class="accordion">
+                <div id="cuerpo-pagina" class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#etapas-envio" aria-expanded="false" aria-controls="cuerpoPagina">
+                            <i class="bi bi-archive lead me-3"></i>Seguimiento del envio:
+                        </button>
+                    </h2>
+                    <div id="etapas-envio" class="accordion-collapse collapse" aria-labelledby="etapas-envio" data-bs-parent="#cuerpo-pagina">
+                        <div class="accordion-body">
+                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="row justify-content-center">
+            <div class="col-11 col-sm-9 col-md-7
+                col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+                <div class="px-0 pt-4 pb-0 mt-3 mb-3">
+                    <form id="form">
+                        <ul id="progressbar">
+                            <li class="active" id="step1">
+                                <strong>EN PREPARACIÓN</strong>
+                            </li>
+                            <li id="step2"><strong>TRÁNSITO</strong></li>
+                            <li id="step3"><strong>EN REPARTO</strong></li>
+                            <li id="step4"><strong>ENTREGADO</strong></li>
+                        </ul>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div> <br>
+                        <fieldset>
+                            <h2>Welcome To GFG Step 1</h2>
+                            <input type="button" name="next-step"
+                                   class="next-step" value="Next Step" />
+                        </fieldset>
+                        <fieldset>
+                            <h2>Welcome To GFG Step 2</h2>
+                            <input type="button" name="next-step"
+                                   class="next-step" value="Next Step" />
+                            <input type="button" name="previous-step"
+                                   class="previous-step"
+                                   value="Previous Step" />
+                        </fieldset>
+                        <fieldset>
+                            <h2>Welcome To GFG Step 3</h2>
+                            <input type="button" name="next-step"
+                                   class="next-step" value="Final Step" />
+                            <input type="button" name="previous-step"
+                                   class="previous-step"
+                                   value="Previous Step" />
+                        </fieldset>
+                        <fieldset>
+                            <div class="finish">
+                                <h2 class="text text-center">
+                                    <strong>FINISHED</strong>
+                                </h2>
+                            </div>
+                            <input type="button" name="previous-step"
+                                   class="previous-step"
+                                   value="Previous Step" />
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <script src="assets/jquery/jquery-3.5.1.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

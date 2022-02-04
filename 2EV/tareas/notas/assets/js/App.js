@@ -214,6 +214,16 @@ class App {
         }
     }
 
+    cargarDataTable(){
+            $('#alumnos').DataTable({
+                data: this.cursos[0],
+                columns: [
+                    {data: 'curso'},
+                    {data: ''}
+                ]
+            });
+    }
+
     notaAleatoria(){
         return faker.datatype.float({min: 1, max: 10, precision: .1});
     }
