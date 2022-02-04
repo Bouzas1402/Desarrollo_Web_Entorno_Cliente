@@ -1,17 +1,15 @@
 class App {
-    constructor(url) {
+    constructor() {
         this.cursos = [];
-        this.sacarDatos(url);
     }
 
-    sacarDatos(url) {
-        var req = new XMLHttpRequest();
-        req.open('GET', url);
+    sacarDatos() {
+        let req = new XMLHttpRequest();
+        req.open('GET', "assets/data/data-courses.json");
         req.onreadystatechange = function () {
             if (req.readyState === 4) {
                 if (req.status === 200) {
                     app.rellenarCursos(JSON.parse(req.responseText));
-                    app.pintarComienzo();
                 } else {
                     console.log("Error loading page\n");
                 }
@@ -48,18 +46,17 @@ class App {
     pintarTodosLosCursos(boolean){
         document.getElementById('graficos').innerHTML = "";
         for (let i = 0; i < this.cursos.length; i++) {
-            app.generarDivCanvas(this.cursos[i].curso, boolean);
+            app.generarDivCanvas(this.cursos[i].curso, boolean, 4);
         }
     }
 
-    graficaNotaAlumno(curso){
+    graficaNotaAlumno(curso, trimestre, contexto){
         let datosNota = [];
         let datosAlumnos = [];
         for (let j = 0; j < curso.capacidad; j++) {
-            datosNota.push(Object.values(curso.calificaciones)[3][j].nota);
-            datosAlumnos.push(Object.values(curso.calificaciones)[3][j].nombre);
+            datosNota.push(Object.values(curso.calificaciones)[trimestre - 1][j].nota);
+            datosAlumnos.push(Object.values(curso.calificaciones)[trimestre - 1][j].nombre);
         }
-        const contexto = document.getElementById(curso.curso);
         const myChart = new Chart(contexto, {
             type: 'bar',
             data: {
@@ -68,15 +65,15 @@ class App {
                     label: ' - Nota Final',
                     data: datosNota,
                     backgroundColor: function (context) {
-                        var index = context.dataIndex;
-                        var value = context.dataset.data[index];
+                        let index = context.dataIndex;
+                        let value = context.dataset.data[index];
                         return value < 5 ? 'rgba(239,101,101,0.93)' :
                             value >= 5 && value < 8 ? 'rgba(166,180,238,0.88)' :
                                 'rgba(187,245,175,0.78)';
                     },
                     borderColor: function (context) {
-                        var index = context.dataIndex;
-                        var value = context.dataset.data[index];
+                        let index = context.dataIndex;
+                        let value = context.dataset.data[index];
                         return value < 5 ? 'rgb(182,0,0)' :
                             value >= 5 && value < 8 ? 'rgb(0,19,159)' :
                                 'rgb(42,194,1)';
@@ -99,12 +96,13 @@ class App {
             }
         });
     }
-    graficaNotaMedia(curso){
+
+    graficaNotaMedia(curso, trimestre, contexto){
         let datosNota = [];
         let datosAlumnos = [];
         for (let j = 0; j < curso.capacidad; j++) {
-            datosNota.push(Object.values(curso.calificaciones)[3][j].nota);
-            datosAlumnos.push(Object.values(curso.calificaciones)[3][j].nombre);
+            datosNota.push(Object.values(curso.calificaciones)[trimestre - 1][j].nota);
+            datosAlumnos.push(Object.values(curso.calificaciones)[trimestre - 1][j].nombre);
         }
             let suspensos = 0;
             let aprobados = 0;
@@ -119,8 +117,7 @@ class App {
                     sobresalientes++;
                 }
             }
-            const contexto = document.getElementById(curso.curso + '-media');
-            const myChart1 = new Chart(contexto, {
+            const myChart = new Chart(contexto, {
                 type: 'bar',
                 data: {
                     labels: ['Suspensos', 'Aprobados', 'Sobresalientes'],
@@ -148,44 +145,72 @@ class App {
                     }
                 }
             });
-        }S
+        }
 
     pintarBarraLateral(){
         for (let i = 0; i < this.cursos.length; i++) {
             const template = document.querySelector('#lista-cursos').content;
             const listaCursos = new DocumentFragment();
             listaCursos.appendChild(document.importNode(template, true));
-            listaCursos.querySelector('input').value = this.cursos[i].curso;
-            listaCursos.querySelector('input').setAttribute('onclick', 'app.elegirCurso("' + this.cursos[i].curso + '", true);');
+            listaCursos.querySelector('span').textContent = this.cursos[i].curso;
+            listaCursos.querySelector('a').setAttribute('data-bs-target', "#modal-" + this.cursos[i].curso);
+            listaCursos.querySelector('ul').id = "modal-" + this.cursos[i].curso;
+            for (let j = 0; j < 4; j++) {
+                let trimestre = '<li><button type="button" onClick="app.elegirCurso(\'' + this.cursos[i].curso + '\', true, ' + (j + 1) + ')" className="w-100">' + (j + 1) + 'º Trimestre</button></li>';
+                listaCursos.querySelector('ul').innerHTML += trimestre;
+            }
             document.querySelector('#sidebar-nav').appendChild(listaCursos);
         }
     }
 
-
-    generarDivCanvas(curso, boolean){
+    // Si en el segunda valor se intruduce true se dibujara la grafica de la nota media del curso, si se marca false se dibujara la de todos los alumnos
+    generarDivCanvas(curso, boolean, trimestre){
         const template = document.querySelector('#div-canvas').content;
         const divCanvas = new DocumentFragment();
         divCanvas.appendChild(document.importNode(template, true));
         divCanvas.querySelector('.card-title').childNodes[0].before(curso);
+        divCanvas.querySelector('.card-title>span').textContent += trimestre + "º Trimestre";
+
+        divCanvas.querySelector('.cambiar-filtro').innerText = 'Alumnos';
+        divCanvas.querySelector('.cambiar-filtro').setAttribute('onclick', "app.cambiarFiltro('" + curso + "', " + trimestre + ", false);");
+
         let tablaAlumnosNota = document.createElement("canvas");
+
         if (boolean === false){
-            tablaAlumnosNota.id = curso;
+            divCanvas.querySelector('.chart-container').id = curso;
         } else if (boolean === true){
-            tablaAlumnosNota.id = curso + '-media';
+            divCanvas.querySelector('.chart-container').id = curso + "-media";
+
         }
         divCanvas.querySelector('.chart-container').appendChild(tablaAlumnosNota);
         document.getElementById('graficos').appendChild(divCanvas);
         let cursoDibujar = app.getCursoPorNombre(curso);
         if (boolean === false){
-            app.graficaNotaAlumno(cursoDibujar);
+            let contexto = document.getElementById(curso).getElementsByTagName('canvas');
+            app.graficaNotaAlumno(cursoDibujar, trimestre, contexto);
         } else if (boolean === true){
-            app.graficaNotaMedia(cursoDibujar);
+            let contexto = document.getElementById(curso + "-media").getElementsByTagName('canvas');
+
+            app.graficaNotaMedia(cursoDibujar, trimestre, contexto);
         }
     }
 
-    elegirCurso(curso, boolean){
+    elegirCurso(curso, boolean, trimestre){
         document.getElementById('graficos').innerHTML = "";
-        app.generarDivCanvas(curso, boolean);
+        app.generarDivCanvas(curso, boolean, trimestre);
+    }
+
+    cambiarFiltro(nombeCurso, trimestre, boolean){
+        let curso = app.getCursoPorNombre(nombeCurso);
+        let contexto = document.getElementById(curso + "-media");
+    //    contexto.getElementsByTagName('canvas')
+        contexto.createElement("canvas");
+        contexto = contexto.getElementsByTagName('canvas');
+        if (boolean === false){
+            app.graficaNotaAlumno(curso,trimestre,contexto);
+        } if (boolean === true){
+            app.graficaNotaMedia(curso, trimestre, contexto);
+        }
     }
 
     notaAleatoria(){

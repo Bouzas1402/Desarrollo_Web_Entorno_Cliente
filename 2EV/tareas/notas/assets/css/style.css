@@ -995,7 +995,14 @@ input[type=button], button{
   border: 0;
 }
 button{
-  style: a;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #012970;
+  padding: 10px 0 10px 40px;
+  transition: 0.3s;
+  background-color: transparent;
 }
 .contact .php-email-form textarea {
   padding: 12px 15px;

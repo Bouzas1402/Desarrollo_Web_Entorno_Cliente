@@ -5,74 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Notas</title>
-
     <link type="text/css" rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css" >
     <link type="text/css" rel="stylesheet" href="assets/css/style.css">
-
     <script src="assets/faker/faker.js"></script>
     <script src="assets/js/App.js"></script>
     <script>
         let app;
         document.addEventListener('DOMContentLoaded', function (){
-            app = new App("assets/data/data-courses.json");
+            app = new App();
+            app.sacarDatos();
+            app.sleep(600).then(() => {
+                app.pintarComienzo();
+            })
         })
     </script>
 </head>
 <body>
 <!-- ======= Sidebar ======= -->
-<div class="container">
-    <div class="row">
-        <aside id="sidebar" class="sidebar col-3">
-
-            <ul class="sidebar-nav" id="sidebar-nav">
-
-                <li class="nav-item">
-
-                    <button onclick="app.pintarTodosLosCursos(true);" class="nav-link w-100"><i class="bi bi-grid"></i>Todos los cursos</button>
-
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#nombre-modal" data-bs-toggle="collapse" href="#">
-                        <span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="nombre-modal" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                        <li>
-                            <a href="">
-                                <span>Alerts</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <span>Alerts</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <span>Alerts</span>
-                            </a>
-                        </li>
-                        <li>
-
-                            <button type="button" class="w-100" style="">hola</button>
-                        </li>
-
-                    </ul>
-                </li>
-            </ul>
-        </aside>
-        <main id="main">
-            <section class="section dashboard">
-                <div id="graficos" class="col-10">
-
-                </div>
-            </section>
-        </main>
+    <div class="container">
+        <div class="row">
+            <aside id="sidebar" class="sidebar col-3">
+                <ul class="sidebar-nav" id="sidebar-nav">
+                    <li class="nav-item">
+                        <button onclick="app.pintarTodosLosCursos(true);" class="nav-link w-100"><i class="bi bi-grid"></i>Todos los cursos</button>
+                    </li>
+                </ul>
+            </aside>
+            <main id="main">
+                <section class="section dashboard">
+                    <div id="graficos" class="col-10">
+                    </div>
+                </section>
+            </main>
     </div>
-</div>
-
-
-
+    </div>
+<!-- ======= TEMPLATES ======= -->
+<!-- ======= Template para graficas graficas ======= -->
     <template id="div-canvas">
         <div class="col-12">
             <div class="card">
@@ -82,12 +51,11 @@
                         <li class="dropdown-header text-start">
                             <h6>Filtros</h6>
                         </li>
-                        <li><a class="dropdown-item" href="#" >Agregar filtros</a></li>
-
+                        <li><button type="button" class="w-100 cambiar-filtro"></button></li>
                     </ul>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title"><span>/Today</span></h5>
+                    <h5 class="card-title"><span> / </span></h5>
                     <div>
                         <div class="chart-container justify-content-center">
                             <h1></h1>
@@ -97,73 +65,17 @@
             </div>
         </div>
     </template>
-
+<!-- ======= Template para la barra vertical izq ======= -->
     <template id="lista-cursos">
         <li class="nav-item">
-            <input type="button" class="nav-link w-100">
-
+            <a class="nav-link collapsed" data-bs-target="" data-bs-toggle="collapse" href="#">
+                <span></span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            </ul>
         </li>
     </template>
-
- <!-- Mirar esta barra -->
-<!--         <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Vertical Bar Chart</h5>
-
-               Vertical Bar Chart
-<div id="verticalBarChart" style="min-height: 400px;" class="echart"></div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        echarts.init(document.querySelector("#verticalBarChart")).setOption({
-            title: {
-                text: 'World Population'
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            legend: {},
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'value',
-                boundaryGap: [0, 0.01]
-            },
-            yAxis: {
-                type: 'category',
-                data: ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'World']
-            },
-            series: [{
-                name: '2011',
-                type: 'bar',
-                data: [18203, 23489, 29034, 104970, 131744, 630230]
-            },
-                {
-                    name: '2012',
-                    type: 'bar',
-                    data: [19325, 23438, 31000, 121594, 134141, 681807]
-                }
-            ]
-        });
-    });
-</script>
- End Vertical Bar Chart
-
-</div>
-</div>
-</div> -->
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <script src="assets/chart/chart.js"></script>
-  <!--  <script src="assets/tinymce/tinymce.min.js"></script>
-    <script src="assets/js/main.js"></script> -->
 </body>
 </html>
