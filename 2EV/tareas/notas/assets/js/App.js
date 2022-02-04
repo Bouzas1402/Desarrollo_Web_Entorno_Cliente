@@ -202,9 +202,10 @@ class App {
 
     cambiarFiltro(nombeCurso, trimestre, boolean){
         let curso = app.getCursoPorNombre(nombeCurso);
-        let contexto = document.getElementById(curso + "-media");
-    //    contexto.getElementsByTagName('canvas')
-        contexto.createElement("canvas");
+        let contexto = document.getElementById(nombeCurso + "-media");
+        contexto.innerHTML = "";
+        let canvas = document.createElement("canvas");
+        contexto.appendChild(canvas);
         contexto = contexto.getElementsByTagName('canvas');
         if (boolean === false){
             app.graficaNotaAlumno(curso,trimestre,contexto);
