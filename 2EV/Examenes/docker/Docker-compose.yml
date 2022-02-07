@@ -3,30 +3,30 @@ services:
   php:
     build:
       context: .
-      dockerfile: 2EV/Examenes/docker/php/Dockerfile
+      dockerfile: php/Dockerfile
       args:
         TIMEZONE: ${TIMEZONE}
     volumes:
-      - ./:/var/www/${PROJECT}/
+      - ../:/var/www/${PROJECT}/
     networks:
-      - diw2daw
+      - dwec2daw
   nginx:
     build:
       context: .
-      dockerfile: 2EV/Examenes/docker/nginx/Dockerfile
+      dockerfile: nginx/Dockerfile
     volumes:
-      - ./:/var/www/${PROJECT}/
+      - ../:/var/www/${PROJECT}/
     ports:
       - 80:80
     networks:
-      - diw2daw
+      - dwec2daw
 
 volumes:
   db5_app:
 
 networks:
-  diw2daw:
+  dwec2daw:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.201.0.0/16
+        - subnet: 172.200.0.0/16

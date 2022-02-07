@@ -1,0 +1,15 @@
+DWEC:
+    Gastos :
+        [usario, fecha, importe, concepto]
+        -crate gasto (en cartera)
+        -getUsuario
+    Cartera :
+        -addGasto
+        -getGastos
+        -existeUsuario
+    Usuario :
+        -createUsuario
+        -getGastos
+DIW:
+    Con templates hacer una interfaz que muestre los usuarios en el lateral y una grafica con los importes en fechas
+    (de lineas y de quesitos) y una dataTable de gastos.
