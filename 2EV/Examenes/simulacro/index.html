@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Token Autocomplete Sample</title>
+
+    <script src="js/token-autocomplete.js"></script>
+    <link href="css/token-autocomplete.css" rel="stylesheet" type="text/css" media="all">
+
+    <style>
+    body {
+        background-color: #333;
+    }
+    </style>
+</head>
+<body>
+    <form>
+        
+        <h1>Suggestions via service URI:</h1>
+        <div id="sample3"></div>
+        
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    
+
+    <script>
+    
+    
+    const resultadosTags = [
+{"id":"manzana", "text":"Manzana", "description": "Fruit"},
+{"id":"banana", "text":"Banana", "description": "Fruit"},
+{"id":"donut", "text":"Donut", "description": "Sweet"},
+{"id":"pizza", "text":"Pizza", "description": "Delicious"},
+{"id":"burger", "text":"Burger", "description": "Meaty"},
+{"id":"pancake", "text":"Pancake", "description": "Sweet"}
+];
+    let tokenAutocomplete3 = new TokenAutocomplete({
+        name: 'sample3',
+        selector: '#sample3',
+        noMatchesText: 'No matching results...',
+        initialSuggestions: resultadosTags
+    });
+    
+    
+    </script>
+</body>
+</html>
