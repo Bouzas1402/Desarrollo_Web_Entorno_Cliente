@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+
+    <script>
+        const resultadosTags = [
+            {"id":"manzana", "tipo":["desayuno", "postre", "cena"], "description": "fruta fresca"},
+            {"id":"pastel", "tipo": ["desayuno", "postre"],"descripcion": "pastel de distinto tipo, ideal para postre"},
+            {"id":"espaguetis carbonara", "tipo":["primer plato", "segundo plato", "cena", "comida"], "description": "pasta con saldsa carbonara"},
+            {"id":"pizza", "tipo":["primer plato", "segundo plato", "cena", "comida"], "description": "masa con distintos ingredientes"},
+            {"id":"tortitas", "tipo":["desayuno", "postre", "cena"], "description": "Meaty"},
+            {"id":"hamburguesa", "tipo":["primer plato", "segundo plato", "cena"], "ingredientes": ["pan", "cebolla", "carne de vacuno", "tomate", "ketchup", "bacon"], "description": "Deliciosa carne de ternera a la parrilla"},
+            {"id":"ensalada", "tipo":["primer plato", "cena"], "description": "Sweet"}
+        ];
+    </script>
+</head>
+<body>
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Hamburguesa</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Foster Hollywood</li>
+                <li class="breadcrumb-item">Homburguesa</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="row">
+            <div class="col-xl-4">
+
+                <div class="card">
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                        <img src="imagenes/descarga.jpg" alt="Profile" class="rounded-circle">
+                        <h2>Hamburguesa</h2>
+                        <div class="social-links mt-2">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xl-8">
+
+                <div class="card">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+
+                        <div class="tab-content pt-2">
+
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                <h5 class="card-title">Descripcion</h5>
+                                <p class="small fst-italic">Deliciosa carne de ternera a la parrilla. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+
+                                <h5 class="card-title">Detalles</h5>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Company</div>
+                                    <div class="col-lg-9 col-md-8">Foster Hollywood</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Ingredientes</div>
+                                    <div class="col-lg-9 col-md-8">pan, cebolla, carne de vacuno, tomate, ketchup, bacon</div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Tipo de plato</div>
+                                    <div class="col-lg-9 col-md-8"><div class="card">
+                                        <div>
+                                            <span class="badge bg-secondary">  Cena   </span>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-secondary">Segundo plato</span>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-secondary">Primer plato</span>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-secondary">Comida</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+    </section>
+
+
+</main><!-- End #main -->
+
+<script src='bootstrap/js/bootstrap.bundle.js'></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Token Autocomplete Sample</title>
+
+
+    <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+
+
+    <script>
+        const resultadosTags = [
+            {"id":"manzana", "tipo":["desayuno", "postre", "cena"], "description": "fruta fresca"},
+            {"id":"pastel", "tipo": ["desayuno", "postre"],"descripcion": "pastel de distinto tipo, ideal para postre"},
+            {"id":"espaguetis carbonara", "tipo":["primer plato", "segundo plato", "cena", "comida"], "description": "pasta con saldsa carbonara"},
+            {"id":"pizza", "tipo":["primer plato", "segundo plato", "cena", "comida"], "description": "masa con distintos ingredientes"},
+            {"id":"tortitas", "tipo":["desayuno", "postre", "cena"], "description": "Meaty"},
+            {"id":"hamburguesa", "tipo":["primer plato", "segundo plato", "cena"], "description": "Sweet"},
+            {"id":"ensalada", "tipo":["primer plato", "cena"], "description": "Sweet"}
+        ];
+    </script>
+
+
+    <style>
+    body {
+        background-color: #93bdd3;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-9 mt-5 m-auto">
+
+            <!-- Sales Card -->
+            <div class="row">
+            <div class="col-xxl-3 col-md-6">
+                <div class="card info-card sales-card">
+                    <div id="carta-desayuno" class="card-body">
+                        <h5 class="card-title">Desayunos</h5>
+                        <div class="d-flex align-items-center">
+                            <div class="ps-3">
+                                <h6></h6>
+                                <span class="text-success small pt-1 fw-bold">%</span> <span class="text-muted small pt-2 ps-1">del total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xxl-3 col-md-6">
+                <div class="card info-card sales-card">
+                    <div id="carta-comida" class="card-body">
+                        <h5 class="card-title">Comida</h5>
+                        <div class="d-flex align-items-center">
+                            <div class="ps-3">
+                                <h6></h6>
+                                <span class="text-success small pt-1 fw-bold">%</span> <span class="text-muted small pt-2 ps-1">del total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xxl-3 col-md-6">
+                <div class="card info-card sales-card">
+                    <div id="carta-cena" class="card-body">
+                        <h5 class="card-title">Cena</h5>
+                        <div class="d-flex align-items-center">
+                            <div class="ps-3">
+                                <h6></h6>
+                                <span class="text-success small pt-1 fw-bold">%</span> <span class="text-muted small pt-2 ps-1">del total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xxl-3 col-md-6">
+                <div class="card info-card sales-card">
+                    <div id="carta-postres" class="card-body">
+                        <h5 class="card-title">Postres</h5>
+                        <div class="d-flex align-items-center">
+                            <div class="ps-3">
+                                <h6></h6>
+                                <span class="text-success small pt-1 fw-bold">%</span> <span class="text-muted small pt-2 ps-1">del total</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+            <div class="col-12 m-auto">
+                <div class="card recent-sales overflow-auto">
+
+
+                    <div class="card-body">
+                        <h5 class="card-title">Recetas <span>| Recientes</span></h5>
+
+                        <table class="table table-borderless datatable">
+                            <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Tipo de comida</th>
+                                <th scope="col">Descripcion</th>
+                            </tr>
+                            </thead>
+                            <script>
+                                const resultadosTags = [
+                                    {"id":"manzana", "tipo":["desayuno", "postre", "cena"], "description": "fruta fresca"},
+                                    {"id":"pastel", "tipo": ["desayuno", "postre"],"descripcion": "pastel de distinto tipo, ideal para postre"},
+                                    {"id":"espaguetis carbonara", "tipo":["primer plato", "segundo plato", "cena", "comida"], "description": "pasta con saldsa carbonara"},
+                                    {"id":"pizza", "tipo":["primer plato", "segundo plato", "cena", "comida"], "description": "masa con distintos ingredientes"},
+                                    {"id":"tortitas", "tipo":["desayuno", "postre", "cena"], "description": "tortitas con sirope"},
+                                    {"id":"hamburguesa", "tipo":["primer plato", "segundo plato", "cena"], "description": "rica carne de vacuno"},
+                                    {"id":"ensalada", "tipo":["primer plato", "cena"], "description": "refrescante y sana ensalada"}
+                                ];
+                            </script>
+                            <tbody>
+                            <tr>
+                                <td>Tortitas</td>
+                                <td>
+                                    <span class="badge bg-success">Postre</span>
+                                    <span class="badge bg-warning">Cena</span>
+                                    <span class="badge bg-secondary">Desayuno</span>
+                                </td>
+                                <td>ortitas con sirope</td>
+                            </tr>
+                            <tr>
+                                <td>espaguetis carbonara</td>
+                                <td>
+                                    <span class="badge bg-warning">Cena</span>
+                                    <span class="badge bg-info">Comida</span>
+                                    <span class="badge bg-danger">Primer plato</span>
+                                    <span class="badge bg-primary">Segundo plato</span>
+                                </td>
+                                <td>pasta con saldsa carbonara</td>
+                            </tr>
+                            <tr>
+                                <td>Pastel</td>
+                                <td>
+                                    <span class="badge bg-success">Postre</span>
+                                    <span class="badge bg-secondary">Desayuno</span>
+                                </td>
+                                <td>pastel de distinto tipo, ideal para postre</td>
+                            </tr>
+                            <tr>
+                                <td>Manzana</td>
+                                <td>
+                                    <span class="badge bg-success">Postre</span>
+                                    <span class="badge bg-warning">Cena</span>
+                                    <span class="badge bg-secondary">Desayuno</span>
+                                </td>
+                                <td>fruta fresca</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div><!-- End Recent Sales -->
+
+    </div>
+
+        <div class="col-12 col-lg-3 mt-5 m-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tipos de comida</h5>
+
+                    <!-- Pie Chart -->
+                    <canvas id="pieChart" style="max-height: 400px;"></canvas>
+                    <script>
+
+
+                        document.addEventListener("DOMContentLoaded", () => {
+                            let desayuno = 0, comida = 0, cena = 0, postre = 0, primerPlato = 0, segundoPlato = 0;
+                            for (let i = 0; i < resultadosTags.length; i++) {
+                                if (resultadosTags[i].tipo.includes('desayuno')){ desayuno++ }
+                                if (resultadosTags[i].tipo.includes('comida')){ comida++ }
+                                if (resultadosTags[i].tipo.includes('cena')){ cena++ }
+                                if (resultadosTags[i].tipo.includes('postre')){ postre++ }
+                                if (resultadosTags[i].tipo.includes('primer plato')){ primerPlato++ }
+                                if (resultadosTags[i].tipo.includes('segundo plato')){ segundoPlato++ }
+                            }
+
+                            document.getElementById('carta-cena').querySelector('.text-success').before((cena * 100) / resultadosTags.length);
+                            document.getElementById('carta-desayuno').querySelector('.text-success').before((desayuno * 100) / resultadosTags.length);
+                            document.getElementById('carta-comida').querySelector('.text-success').before((comida * 100) / resultadosTags.length);
+                            document.getElementById('carta-postres').querySelector('.text-success').before((postre * 100) / resultadosTags.length);
+
+
+
+                            new Chart(document.querySelector('#pieChart'), {
+                                type: 'pie',
+                                data: {
+                                    labels: [
+                                        'Desayuno',
+                                        'Comida',
+                                        'Cena',
+                                        'Postre',
+                                        'Primer plato',
+                                        'Segundo plato'
+                                    ],
+                                    datasets: [{
+                                        label: 'My First Dataset',
+                                        data: [desayuno, comida, cena, postre, primerPlato, segundoPlato],
+                                        backgroundColor: [
+                                            'rgba(72,69,69,0.98)',
+                                            'rgb(54, 162, 235)',
+                                            'rgb(255, 205, 86)',
+                                            'rgb(93,196,64)',
+                                            'rgb(229,5,5)',
+                                            'rgb(43,33,89)'
+                                        ],
+                                        hoverOffset: 4
+                                    }]
+                                }
+                            });
+                        });
+                    </script>
+                    <!-- End Pie CHart -->
+                </div>
+                </div>
+
+        </div>
+
+    </div>
+    </div>
+
+
+    <script src="jquery/jquery-3.5.1.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="chart/chart.js"></script>
+
+</body>
+</html>
