@@ -1,7 +1,7 @@
 class App {
 
     constructor(url) {
-        let screen = new Screen();
+        let screen = new Pantalla();
         const dateCookie = new Date();
         dateCookie.setTime(dateCookie.getTime() + (365*24*60*60*1000));
         let datos;

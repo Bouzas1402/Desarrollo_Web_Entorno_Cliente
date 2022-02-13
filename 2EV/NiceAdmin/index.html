@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <title>dataTable</title>
+
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" href="assets/apexcharts/styles.css">
+
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+<script src="assets/js/Screen.js"></script>
+  <script src="assets/js/App.js"></script>
+
+
+
+<script >
+
+  let app;
+  document.addEventListener('DOMContentLoaded', function() {
+    app = new App();
+    let lineChart = document.getElementById('lineChart');
+    app.screen.lineChart(lineChart, "*");
+    let barMultipleChart = document.getElementById('barMultipleChart');
+    app.screen.barMultipleChart(barMultipleChart, "*");
+    let barHorizontalChart = document.getElementById('barHorizontalChart');
+    app.screen.barHorizontalChart(barHorizontalChart, "*");
+    let pieChart = document.getElementById('pieChart');
+    app.screen.pieChart(pieChart, "*");
+    let doughnutChart = document.getElementById('doughnutChart');
+    app.screen.doughnutChart(doughnutChart, "*");
+    let radarChart = document.getElementById('radarChart');
+    app.screen.radarChart(radarChart, "*");
+    let polarAreaChart = document.getElementById('polarAreaChart');
+    app.screen.polarAreaChart(polarAreaChart, "*");
+    let barVerticalChart = document.getElementById('barVerticalChart');
+    app.screen.barVerticalChart(barVerticalChart, "*");
+    let barNegativeChart = document.getElementById('barNegativeChart');
+    app.screen.barNegativeChart(barNegativeChart, "*");
+    let semicirculoChart = document.getElementById('semicirculoChart');
+    app.screen.semicirculoChart(semicirculoChart, "*");
+  });
+
+
+</script>
+
+
+
+</head>
+<body>
+
+
+
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+      <a class="nav-link " href="index.html">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li><!-- End Dashboard Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="#">
+            <i class="bi bi-circle"></i><span>Alerts</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bi bi-circle"></i><span>Accordion</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Components Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="#">
+            <i class="bi bi-circle"></i><span>Form Elements</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bi bi-circle"></i><span>Form Layouts</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Forms Nav -->
+    <li class="nav-heading">Pages</li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#">
+        <i class="bi bi-person"></i>
+        <span>Profile</span>
+      </a>
+    </li><!-- End Profile Page Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#">
+        <i class="bi bi-question-circle"></i>
+        <span>F.A.Q</span>
+      </a>
+    </li><!-- End F.A.Q Page Nav -->
+  </ul>
+</aside><!-- End Sidebar-->
+
+
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>NiceAdmin</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Prueba Nice Admin</a></li>
+        <li class="breadcrumb-item">Prueba</li>
+        <li class="breadcrumb-item active">apexCharts</li>
+      </ol>
+    </nav>
+  </div>
+
+  <section class="section dashboard">
+    <div class="row">
+    <div class="col-xxl-4 col-md-6">
+      <div class="card info-card sales-card">
+
+        <div class="filter">
+          <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <li class="dropdown-header text-start">
+              <h6>Filter</h6>
+            </li>
+
+            <li><a class="dropdown-item" href="#">Today</a></li>
+            <li><a class="dropdown-item" href="#">This Month</a></li>
+            <li><a class="dropdown-item" href="#">This Year</a></li>
+          </ul>
+        </div>
+
+        <div class="card-body">
+          <h5 class="card-title">Sales <span>| Today</span></h5>
+
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi bi-cart"></i>
+            </div>
+            <div class="ps-3">
+              <h6>145</h6>
+              <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Revenue Card -->
+    <div class="col-xxl-4 col-md-6">
+      <div class="card info-card revenue-card">
+
+        <div class="filter">
+          <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <li class="dropdown-header text-start">
+              <h6>Filter</h6>
+            </li>
+
+            <li><a class="dropdown-item" href="#">Today</a></li>
+            <li><a class="dropdown-item" href="#">This Month</a></li>
+            <li><a class="dropdown-item" href="#">This Year</a></li>
+          </ul>
+        </div>
+
+        <div class="card-body">
+          <h5 class="card-title">Revenue <span>| This Month</span></h5>
+
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi bi-currency-dollar"></i>
+            </div>
+            <div class="ps-3">
+              <h6>$3,264</h6>
+              <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- End Revenue Card -->
+    </div>
+
+
+
+    <!-- Prueba -->
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Barras Verticales</h5>
+
+            <!--  Filtros -->
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Una</a></li>
+                <li><a class="dropdown-item" href="#">Dos</a></li>
+                <li><a class="dropdown-item" href="#">Tres</a></li>
+              </ul>
+            </div>
+            <!-- Sin Filtros -->
+            <!-- Line Chart -->
+            <div id=elquesea">
+              <canvas style="max-height: 400px;"></canvas>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      </div>
+      <!-- fin Prueba -->
+
+
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Line Chart</h5>
+
+            <!--  Filtros -->
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Una</a></li>
+                <li><a class="dropdown-item" href="#">Dos</a></li>
+                <li><a class="dropdown-item" href="#">Tres</a></li>
+              </ul>
+            </div>
+            <!-- Sin Filtros -->
+            <!-- Line Chart -->
+            <div id="lineChart">
+              <canvas></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Bar Chart</h5>
+              <!--  Filtros -->
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Una</a></li>
+                  <li><a class="dropdown-item" href="#">Dos</a></li>
+                  <li><a class="dropdown-item" href="#">Tres</a></li>
+                </ul>
+              </div>
+              <!-- Sin Filtros -->
+              <!-- Line Chart -->
+              <div id="barMultipleChart"></div>
+            </div>
+          </div>
+        </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Carta Modelo</h5>
+            <!--  Filtros -->
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Una</a></li>
+                <li><a class="dropdown-item" href="#">Dos</a></li>
+                <li><a class="dropdown-item" href="#">Tres</a></li>
+              </ul>
+            </div>
+            <!-- Sin Filtros -->
+            <!-- Line Chart -->
+            <div id="barHorizontalChart"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Pie Chart</h5>
+              <!--  Filtros -->
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Una</a></li>
+                  <li><a class="dropdown-item" href="#">Dos</a></li>
+                  <li><a class="dropdown-item" href="#">Tres</a></li>
+                </ul>
+              </div>
+              <!-- Sin Filtros -->
+              <canvas id="pieChart" style="max-height: 400px;"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Doughnut Chart</h5>
+
+              <!--  Filtros -->
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Una</a></li>
+                  <li><a class="dropdown-item" href="#">Dos</a></li>
+                  <li><a class="dropdown-item" href="#">Tres</a></li>
+                </ul>
+              </div>
+              <!-- Sin Filtros -->
+              <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Radas Area</h5>
+              <!--  Filtros -->
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Una</a></li>
+                  <li><a class="dropdown-item" href="#">Dos</a></li>
+                  <li><a class="dropdown-item" href="#">Tres</a></li>
+                </ul>
+              </div>
+              <!-- Sin Filtros -->
+              <canvas id="radarChart" style="max-height: 400px;"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Polar area</h5>
+
+              <!--  Filtros -->
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Una</a></li>
+                  <li><a class="dropdown-item" href="#">Dos</a></li>
+                  <li><a class="dropdown-item" href="#">Tres</a></li>
+                </ul>
+              </div>
+              <!-- Sin Filtros -->
+
+              <!-- Polar Area Chart -->
+              <canvas id="polarAreaChart" style="max-height: 400px;"></canvas>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Barras</h5>
+
+              <!--  Filtros -->
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Una</a></li>
+                  <li><a class="dropdown-item" href="#">Dos</a></li>
+                  <li><a class="dropdown-item" href="#">Tres</a></li>
+                </ul>
+              </div>
+              <!-- Sin Filtros -->
+              <!-- Polar Area Chart -->
+              <canvas id="barVerticalChart" style="max-height: 400px;"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Barras</h5>
+
+              <!--  Filtros -->
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Una</a></li>
+                  <li><a class="dropdown-item" href="#">Dos</a></li>
+                  <li><a class="dropdown-item" href="#">Tres</a></li>
+                </ul>
+              </div>
+              <!-- Sin Filtros -->
+              <!-- Polar Area Chart -->
+            <div id="barNegativeChart">
+              <canvas style="max-height: 400px;"></canvas>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div><div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Barras</h5>
+
+              <!--  Filtros -->
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+
+                  <li><a class="dropdown-item" href="#">Una</a></li>
+                  <li><a class="dropdown-item" href="#">Dos</a></li>
+                  <li><a class="dropdown-item" href="#">Tres</a></li>
+                </ul>
+              </div>
+              <!-- Sin Filtros -->
+              <!-- Polar Area Chart -->
+              <div id="semicirculoChart">
+                <canvas></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<script src="assets/jquery/jquery-3.5.1.js"></script>
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/chart.js/chart.min.js"></script>
+<script src="assets/apexcharts/apexcharts.min.js"></script>
+
+<!-- <script src="assets/echarts/echarts.min.js"></script>-->
+
+
+<script src="assets/tinymce/tinymce.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

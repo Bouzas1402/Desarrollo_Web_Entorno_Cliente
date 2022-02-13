@@ -13,7 +13,7 @@ module["exports"] = [
   "Classical",
   "Latin",
   "Reggae",
-  "Stage And Screen",
+  "Stage And Pantalla",
   "Blues",
   "Non Music",
   "Rap"

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <title>dataTable</title>
+
+
+  <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/dataTable/css/jquery.dataTables.min.css">
+
+
+  <script src="assets/jquery/jquery-3.5.1.js"></script>
+  <script src="assets/js/Screen.js"></script>
+  <!-- https://datatables.net/manual/data/ -->
+
+  <script type="text/javascript">
+
+
+     let estacion = [
+      {"nombre": "linea-1", "color": "#ffc107", "estaciones": ["Villanueva-de-Castellon","Campus","V.Zaragoza","U.Politecnica"]},
+      { "nombre": "linea-2", "color": "magenta", "estaciones": ["Torrent-Avinguda","Villanueva-de-Castellon","Santa-Gemma-Parc-Cientific-UV"] },
+      { "nombre": "linea-3", "color": "red", "estaciones": ["Aereopuerto","Benimaclet","V.Zaragoza","U.Politecnica","La-Carrasca"] },
+      {"nombre": "linea-4", "color": "#0b5ed7", "estaciones": ["Mas-del-Rosari","TVV","V.A.Estelles"]},
+      { "nombre": "linea-5", "color": "#157347", "estaciones": ["Aereopuerto","V.Zaragoza","U.Politecnica","Villanueva-de-Castellon"] },
+      { "nombre": "linea-6", "color": "#c7d0f8", "estaciones": ["Maritim-Serreria","Villanueva-de-Castellon"]},
+      { "nombre": "linea-7", "color": "#fd7e14", "estaciones": ["Maritim-Serreria","Santa-Gemma-Parc-Cientific-UV","TVV","V.A.Estelles"]},
+      { "nombre": "linea-8", "color": "#00FFFF", "estaciones":["Maritim-Serreria","TVV","V.A.Estelles"]},
+      {"nombre": "linea-9", "color": "#664d03", "estaciones": ["Riba-roja-de-Turia","Villanueva-de-Castellon"]}
+     ];
+
+
+     let screen;
+     document.addEventListener('DOMContentLoaded', function() {
+       screen = new Screen();
+       screen.dataTable(estacion);
+     })
+
+
+
+
+  </script>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="dataTable col-sm-9 col m-auto pt-5">
+        <table id="dataTable" class="table table-striped table-bordered" style="width:100%"  data-order='[[ 2, "asc" ]]' data-page-length='5'>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <script type="text/javascript" src="assets/dataTable/js/jquery.dataTables.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>
