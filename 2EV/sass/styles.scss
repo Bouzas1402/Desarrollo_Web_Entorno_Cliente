@@ -1,0 +1,53 @@
+
+$colorbg: rgb(32, 54, 179);
+$color2bg: rgb(0, 126, 48);
+$widthH1: 200px;
+$w2: $widthH1 + 20px;
+
+body {
+  background-color: rgb(177, 136, 136);
+}
+
+h1 {
+  color: $colorbg;
+  background-color: white;
+  padding: 15px;
+  width: $widthH1;
+}
+
+p {
+  width: $w2;
+  font: {
+    size: 50px;
+  }
+}
+
+
+// Anidar
+ul {
+  list-style: none; 
+  padding: 0;
+  margin: 60px 0;
+  li{
+      display: inline-block;
+      a{
+         // text-decoration: none; xj y todas las propiedades con - se pueden anidar
+         text: {
+           decoration : none;
+           transform: uppercase;
+           align: center;
+         }
+         font: {
+           family: sans-serif;
+           size: 23;
+         }
+         background: {
+           color: $color2bg;
+         }
+        color: white;
+        padding: 20px;
+        
+      }
+
+  }
+}
