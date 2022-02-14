@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>Liguilla</title>
+    <script src="js/Deporte.js"></script>
+    <script src="js/Participante.js"></script>
+    <script src="js/Partido.js"></script>
+    <script src="js/Rondas.js"></script>
+    <script src="js/Torneo.js"></script>
+    <script src="js/Screen.js"></script>
+    <script src="js/App.js"></script>
+
+
+    <script src="js/Config.js"></script>
+
+
+    <script>
+        let app;
+        document.addEventListener('DOMContentLoaded', () =>{
+            app = new App("json/liguilla.json");
+            for (let i = 0; i < Object.keys(config.sports).length; i++) {
+                app.createTorneo(Object.keys(config.sports)[i],Object.values(config.sports)[i])
+            }
+            for (let i = 0; i < app.torneos.length; i++) {
+                Object.values(config.data[app.torneos[i].deporte.nombre]).forEach(equipos => {
+                    app.torneos[i].addEquipos(equipos);
+                })
+            }
+            for (let i = 0; i < app.torneos.length; i++) {
+                app.torneos[i].createRonda();
+            }
+
+
+
+
+
+
+
+
+            console.log(app);
+        })
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>
