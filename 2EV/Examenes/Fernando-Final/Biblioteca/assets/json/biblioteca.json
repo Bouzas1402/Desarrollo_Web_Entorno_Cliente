@@ -1,0 +1,50 @@
+[
+  {
+    "nombre":  "Santos de la Humosa",
+    "inventario": [
+      { "titulo": "La bruja",
+        "imagen": "imagelabruja",
+        "genero": "Ensayo",
+        "ISBN" :  "12345323413343",
+        "ejemplares": [{ "ubicacion":  "estanteria 3 fila56", "estado": "Extraviado" },
+          { "ubicacion":  "estanteria 2 fila 33", "estado": "Prestado" },
+          { "ubicacion":  "estanteria 2 fila 123", "estado": "Disponible" },
+          { "ubicacion":  "estanteria 4 fila 34", "estado": "Descatalogado" }]
+      },
+      { "titulo": "El ocaso de la fraternidad",
+        "imagen": "imagenElOcaso",
+        "genero": "Ensayo",
+        "ISBN" :  "867745563223",
+        "ejemplares": [{ "ubicacion":  "estanteria 3 fila56", "estado": "Prestado" },
+          { "ubicacion":  "estanteria 2 fila 12", "estado": "Disponible" },
+          { "ubicacion":  "estanteria 1 fila 45", "estado": "Descatalogado" },
+          { "ubicacion":  "estanteria 1 fila 103", "estado": "Disponible" },
+          { "ubicacion":  "estanteria 4 fila 84", "estado": "Extraviado" }]
+      },
+      { "titulo": "Le insoportable levedad del ser",
+        "imagen": "Imagen el ser",
+        "genero": "Novela",
+        "ISBN" :  "556345772346",
+        "ejemplares": [{ "ubicacion":  "estanteria 3 fila56", "estado": "Descatalogado" },
+          { "ubicacion":  "estanteria 4 fila 27", "estado": "Prestado" },
+          { "ubicacion":  "estanteria 4 fila 13", "estado": "Extraviado" },
+          { "ubicacion":  "estanteria 3 fila 173", "estado": "Extraviado" },
+          { "ubicacion":  "estanteria 2 fila 93", "estado": "Disponible" },
+          { "ubicacion":  "estanteria 2 fila 85", "estado": "Disponible" },
+          { "ubicacion":  "estanteria 3 fila 11", "estado": "Descatalogado" }]
+      },
+      {
+        "titulo": "Le llamare Viernes",
+        "imagen": "imagenViernes",
+        "genero": "Novela",
+        "ISBN" :  "23456567885456",
+        "ejemplares": [{ "ubicacion":  "estanteria 3 fila56", "estado": "Disponible" },
+          { "ubicacion":  "estanteria 2 fila 14", "estado": "Disponible" },
+          { "ubicacion":  "estanteria 1 fila 58", "estado": "Extraviado" },
+          { "ubicacion":  "estanteria 4 fila 96", "estado": "Disponible" },
+          { "ubicacion":  "estanteria 2 fila 121", "estado": "Prestado" },
+          { "ubicacion":  "estanteria 1 fila 157", "estado": "Descatalogado" }]
+      }
+    ]
+  }
+]
