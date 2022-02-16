@@ -12,6 +12,14 @@ class Biblioteca {
         return this.inventario;
     }
 
+    getLibroPorNombre(nombre){
+        for (let i = 0; i < this.inventario.length; i++) {
+            if (this.inventario[i].titulo === nombre){
+                return this.inventario[i];
+            }
+        }
+    }
+
     getEjemplares(){
         let ejemplares = [];
         for (let i = 0; i < this.inventario.length; i++) {

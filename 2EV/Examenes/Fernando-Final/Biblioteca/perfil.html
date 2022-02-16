@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+        <html lang="es">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <title>Libro</title>
+
+
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css" >
+    <link rel="stylesheet" type="text/css" href="assets/dataTable/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/NiceAdminStyle.css">
+
+
+
+    <script src="assets/js/App.js"></script>
+    <script src="assets/js/Biblioteca.js"></script>
+    <script src="assets/js/Ejemplares.js"></script>
+    <script src="assets/js/Publicacion.js"></script>
+    <script src="assets/js/Screen.js"></script>
+    <!-- https://datatables.net/manual/data/ -->
+
+    <script type="text/javascript">
+
+
+        let app;
+
+        document.addEventListener("DOMContentLoaded", function (){
+            app = new App();
+            app.loadDatos("assets/json/biblioteca.json");
+
+            setTimeout(() => {
+
+
+                app.screen.dibujarLibro(app.bibliotecas[0].inventario[0]);
+            },1000);
+
+        });
+
+
+
+
+
+    </script>
+
+</head>
+<body>
+
+<header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+            <img src="assets/img/logo.png" alt="">
+            <span class="d-none d-lg-block">NiceAdmin</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+        <form class="search-form d-flex align-items-center" method="POST" action="#">
+            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+        </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+            <div class="carousel-item">
+                <h5 class="card-title"></h5>
+                <p class="template-genero"></p>
+                <img src="https://www.akal.com/media/akal/images/thumbs/cover-33674-236x354.jpg" class="d-block w-50 m-auto" alt="...">
+                <p class="template-descripcion"></p>
+            </div>
+            <li class="nav-item d-block d-lg-none">
+                <a class="nav-link nav-icon search-bar-toggle " href="#">
+                    <i class="bi bi-search"></i>
+                </a>
+            </li><!-- End Search Icon-->
+
+            <li class="nav-item dropdown">
+
+                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                    <i class="bi bi-bell"></i>
+                    <span class="badge bg-primary badge-number">4</span>
+                </a><!-- End Notification Icon -->
+
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                    <li class="dropdown-header">
+                        You have 4 new notifications
+                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="notification-item">
+                        <i class="bi bi-exclamation-circle text-warning"></i>
+                        <div>
+                            <h4>Lorem Ipsum</h4>
+                            <p>Quae dolorem earum veritatis oditseno</p>
+                            <p>30 min. ago</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="notification-item">
+                        <i class="bi bi-x-circle text-danger"></i>
+                        <div>
+                            <h4>Atque rerum nesciunt</h4>
+                            <p>Quae dolorem earum veritatis oditseno</p>
+                            <p>1 hr. ago</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="notification-item">
+                        <i class="bi bi-check-circle text-success"></i>
+                        <div>
+                            <h4>Sit rerum fuga</h4>
+                            <p>Quae dolorem earum veritatis oditseno</p>
+                            <p>2 hrs. ago</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="notification-item">
+                        <i class="bi bi-info-circle text-primary"></i>
+                        <div>
+                            <h4>Dicta reprehenderit</h4>
+                            <p>Quae dolorem earum veritatis oditseno</p>
+                            <p>4 hrs. ago</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="dropdown-footer">
+                        <a href="#">Show all notifications</a>
+                    </li>
+
+                </ul><!-- End Notification Dropdown Items -->
+
+            </li><!-- End Notification Nav -->
+
+            <li class="nav-item dropdown">
+
+                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                    <i class="bi bi-chat-left-text"></i>
+                    <span class="badge bg-success badge-number">3</span>
+                </a><!-- End Messages Icon -->
+
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                    <li class="dropdown-header">
+                        You have 3 new messages
+                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="message-item">
+                        <a href="#">
+                            <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                            <div>
+                                <h4>Maria Hudson</h4>
+                                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                <p>4 hrs. ago</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="message-item">
+                        <a href="#">
+                            <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                            <div>
+                                <h4>Anna Nelson</h4>
+                                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                <p>6 hrs. ago</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="message-item">
+                        <a href="#">
+                            <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                            <div>
+                                <h4>David Muldon</h4>
+                                <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                <p>8 hrs. ago</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="dropdown-footer">
+                        <a href="#">Show all messages</a>
+                    </li>
+
+                </ul><!-- End Messages Dropdown Items -->
+
+            </li><!-- End Messages Nav -->
+
+
+        </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+        </ul>
+    </nav><!-- End Icons Navigation -->
+
+</header><!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+
+
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+            <button onclick="app.dibujarDashboard();" class="nav-link w-100"><i class="bi bi-grid"></i>Dashboard</button>
+        </li>
+        <li class="nav-item">
+            <button onclick="app.dibujarFormulario();" class="nav-link w-100"><i class="bi bi-grid"></i>Formulario nuevo libro</button>
+        </li>
+    </ul>
+</aside>
+
+<main  id="main" class="main">
+    <section class="section dashboard">
+        <div class="row">
+
+
+            <div class="col-xl-4">
+                <div class="card">
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                        <img id="img-perfil" src="" alt="Profile" class="rounded-circle">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <div class="card">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content pt-2">
+
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                <h5 class="card-title">Descripcion</h5>
+                                <p class="small fst-italic" id="descripcion-libro"></p>
+                                <h5 class="card-title">Detalles</h5>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Titulo</div>
+                                    <div class="col-lg-9 col-md-8" id="titulo-libro"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Genero</div>
+                                    <div class="col-lg-9 col-md-8" id="genero-libro"></div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                                <!-- Profile Edit Form -->
+                                <form>
+                                    <div class="row mb-3">
+                                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="country" type="text" class="form-control" id="Country" value="USA">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                </form><!-- End Profile Edit Form -->
+
+                            </div>
+
+
+
+
+
+                        </div><!-- End Bordered Tabs -->
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+</main>
+</div>
+
+
+<script src="assets/jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="assets/dataTable/js/jquery.dataTables.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/chart/chart.js"></script>
+<script src="assets/tinymce/tinymce.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>

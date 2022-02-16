@@ -22,7 +22,6 @@ class App {
                             let descripcion = datos[i]["inventario"][j]["descripcion"];
                             let ISBN = datos[i]["inventario"][j]["ISBN"];
                             app.bibliotecas[i].addPublicacion(titulo, imagen, genero, descripcion, ISBN);
-
                             for (let k = 0; k < datos[i]["inventario"][j]["ejemplares"].length; k++) {
                                 let ubicacion = datos[i]["inventario"][j]["ejemplares"][k]["ubicacion"];
                                 let estado = datos[i]["inventario"][j]["ejemplares"][k]["estado"];
@@ -35,6 +34,7 @@ class App {
                     app.screen.dataTable(app.bibliotecas[0].getEjemplares());
                     app.screen.dibujarInfoCard(app.bibliotecas[0].getEjemplares());
                     console.log(app.bibliotecas[0].getEjemplares()) */
+                    app.screen.pintarBarraLateral(app.bibliotecas[0].inventario);
                 } else {
                     datos = "Error loading page\n";
                 }
@@ -48,14 +48,21 @@ class App {
     }
 
     dibujarDashboard() {
+        document.querySelector('section .row').innerHTML = "";
         app.screen.dibujarCarousel(app.bibliotecas[0].inventario);
-        console.log(app.bibliotecas[0].inventario)
         app.screen.dataTable(app.bibliotecas[0].getEjemplares());
         app.screen.dibujarInfoCard(app.bibliotecas[0].getEjemplares());
-        console.log(app.bibliotecas[0].getEjemplares())
     }
 
-    pintarCatalogo(){}
+    dibujarFormulario(){
+        document.querySelector('section .row').innerHTML = "";
+        this.screen.dibujarFormulario();
+    }
+
+    dibujarLibro(nombre){
+        this.screen.dibujarLibro(this.bibliotecas[0].getLibroPorNombre(nombre));
+    }
+    pintarPerfil(){}
 
 
 
