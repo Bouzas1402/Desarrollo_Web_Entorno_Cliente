@@ -30,11 +30,11 @@ class App {
                             }
                         }
                     }
-                    app.screen.dibujarCarousel(datos[0]["inventario"]);
+                  /*  app.screen.dibujarCarousel(app.bibliotecas[0].inventario);
                     console.log(app.bibliotecas[0].inventario)
                     app.screen.dataTable(app.bibliotecas[0].getEjemplares());
                     app.screen.dibujarInfoCard(app.bibliotecas[0].getEjemplares());
-                    console.log(app.bibliotecas[0].getEjemplares())
+                    console.log(app.bibliotecas[0].getEjemplares()) */
                 } else {
                     datos = "Error loading page\n";
                 }
@@ -47,6 +47,16 @@ class App {
         this.bibliotecas.push(new Biblioteca(nombre));
     }
 
+    dibujarDashboard() {
+        app.screen.dibujarCarousel(app.bibliotecas[0].inventario);
+        console.log(app.bibliotecas[0].inventario)
+        app.screen.dataTable(app.bibliotecas[0].getEjemplares());
+        app.screen.dibujarInfoCard(app.bibliotecas[0].getEjemplares());
+        console.log(app.bibliotecas[0].getEjemplares())
+    }
+
     pintarCatalogo(){}
+
+
 
 }
