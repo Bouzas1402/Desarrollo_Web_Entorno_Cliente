@@ -26,6 +26,11 @@ class Screen {
                     }}
             ]
         });
+        for (let i = 0; i < datos.length; i++) {
+            delete datos[i].titulo;
+            delete datos[i].genero;
+        }
+
     }
 
     dibujarCarousel(datos){
@@ -111,7 +116,6 @@ class Screen {
         listaLibros.querySelector('#descripcion-libro').innerText = libro.descripcion;
         listaLibros.querySelector('#titulo-libro').innerText = libro.titulo;
         listaLibros.querySelector('#genero-libro').innerText = libro.genero;
-        console.log(libro.ejemplares);
         for (let i = 0; i < libro.ejemplares.length; i++) {
             ejemplar.appendChild(document.importNode(templateEjemplar, true));
             ejemplar.querySelector('.col-lg-3').innerText = i + ' - ' + libro.ejemplares[i].ubicacion;
@@ -124,7 +128,7 @@ class Screen {
 
 
     semicirculoChart(contexto, datos){
-        console.log(datos);
+
         let novela = 0;
         let ensayo = 0;
         let poesia = 0;
@@ -172,6 +176,10 @@ class Screen {
 
         var chart = new ApexCharts(contexto, options);
         chart.render();
+        for (let i = 0; i < datos.length; i++) {
+            delete datos[i].titulo;
+            delete datos[i].genero;
+        }
     }
 
 }

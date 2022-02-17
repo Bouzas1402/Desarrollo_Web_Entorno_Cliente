@@ -32,12 +32,9 @@
         document.addEventListener("DOMContentLoaded", function (){
             app = new App();
             app.loadDatos("assets/json/biblioteca.json");
-
             setTimeout(() => {
-
                 app.dibujarDashboard();
-                console.log(app.bibliotecas[0].getInventario())
-            },1000);
+            },90);
 
         });
 

@@ -29,11 +29,6 @@ class App {
                             }
                         }
                     }
-                    /*  app.screen.dibujarCarousel(app.bibliotecas[0].inventario);
-                      console.log(app.bibliotecas[0].inventario)
-                      app.screen.dataTable(app.bibliotecas[0].getEjemplares());
-                      app.screen.dibujarInfoCard(app.bibliotecas[0].getEjemplares());
-                      console.log(app.bibliotecas[0].getEjemplares()) */
                     app.screen.pintarBarraLateral(app.bibliotecas[0].inventario);
                 } else {
                     datos = "Error loading page\n";
@@ -70,7 +65,6 @@ class App {
             if (ejemplares[i].ubicacion === ubicacion) {
                 ejemplares[i].setEstado('Prestado');
                 app.dibujarDashboard();
-                console.log(app.bibliotecas[0].getEjemplares());
                 break;
             }
         }
@@ -90,16 +84,16 @@ class App {
         let generos = ['Ensayo', 'Novela', 'Poesia']
         let estados = ['Prestado', 'Descatalogado', 'Disponible', 'Extraviado']
         app.addBiblioteca(faker.name.findName());
-        for (let i = 0; i < faker.datatype.number({min: 1, max: 6}); i++) {
+        for (let i = 0; i < faker.datatype.number({min: 4, max: 9}); i++) {
             let titulo = faker.random.word(faker.datatype.number({min: 2, max: 8}));
             let imagen = faker.image.animals(200, 480, true);
             let genero = generos[faker.datatype.number({min: 0, max: 2})];
             let descripcion = faker.lorem.lines(faker.datatype.number({min: 3, max: 7}));
             let ISBN = faker.phone.phoneNumber('#############');
             app.bibliotecas[0].addPublicacion(titulo, imagen, genero, descripcion, ISBN);
-            for (let j = 0; j < faker.datatype.number({min: 3, max: 8}); j++) {
+            for (let j = 0; j < faker.datatype.number({min: 5, max: 15}); j++) {
                 let ubicacion = faker.system.mimeType();
-                let estado = estados[faker.datatype.number({min: 0, max: 4})];
+                let estado = estados[faker.datatype.number({min: 0, max: 3})];
                 app.bibliotecas[0].inventario[i].addEjemplares(ubicacion, estado);
             }
         }

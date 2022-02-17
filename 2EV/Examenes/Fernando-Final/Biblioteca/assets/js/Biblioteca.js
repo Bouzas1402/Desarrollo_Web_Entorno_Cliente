@@ -24,7 +24,7 @@ class Biblioteca {
         let ejemplares = [];
         for (let i = 0; i < this.inventario.length; i++) {
             for (let j = 0; j < this.inventario[i].getEjemplares().length; j++) {
-                let ejemplar = this.inventario[i].getEjemplares()[j];
+                let ejemplar = new Object(this.inventario[i].getEjemplares()[j]);
                 ejemplar.titulo = this.inventario[i].titulo;
                 ejemplar.genero = this.inventario[i].genero;
                 ejemplares.push(this.inventario[i].getEjemplares()[j]);
