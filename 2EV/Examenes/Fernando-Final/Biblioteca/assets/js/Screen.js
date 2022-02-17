@@ -12,8 +12,18 @@ class Screen {
             columns: [
                 {title: "Nombre", data: "titulo"},
                 {title: "Genero", data: "genero"},
-                {title: "Color", data: "ubicacion"},
-                {title: "Estaciones", data: "estado"}
+                {title: "Ubicacion", data: "ubicacion"},
+                {title: "Estado", data: "estado", render: function (data, type, row) {
+                    if (data === 'Disponible') {
+                        return '<a class="disponible-sass btn btn-success" href=#" onclick="app.cambiarEstado(\'' + row.ubicacion + '\')"><span class="bi-check me-1">' + data + '</span></a>'
+                    } else if (data === 'Prestado') {
+                        return '<div><span class="prestado-sass bi bi-bookmark-dash me-1">' + data + '</span></div>';
+                    } else if (data === 'Extraviado'){
+                        return '<div><span class="extraviado-sass bi bi-bookmark-x-fill me-1">' + data + '</span></div>';
+                    } else {
+                        return '<div><span class="descatalogado-sass bi bi-bookmark-x me-1">' + data + '</span></div>';
+                    }
+                    }}
             ]
         });
     }
@@ -42,18 +52,13 @@ class Screen {
             imgLibros.querySelector('.template-descripcion').textContent = descripcion;
             carousel.querySelector('.carousel-inner').appendChild(document.importNode(imgLibros, true));
         }
-
         document.querySelector('section .row').appendChild(carousel);
-
     }
 
     dibujarInfoCard(datos){
-
-
         const templateInfoCard = document.querySelector('#info-card').content;
         const infoCard = new DocumentFragment();
         infoCard.appendChild(document.importNode(templateInfoCard, true));
-
         let disponibles = 0;
         let prestados = 0;
         let descatalogados = 0;
@@ -82,17 +87,10 @@ class Screen {
     }
 
     pintarBarraLateral(datos){
-            const template = document.querySelector('#lista-cursos').content;
-            const listaCursos = new DocumentFragment();
-            listaCursos.appendChild(document.importNode(template, true));
-            listaCursos.querySelector('span').textContent = "Libros";
-            listaCursos.querySelector('a').setAttribute('data-bs-target', "#modal-libros");
-            listaCursos.querySelector('ul').id = "modal-libros";
             for (let i = 0; i < datos.length; i++) {
-                let trimestre = '<li><button type="button" onClick="app.dibujarLibro(' +  + ')" className="w-100">' + datos[i].titulo + '</button></li>';
-                listaCursos.querySelector('ul').innerHTML += trimestre;
+                let trimestre = '<li><button type="button" onClick="app.dibujarLibro(\'' + datos[i].titulo + '\');" className="w-100">' + datos[i].titulo + '</button></li>';
+                document.querySelector('#lista-libros').innerHTML += trimestre;
             }
-            document.querySelector('#sidebar-nav').appendChild(listaCursos);
         }
 
     dibujarFormulario(){
@@ -102,14 +100,78 @@ class Screen {
         document.querySelector('section .row').appendChild(formulario);
     }
 
-
     dibujarLibro(libro){
+        document.querySelector('section .row').innerHTML = "";
+        const templatePerfilLibro = document.querySelector('#template-perfil-libro').content;
+        const templateEjemplar = document.querySelector('#template-ejemplar-libro').content;
+        const listaLibros = new DocumentFragment();
+        const ejemplar = new DocumentFragment();
+        listaLibros.appendChild(document.importNode(templatePerfilLibro, true));
+        listaLibros.getElementById('img-perfil').src = libro.imagen;
+        listaLibros.querySelector('#descripcion-libro').innerText = libro.descripcion;
+        listaLibros.querySelector('#titulo-libro').innerText = libro.titulo;
+        listaLibros.querySelector('#genero-libro').innerText = libro.genero;
+        console.log(libro.ejemplares);
+        for (let i = 0; i < libro.ejemplares.length; i++) {
+            ejemplar.appendChild(document.importNode(templateEjemplar, true));
+            ejemplar.querySelector('.col-lg-3').innerText = i + ' - ' + libro.ejemplares[i].ubicacion;
+            ejemplar.querySelector('.col-lg-9').innerText = ' - ' + libro.ejemplares[i].estado;
+            listaLibros.querySelector('#profile-ejemplar').appendChild(ejemplar);
+        }
+        document.querySelector('section .row').appendChild(listaLibros);
+    }
 
-        document.getElementById('img-perfil').src = libro.imagen;
-        document.querySelector('#descripcion-libro').innerText = libro.descripcion;
-        document.querySelector('#titulo-libro').innerText = libro.titulo;
-        document.querySelector('#genero-libro').innerText = libro.genero;
 
+
+    semicirculoChart(contexto, datos){
+        console.log(datos);
+        let novela = 0;
+        let ensayo = 0;
+        let poesia = 0;
+        for (let i = 0; i < datos.length; i++) {
+            if (datos[i].genero === 'Ensayo'){
+                ensayo++;
+            } else if (datos[i].genero === 'Novela'){
+                novela++;
+            } else if (datos[i].genero === 'Poesia'){
+                poesia++;
+            }
+        }
+
+        let options = {
+            series: [novela, ensayo, poesia],
+            labels: ['Novela', 'Ensayo', 'Poesia'],
+            chart: {
+                type: 'donut',
+                height: 500
+            },
+            plotOptions: {
+                pie: {
+                    startAngle: -90,
+                    endAngle: 90,
+                    offsetY: 10
+                }
+            },
+            grid: {
+                padding: {
+                    bottom: -80
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200,
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(contexto, options);
+        chart.render();
     }
 
 }

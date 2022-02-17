@@ -15,4 +15,5 @@ class Publicacion {
     getEjemplares(){
         return this.ejemplares;
     }
+
 }

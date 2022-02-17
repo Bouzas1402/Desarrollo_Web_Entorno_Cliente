@@ -1,0 +1,26 @@
+.prestado-sass, .descatalogado-sass, .extraviado-sass {
+  width: 70px;
+  font-weight: 600;
+  font-size: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-color: #d8d8d8;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 10px;
+}
+
+.extraviado-sass {
+  background-color: #726c6b;
+}
+
+.prestado-sass {
+  background-color: #4154f1;
+}
+
+.descatalogado-sass {
+  background-color: #ff771d;
+}
+/*# sourceMappingURL=style.css.map */

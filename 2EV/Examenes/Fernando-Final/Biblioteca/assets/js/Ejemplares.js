@@ -5,5 +5,7 @@ class Ejemplares {
         this.estado = estado;
     }
 
-
+    setEstado(estado){
+        this.estado = estado;
+    }
 }

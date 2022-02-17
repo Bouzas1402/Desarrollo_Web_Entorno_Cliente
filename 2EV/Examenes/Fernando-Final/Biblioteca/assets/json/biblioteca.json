@@ -28,7 +28,7 @@
         "genero": "Novela",
         "descripcion": "Esta es una extraordinaria historia de amor, o sea de celos, de sexo, de traiciones, de muerte y también de las debilidades y paradojas de la vida cotidiana de dos parejas cuyos destinos se entrelazan irremediablemente. Guiado por la asombrosa capacidad de Milan Kundera de contar con cristalina claridad, el lector penetra fascinado en la trama compleja de actos y pensamientos que el autor va tejiendo con diabólica sabiduría en torno a sus personajes. Y el lector no puede sino terminar siendo el mismo personaje, cuando no todos a la vez. Y es que esta novela va dirigida al corazón, pero también a la cabeza del lector.",
         "ISBN" :  "556345772346",
-        "ejemplares": [{ "ubicacion":  "estanteria 3 fila56", "estado": "Descatalogado" },
+        "ejemplares": [{ "ubicacion":  "estanteria 3 fila 56", "estado": "Descatalogado" },
           { "ubicacion":  "estanteria 4 fila 27", "estado": "Prestado" },
           { "ubicacion":  "estanteria 4 fila 13", "estado": "Extraviado" },
           { "ubicacion":  "estanteria 3 fila 173", "estado": "Extraviado" },
@@ -48,6 +48,19 @@
           { "ubicacion":  "estanteria 4 fila 96", "estado": "Disponible" },
           { "ubicacion":  "estanteria 2 fila 121", "estado": "Prestado" },
           { "ubicacion":  "estanteria 1 fila 157", "estado": "Descatalogado" }]
+      },
+      {
+        "titulo": "Las Flores del mal",
+        "imagen": "https://images-na.ssl-images-amazon.com/images/I/51L2YQs2MLL._SY264_BO1,204,203,200_QL40_ML2_.jpg",
+        "genero": "Poesia",
+        "ISBN" :  "55411235885498",
+        "descripcion": "Las flores del mal es una colección de poemas de Charles Baudelaire. Considerada la obra máxima de su autor, abarca casi la totalidad de su producción poética desde 1840 hasta la fecha de su primera publicación. La primera edición constó de 1300 ejemplares y se llevó a cabo el 25 de junio de 1857",
+        "ejemplares": [{ "ubicacion":  "estanteria 3 fila56", "estado": "Disponible" },
+          { "ubicacion":  "estanteria 4 fila 114", "estado": "Disponible" },
+          { "ubicacion":  "estanteria 3 fila 82", "estado": "Extraviado" },
+          { "ubicacion":  "estanteria 3 fila 22", "estado": "Disponible" },
+          { "ubicacion":  "estanteria 4 fila 19", "estado": "Descatalogado" },
+          { "ubicacion":  "estanteria 2 fila 257", "estado": "Disponible" }]
       }
     ]
   }

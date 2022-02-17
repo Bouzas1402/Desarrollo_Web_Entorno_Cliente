@@ -373,6 +373,7 @@ class Screen {
 
         var options = {
             series: [44, 55, 41, 17, 15],
+            labels: ['Apple', 'Mango', 'Orange', 'Watermelon','red'],
             chart: {
                 type: 'donut',
             },
