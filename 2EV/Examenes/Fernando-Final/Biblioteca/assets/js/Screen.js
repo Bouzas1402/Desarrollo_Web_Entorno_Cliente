@@ -10,26 +10,26 @@ class Screen {
         new DataTable('#dataTable', {
             data: datos,
             columns: [
-                {title: "Nombre", data: "titulo"},
+                { title: "Nombre", data: "titulo"},
                 {title: "Genero", data: "genero"},
                 {title: "Ubicacion", data: "ubicacion"},
-                {title: "Estado", data: "estado", render: function (data, type, row) {
-                    if (data === 'Disponible') {
-                        return '<a class="disponible-sass btn btn-success" href=#" onclick="app.cambiarEstado(\'' + row.ubicacion + '\')"><span class="bi-check me-1">' + data + '</span></a>'
-                    } else if (data === 'Prestado') {
-                        return '<div><span class="prestado-sass bi bi-bookmark-dash me-1">' + data + '</span></div>';
-                    } else if (data === 'Extraviado'){
-                        return '<div><span class="extraviado-sass bi bi-bookmark-x-fill me-1">' + data + '</span></div>';
-                    } else {
-                        return '<div><span class="descatalogado-sass bi bi-bookmark-x me-1">' + data + '</span></div>';
+                {
+                    title: "Estado", data: "estado", render: function (data, type, row) {
+                        if (data === 'Disponible') {
+                            return '<a class="disponible-sass btn btn-success" href=#" onclick="app.cambiarEstado(\'' + row.ubicacion + '\')"><span class="bi-check me-1">' + data + '</span></a>'
+                        } else if (data === 'Prestado') {
+                            return '<div><span class="prestado-sass bi bi-bookmark-dash me-1">' + data + '</span></div>';
+                        } else if (data === 'Extraviado') {
+                            return '<div><span class="extraviado-sass bi bi-bookmark-x-fill me-1">' + data + '</span></div>';
+                        } else {
+                            return '<div><span class="descatalogado-sass bi bi-bookmark-x me-1">' + data + '</span></div>';
+                        }
                     }
-                    }}
+                }
             ]
         });
-        for (let i = 0; i < datos.length; i++) {
-            delete datos[i].titulo;
-            delete datos[i].genero;
-        }
+
+
 
     }
 

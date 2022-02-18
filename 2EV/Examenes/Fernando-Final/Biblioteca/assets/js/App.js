@@ -46,8 +46,8 @@ class App {
         document.querySelector('section .row').innerHTML = "";
         this.screen.dibujarCarousel(app.bibliotecas[0].inventario);
         this.screen.dibujarInfoCard(app.bibliotecas[0].getEjemplares());
-        this.screen.dataTable(app.bibliotecas[0].getEjemplares());
         this.pintarSemicirculo();
+        this.screen.dataTable(app.bibliotecas[0].getEjemplares());
     }
 
     dibujarFormulario() {
@@ -64,10 +64,61 @@ class App {
         for (let i = 0; i < ejemplares.length; i++) {
             if (ejemplares[i].ubicacion === ubicacion) {
                 ejemplares[i].setEstado('Prestado');
-                app.dibujarDashboard();
+                app.alquilar(ejemplares[i].titulo);
+                this.dibujarDashboard();
                 break;
+
             }
         }
+    }
+
+    alquilar(valor) {
+            let name = "alquiler=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    document.cookie = "alquiler=" + c.substring(name.length, c.length) + "-" + valor + ";max-age=60;";
+                } else {
+                    document.cookie = "alquiler=" + valor + ";max-age=60";
+                }
+            }
+        this.nuevoAlquiler();
+    }
+
+    getValorCookies() {
+        let cookies;
+        let name = "alquiler=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                cookies = c.substring(name.length, c.length);
+            }
+        }
+        return cookies;
+    }
+
+    dibujarAlquilerInicio(){
+        let librosAlquilados = this.getValorCookies().split("-");
+        document.querySelector('#num_alquilados').innerHTML = librosAlquilados.length;
+        for (let i = 0; i < librosAlquilados.length; i++) {
+                document.querySelector('#carrito_compra').innerHTML += '<li class="message-item"><div><h4>' + librosAlquilados[i] + '</h4></div></li>';
+            }
+    }
+
+    nuevoAlquiler(){
+        let librosAlquilados = this.getValorCookies().split("-");
+        document.querySelector('#num_alquilados').innerHTML = librosAlquilados.length;
+        document.querySelector('#carrito_compra').innerHTML += '<li class="message-item"><div><h4>' + librosAlquilados[librosAlquilados.length - 1] + '</h4></div></li>';
     }
 
 
