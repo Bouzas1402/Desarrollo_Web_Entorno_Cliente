@@ -118,8 +118,8 @@ class Screen {
         listaLibros.querySelector('#genero-libro').innerText = libro.genero;
         for (let i = 0; i < libro.ejemplares.length; i++) {
             ejemplar.appendChild(document.importNode(templateEjemplar, true));
-            ejemplar.querySelector('.col-lg-3').innerText = i + ' - ' + libro.ejemplares[i].ubicacion;
-            ejemplar.querySelector('.col-lg-9').innerText = ' - ' + libro.ejemplares[i].estado;
+            ejemplar.querySelector('.col-lg-4').innerText = i + ' - ' + libro.ejemplares[i].ubicacion;
+            ejemplar.querySelector('.col-lg-8').innerText = ' - ' + libro.ejemplares[i].estado;
             listaLibros.querySelector('#profile-ejemplar').appendChild(ejemplar);
         }
         document.querySelector('section .row').appendChild(listaLibros);
