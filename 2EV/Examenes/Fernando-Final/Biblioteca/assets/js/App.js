@@ -76,16 +76,20 @@ class App {
             let name = "alquiler=";
             let decodedCookie = decodeURIComponent(document.cookie);
             let ca = decodedCookie.split(';');
+
+            let crearCookie = true;
             for (let i = 0; i < ca.length; i++) {
                 let c = ca[i];
                 while (c.charAt(0) == ' ') {
                     c = c.substring(1);
                 }
                 if (c.indexOf(name) == 0) {
-                    document.cookie = "alquiler=" + c.substring(name.length, c.length) + "-" + valor + ";max-age=60;";
-                } else {
-                    document.cookie = "alquiler=" + valor + ";max-age=60";
+                    document.cookie = name + c.substring(name.length, c.length) + "-" + valor + ";max-age=60;";
+                    crearCookie = false;
                 }
+            }
+            if(crearCookie) {
+                document.cookie = name + valor + ";max-age=60;";
             }
         this.nuevoAlquiler();
     }

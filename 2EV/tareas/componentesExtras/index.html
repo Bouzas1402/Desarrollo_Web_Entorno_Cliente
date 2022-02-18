@@ -65,45 +65,12 @@
             </div>
         <button onclick="procesarDatos();" class="btn btn-primary">Enviar</button>
     </form>
-
 </div>
-
-
     <script src="assets/js/jquery-3.2.1.slim.min.js"></script>
-
     <script src="boostrap/js/bootstrap.js"></script>
-
     <script src="assets/datepicker/libs/js/bootstrap-datepicker.min.js"></script>
     <script src="assets/datepicker/libs/js/bootstrap-datepicker.es.min.js"></script>
     <script src="assets/datepicker/libs/js/main.js"></script>
-
     <script type="text/javascript" src="assets/js/imask.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const phoneMask = IMask(document.getElementById('telefono'), {
-                mask: [
-                    {
-                        mask: '+{34} 000 00 00',
-                        startsWith: '6',
-                        lazy: false,
-                        telefono: 'Movil'
-                    },
-                    {
-                        mask: '+{34} 00 000 00 00',
-                        startsWith: '91',
-                        lazy: false,
-                        telefono: 'Fijo'
-                    }
-                ]
-            }).on('accept', () => {
-                document.getElementById('telefono-correcto').style.display = '';
-                document.getElementById('telefono-incorrecto').innerHTML = phoneMask.unmaskedValue;
-            }).on('complete', () => {
-                document.getElementById('telefono-correcto').style.display = 'inline-block';
-            });
-        });
-
-    </script>
-
-</body>
+ </body>
 </html>

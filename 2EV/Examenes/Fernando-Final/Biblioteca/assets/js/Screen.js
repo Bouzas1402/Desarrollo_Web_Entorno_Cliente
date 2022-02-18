@@ -173,7 +173,6 @@ class Screen {
                 }
             }]
         };
-
         var chart = new ApexCharts(contexto, options);
         chart.render();
         for (let i = 0; i < datos.length; i++) {

@@ -7,7 +7,7 @@ describe("Ejemplares", function() {
     });
 
     it("Probar setEstado", () => {
-        ejemplar1.setEstado("Extraviado");
+        ejemplar1.setEstado("Extraviado")
         expect(ejemplar1.estado).toEqual("Extraviado");
     });
 });

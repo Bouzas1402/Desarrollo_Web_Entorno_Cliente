@@ -10,6 +10,9 @@
   <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
   <link type="text/css" rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css" >
   <link rel="stylesheet" type="text/css" href="assets/dataTable/css/jquery.dataTables.min.css">
+
+  <link rel="stylesheet" href="assets/datepicker/libs/css/bootstrap-datepicker.standalone.css">
+
   <link rel="stylesheet" type="text/css" href="assets/NiceAdmin/apexcharts/styles.css">
 
   <link rel="stylesheet" type="text/css" href="assets/NiceAdmin/css/style.css">
@@ -128,15 +131,59 @@
           <button class="btn btn-primary" type="submit">Submit form</button>
         </div>
       </form><!-- End Custom Styled Validation with Tooltips -->
-
     </div>
   </div>
-  <section class="section">
 
-    <div class="row">
-
+  <form id="datosComplementos" action="#" method="post">
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" placeholder="" value="" required>
+        <div class="invalid-feedback">
+          Valid first name is required.
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" class="form-control" id="apellidos" placeholder="" value="" required>
+        <div class="invalid-feedback">
+          Valid last name is required.
+        </div>
+      </div>
     </div>
+    <div class="form-row">
+      <div class="col-10 mb-3">
+        <label for="telefono">Telefono</label>
+        <input type="text" class="form-control" id="telefono" placeholder="" required>
+        <div class="unmasked-value desc">sin mascara:
+          <span id="telefono-incorrecto"></span>
+          <span id="telefono-correcto" class="example__complete"></span>
+        </div>
+      </div>
 
+      <div class="form-row">
+        <div class="mb-3">
+          <label for="email">Email <span class="text-muted">(Optional)</span></label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <div class="unmasked-value desc">sin mascara:
+            <span id="email-incorrecto"></span>
+            <span id="email-correcto" class="example__complete"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--row-->
+    <div class="form-group col-md-6">
+      <label for="cumpleanos">Elige una fecha</label>
+      <input type="text" readonly="" class="form-control" id="cumpleanos" placeholder="Check-in"/>
+    </div>
+    <button href="#" class="btn btn-primary">Enviar</button>
+  </form>
+
+  <section class="section">
+    <h1>Biblioteca Faker, muestra rapida de ella apartir de las templates creadas para la vista</h1>
+    <div class="row">
+    </div>
   </section>
 
 </main>
@@ -271,60 +318,9 @@
       </div>
     </div>
   </div>
-
 </template>
 
-<template id="template-perfil-libro">
-  <div class="col-xl-4">
-    <div class="card">
-      <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-        <img id="img-perfil" src="" alt="Profile" class="rounded-circle">
 
-      </div>
-    </div>
-  </div>
-  <div class="col-xl-8">
-    <div class="card">
-      <div class="card-body pt-3">
-        <!-- Bordered Tabs -->
-        <ul class="nav nav-tabs nav-tabs-bordered">
-
-          <li class="nav-item">
-            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-descripcion">Información</button>
-          </li>
-
-          <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-ejemplar">Edit Profile</button>
-          </li>
-
-        </ul>
-        <div class="tab-content pt-2">
-          <div class="tab-pane fade show active profile-overview" id="profile-descripcion">
-            <h5 class="card-title">Descripcion</h5>
-            <p class="small fst-italic" id="descripcion-libro"></p>
-            <h5 class="card-title">Detalles</h5>
-            <div class="row">
-              <div class="col-lg-3 col-md-4 label ">Titulo</div>
-              <div class="col-lg-9 col-md-8" id="titulo-libro"></div>
-            </div>
-            <div class="row">
-              <div class="col-lg-3 col-md-4 label">Genero</div>
-              <div class="col-lg-9 col-md-8" id="genero-libro"></div>
-            </div>
-          </div>
-          <div class="tab-pane fade profile-edit pt-3" id="profile-ejemplar">
-          </div>
-        </div><!-- End Bordered Tabs -->
-      </div>
-    </div>
-  </div>
-</template>
-<template id="template-ejemplar-libro">
-  <div class="row">
-    <div class="col-lg-3 col-md-4 fw-bolder"></div>
-    <div class="col-lg-9 col-md-8"></div>
-  </div>
-</template>
 
 
 
@@ -332,13 +328,45 @@
 <script src="assets/jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="assets/dataTable/js/jquery.dataTables.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/datepicker/libs/js/bootstrap-datepicker.min.js"></script>
+<script src="assets/datepicker/libs/js/bootstrap-datepicker.es.min.js"></script>
+<script src="assets/datepicker/libs/js/main.js"></script>
+
+
 <script src="assets/NiceAdmin/chart/chart.js"></script>
 <script src="assets/NiceAdmin/apexcharts/apexcharts.min.js"></script>
 <script src="assets/NiceAdmin/tinymce/tinymce.min.js"></script>
 <script src="assets/NiceAdmin/php-email-form/validate.js"></script>
 
 <script src="assets/NiceAdmin/js/main.js"></script>
+<script type="text/javascript" src="assets/imask/imask.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const phoneMask = IMask(document.getElementById('telefono'), {
+      mask: [
+        {
+          mask: '+{34} 000 00 00',
+          startsWith: '6',
+          lazy: false,
+          telefono: 'Movil'
+        },
+        {
+          mask: '+{34} 00 000 00 00',
+          startsWith: '91',
+          lazy: false,
+          telefono: 'Fijo'
+        }
+      ]
+    }).on('accept', () => {
+      document.getElementById('telefono-correcto').style.display = '';
+      document.getElementById('telefono-incorrecto').innerHTML = phoneMask.unmaskedValue;
+    }).on('complete', () => {
+      document.getElementById('telefono-correcto').style.display = 'inline-block';
+    });
+  });
 
+</script>
 
 
 </body>

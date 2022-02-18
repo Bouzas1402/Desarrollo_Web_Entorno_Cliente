@@ -7,6 +7,11 @@ describe("Publicaciones", function() {
 
     it("Probar addEjemplares", () => {
         publicacion1.addEjemplares("Estanteria 1", "Extraviado");
-        expect(ejemplar1.ejemplares[0].estado).toEqual("Extraviado");
+        expect(publicacion1.ejemplares[0]).toEqual(new Ejemplares("Estanteria 1","Extraviado"));
     });
+
+    it("Probar getEjemplares", () =>{
+        publicacion1.ejemplares.push(new Ejemplares("Estanteria 765","Ocupado"));
+        expect(publicacion1.getEjemplares()).toEqual([new Ejemplares("Estanteria 765","Ocupado")]);
+    })
 });
